@@ -191,6 +191,15 @@ mkdocs gh-deploy
 
 网站地址：`https://你的用户名.github.io/仓库名/`
 
+### 使用 GitHub Actions 部署（本仓库已配置）
+
+若仓库根目录已有 `.github/workflows/deploy.yml`（本站点已包含）：
+
+1. 将 `main` 分支推送到 GitHub 后，打开仓库 **Settings → Pages**。
+2. 在 **Build and deployment** 里，**Source** 选择 **GitHub Actions**（不要选 Deploy from a branch）。
+3. 等待 **Actions** 里 `deploy` 工作流成功（绿勾）。
+4. 用户站 `用户名.github.io` 的访问地址为：`https://你的用户名.github.io/`（无子路径）。
+
 ---
 
 ## 五、常见问题
