@@ -1,4 +1,0 @@
-[Cursor] Initial MkDocs Material portfolio and GitHub Pages deploy workflow
-
-- Source under docs/, site_url for andyqi1223212.github.io
-- Actions: build with mkdocs-material + glightbox, deploy via GitHub Pages
