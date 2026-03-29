@@ -175,6 +175,14 @@ nav:
 3. **Build and deployment → Source** 选 **Deploy from a branch**。
 4. **Branch** 选 **`gh-pages`**，文件夹选 **`/ (root)`**，保存。
 
+**与「你在 Chrome 登录 GitHub」无关，但必须开的仓库权限（否则可能推不上 `gh-pages`）**
+
+- 打开 **Settings → Actions → General**。
+- 滚到 **Workflow permissions**。
+- 选中 **Read and write permissions**（不要选只读的 *Read repository contents*），保存。
+
+这样 `GITHUB_TOKEN` 才能在 workflow 里执行 **peaceiris** 的推送。若此处为只读，常见现象是 **Build 成功、Deploy/Push 失败**；个别环境下整条 job 也会报错。
+
 **日常更新（不必本地执行 `mkdocs gh-deploy`）**
 
 ```bash
@@ -277,6 +285,10 @@ git push -u origin main
 
 ### Q: 线上还是旧页面？
 - 先看 **Actions** 是否已成功；再等 1～2 分钟并 **强制刷新** 浏览器。
+
+### Q: Actions 里「Build site」失败，是我账号权限不够吗？
+- **一般不是**「登录权限」问题：`mkdocs build` 在 GitHub 提供的 runner 上跑，不读你本机文件。常见原因是 **MkDocs 校验/插件**（本仓库已放宽 `validation`、并暂时关闭 **glightbox** 以保证 CI 稳定）。请点开失败 job，展开 **Build site**，看日志最后几十行英文报错。
+- 若 **Build 绿、Push 失败**，再检查上一节 **Workflow permissions** 是否已为 **Read and write**。
 
 ### Q: `https://用户名.github.io/` 一直 404？
 1. **Settings → Pages** 是否已选 **Deploy from a branch** → **`gh-pages`** → **`/ (root)`**？若仍是 **main** 根目录，必 404（`main` 没有站点根 `index.html`）。

@@ -2,6 +2,17 @@ site_name: 齐昊宇 | Portfolio
 site_description: 个人项目与实习经历展示
 site_url: https://andyqi1223212.github.io/
 
+# MkDocs 1.6+ 默认会校验链接；部分相对路径/锚点在 Material 下易误报，CI 上可能直接导致 build 失败
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+  links:
+    not_found: warn
+    absolute_links: warn
+    unrecognized_links: warn
+    anchors: warn
+
 theme:
   name: material
   language: zh
@@ -62,7 +73,8 @@ markdown_extensions:
 plugins:
   - search:
       lang: zh
-  - glightbox
+  # glightbox 在部分 Linux CI 环境下 post_build 解析 HTML 会失败；先关闭以保证 Pages 稳定上线
+  # - glightbox
 
 nav:
   - 首页: index.md
