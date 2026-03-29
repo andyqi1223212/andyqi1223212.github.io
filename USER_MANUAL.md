@@ -175,6 +175,17 @@ nav:
 3. **Build and deployment → Source** 选 **Deploy from a branch**。
 4. **Branch** 选 **`gh-pages`**，文件夹选 **`/ (root)`**，保存。
 
+#### Actions 全绿，但打开 `https://用户名.github.io/` 仍是 404？
+
+说明 **静态文件已经在 `gh-pages` 分支**（workflow 成功），但 **Pages 没从该分支发布**。按下面逐项检查（90% 是第 1 条）：
+
+1. **Source 不能是「GitHub Actions」**（若你仍选这一项）：本仓库用的是 **peaceiris 推 `gh-pages` 分支**，**没有**向「GitHub Actions 版 Pages」上传 artifact。此时必须改为：**Source → Deploy from a branch**。
+2. **Branch 不能是 `main`**：`main` 根目录没有 `index.html`，选它会一直 404。必须选 **`gh-pages`**，Folder **`/ (root)`**。
+3. 改完后点 **Save**，等 **1～5 分钟**，再 **无痕窗口** 或 **硬刷新**（`Cmd+Shift+R`）访问。
+4. 在 **Settings → Pages** 页面顶部，有时会显示 **Your site is live at https://…**；若没有，多半是第 1～2 步未保存对。
+
+**直达设置页**（需登录）：`https://github.com/andyqi1223212/andyqi1223212.github.io/settings/pages`（把中间路径换成你的仓库即可）。
+
 **与「你在 Chrome 登录 GitHub」无关，但必须开的仓库权限（否则可能推不上 `gh-pages`）**
 
 - 打开 **Settings → Actions → General**。
@@ -299,9 +310,10 @@ git push -u origin main
 - 多为 **`pymdownx.highlight` 里 `anchor_linenums` + `line_spans`** 与 **较新 Pygments** 组合导致。本仓库 `mkdocs.yml` 已改为仅保留 **`pygments_lang_class`**；若你自行加回行号锚点选项，可能在 Linux CI 上复现。
 
 ### Q: `https://用户名.github.io/` 一直 404？
-1. **Settings → Pages** 是否已选 **Deploy from a branch** → **`gh-pages`** → **`/ (root)`**？若仍是 **main** 根目录，必 404（`main` 没有站点根 `index.html`）。
-2. **Actions** 里 `deploy` 是否成功？失败时点进日志看报错。
-3. 第一次部署前 **`gh-pages` 尚不存在**：先等一次成功的 `deploy` workflow，再回 Pages 下拉框里选 `gh-pages`。
+1. **最常见**：**Source 仍是「GitHub Actions」**——与本仓库 **推 `gh-pages` 分支** 的方式不匹配，会一直 404。请改为 **Deploy from a branch** → **`gh-pages`** → **`/ (root)`**（见第四节「Actions 全绿仍 404」）。
+2. 若选的是 **main / (root)**，也会 404（`main` 没有 `index.html`）。
+3. **Actions** 里 `deploy` 是否成功？`gh-pages` 若不存在，先在 Pages 里等分支出现再选。
+4. 改设置后等待几分钟并硬刷新。
 
 ---
 
