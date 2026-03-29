@@ -1,0 +1,74 @@
+site_name: 齐昊宇 | Portfolio
+site_description: 个人项目与实习经历展示
+site_url: https://andyqi1223212.github.io/
+
+theme:
+  name: material
+  language: zh
+  palette:
+    scheme: slate
+    primary: indigo
+    accent: cyan
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - toc.follow
+  icon:
+    logo: material/account-circle
+
+extra_css:
+  - assets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: false
+
+plugins:
+  - search:
+      lang: zh
+  - glightbox
+
+nav:
+  - 首页: index.md
+  - 项目经历:
+      - 总览: projects/index.md
+      - ANR 性能优化与实验设计: projects/anr-optimization.md
+      - Growth Accounting Framework: projects/growth-accounting.md
+      - 广告渠道特征分析: projects/ad-channel-analysis.md
+  - 关于我: about.md
