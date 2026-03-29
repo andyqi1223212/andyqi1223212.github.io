@@ -1,0 +1,2010 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人项目与实习经历展示">
+      
+      
+      
+        <link rel="canonical" href="https://andyqi1223212.github.io/projects/anr-optimization/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../growth-accounting/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>ANR 性能优化与实验设计 - 齐昊宇 | Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#15-gtv-did" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="齐昊宇 | Portfolio" class="md-header__button md-logo" aria-label="齐昊宇 | Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            齐昊宇 | Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ANR 性能优化与实验设计
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  项目经历
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于我
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="齐昊宇 | Portfolio" class="md-nav__button md-logo" aria-label="齐昊宇 | Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    齐昊宇 | Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目经历
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目经历
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ANR 性能优化与实验设计
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ANR 性能优化与实验设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        摘要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、背景：支付成功页的 ANR 问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、背景：支付成功页的 ANR 问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业务背景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        问题链条
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么值得关注
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、策略调整：关闭特定广告位
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、策略调整：关闭特定广告位">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我们做了什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么没做 A/B Test？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、误导性的数字：业务方庆祝 "+15%"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、误导性的数字：业务方庆祝 &#34;+15%&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我为什么不买账
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#difference-in-differences-did" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、分析框架：Difference-in-Differences (DID)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、分析框架：Difference-in-Differences (DID)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#did" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么选择 DID？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键假设：Parallel Trends（平行趋势）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、核心结果：从噪声中分离信号
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、核心结果：从噪声中分离信号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#did-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DID 2×2 矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全景图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#did_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DID 分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、权衡：这笔账到底值不值？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、权衡：这笔账到底值不值？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        广告位关闭的代价
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最终建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、SQL 实现
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、SQL 实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#22-did" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询一：生成 2×2 DID 矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#did_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询二：一行输出 DID 结论
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、方法论讨论与局限性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="八、方法论讨论与局限性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#did_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么选 DID 而非其他方法？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        局限性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、反思：我是如何构建这个故事的
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="九、反思：我是如何构建这个故事的">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从零散笔记到完整的案例研究
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storytelling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我使用的 Storytelling 原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作为 Portfolio 案例，这个项目展示了什么？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：仿真数据集生成说明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="附录：仿真数据集生成说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心校准参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数推导
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../growth-accounting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growth Accounting Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ad-channel-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    广告渠道特征分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于我
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        摘要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、背景：支付成功页的 ANR 问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、背景：支付成功页的 ANR 问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业务背景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        问题链条
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么值得关注
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、策略调整：关闭特定广告位
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、策略调整：关闭特定广告位">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我们做了什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么没做 A/B Test？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、误导性的数字：业务方庆祝 "+15%"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、误导性的数字：业务方庆祝 &#34;+15%&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我为什么不买账
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#difference-in-differences-did" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、分析框架：Difference-in-Differences (DID)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、分析框架：Difference-in-Differences (DID)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#did" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么选择 DID？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键假设：Parallel Trends（平行趋势）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、核心结果：从噪声中分离信号
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、核心结果：从噪声中分离信号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#did-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DID 2×2 矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全景图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#did_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DID 分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、权衡：这笔账到底值不值？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、权衡：这笔账到底值不值？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        广告位关闭的代价
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最终建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、SQL 实现
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、SQL 实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#22-did" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询一：生成 2×2 DID 矩阵
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#did_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询二：一行输出 DID 结论
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、方法论讨论与局限性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="八、方法论讨论与局限性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#did_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么选 DID 而非其他方法？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        局限性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、反思：我是如何构建这个故事的
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="九、反思：我是如何构建这个故事的">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从零散笔记到完整的案例研究
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storytelling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我使用的 Storytelling 原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作为 Portfolio 案例，这个项目展示了什么？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：仿真数据集生成说明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="附录：仿真数据集生成说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心校准参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数推导
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="15-gtv-did">当 "+15% GTV" 只是海市蜃楼：用 DID 度量广告位策略调整的真实效果</h1>
+<blockquote>
+<p><strong>角色：</strong> Data Analyst，移动支付 Fintech（尼日利亚市场）
+<strong>工具：</strong> SQL (Hive/SparkSQL)、Python、Causal Inference (DID)
+<strong>关键词：</strong> Difference-in-Differences, Quasi-Experiment, Confounding, Causal Inference, A/B Test 替代方案</p>
+</blockquote>
+<hr />
+<h2 id="_1">摘要</h2>
+<p>我们的移动支付 App 在低内存手机上存在一个已知性能问题：支付成功跳转页上的<strong>高资源广告组件</strong>会导致 1-2 GB 设备频繁触发 <strong>ANR（Application Not Responding）</strong>。流量分发团队决定为这部分设备<strong>关闭特定高资源广告位</strong>以改善用户体验，但策略以全局配置方式上线，没有条件做 A/B Test。</p>
+<p>策略上线两周后，业务方看到 1-2G 用户的 <strong>GTV 涨了 15%</strong>，认为策略效果显著。</p>
+<p>我用 <strong>Difference-in-Differences (DID)</strong> 方法证明了：<strong>这 15% 的涨幅中，约 90% 是月底发薪日的季节性效应</strong>，策略本身带来的真实因果增量仅为 <strong>+1.6%</strong>——与此同时，受影响广告位的点击量下降了约 <strong>35%</strong>。</p>
+<p>这个分析将一个"大胜利"的叙事，重新框定为一场需要审慎权衡的成本-收益讨论。</p>
+<hr />
+<h2 id="anr">一、背景：支付成功页的 ANR 问题</h2>
+<h3 id="_2">业务背景</h3>
+<p>我们的 App 服务于尼日利亚数千万用户，其中大量用户使用 <strong>1-2 GB 内存</strong>的低端手机。这些设备资源紧张，而 App 在支付成功跳转页上加载的部分营销广告组件（Rich Media 类型）占用了较高内存。</p>
+<h3 id="_3">问题链条</h3>
+<pre class="mermaid"><code>flowchart LR
+    A["特定高资源广告组件\n（支付成功跳转页）"] --&gt; B["1-2G 手机\n内存压力"]
+    B --&gt; C["ANR 触发\n（应用无响应）"]
+    C --&gt; D["支付成功后\nApp 卡顿/崩溃"]
+    D --&gt; E["用户信任受损\n后续交易意愿下降"]</code></pre>
+<p>涉及的广告位是 <code>pay_succ_rid_actransfer</code> 和 <code>pay_succ_rid_aatransfer</code>——它们加载在<strong>支付成功后的跳转页</strong>上。也就是说，ANR 发生时<strong>交易本身已经完成</strong>，不会直接导致当笔交易失败。</p>
+<p>但问题在于：用户刚刚完成付款、正等待确认结果的敏感时刻，App 突然崩溃——这会损害用户对平台的信任感。</p>
+<h3 id="_4">为什么值得关注</h3>
+<ul>
+<li><strong>1-2G 用户</strong>占活跃用户约 33%（DAU 占比显著）</li>
+<li>ANR 虽然不影响当笔交易，但在付款后最敏感的时刻发生崩溃，会引发用户焦虑（"钱到底扣了没有？"）</li>
+<li>反复出现的卡顿体验会抑制<strong>后续交易意愿</strong>，并加速低端机用户流失（在尼日利亚市场，重新下载 App 的成本不低：流量贵、存储紧张）</li>
+</ul>
+<hr />
+<h2 id="_5">二、策略调整：关闭特定广告位</h2>
+<h3 id="_6">我们做了什么</h3>
+<p>流量分发团队在<strong>月度第 16 天</strong>通过<strong>服务端配置变更</strong>，对 1-2G 设备做了针对性调整：</p>
+<ul>
+<li><strong>1-2G 设备：</strong> 关闭支付成功跳转页上<strong>两个特定高资源广告位</strong>（<code>pay_succ_rid_actransfer</code>、<code>pay_succ_rid_aatransfer</code>，共 21 个 ad_id），<strong>其余广告位正常展示</strong></li>
+<li><strong>&gt;2G 设备：</strong> 无任何变化，所有广告正常展示</li>
+</ul>
+<h3 id="ab-test">为什么没做 A/B Test？</h3>
+<p>这次调整以服务端全局配置的方式上线，没有条件进行随机实验：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">挑战</th>
+<th style="text-align: left;">细节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>全局配置</strong></td>
+<td style="text-align: left;">服务端按设备内存统一生效，没有设备级别的随机分流基础设施</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>高方差</strong></td>
+<td style="text-align: left;">GTV 方差极大；50/50 分流需要较长时间窗口才能达到统计显著性</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>事后评估</strong></td>
+<td style="text-align: left;">策略已先行上线，我的任务是<strong>事后评估</strong>其因果效应</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>我的挑战：</strong> 策略已经全量上线，没有随机对照组——如何从复杂的市场环境中隔离出这次配置变更的<em>因果</em>效应？</p>
+</blockquote>
+<hr />
+<h2 id="15">三、误导性的数字：业务方庆祝 "+15%"</h2>
+<p>策略上线两周后，业务团队做了一个简单的<strong>前后对比</strong>（1-2G 用户）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">时段</th>
+<th style="text-align: center;">日均 GTV（₦ 十亿）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">干预前（第 1-15 天）</td>
+<td style="text-align: center;">48.9</td>
+</tr>
+<tr>
+<td style="text-align: left;">干预后（第 16-31 天）</td>
+<td style="text-align: center;">56.3</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>变化</strong></td>
+<td style="text-align: center;"><strong>+15.1%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>叙事迅速形成：<em>"关掉那些广告位效果明显，直接释放了 15% 的 GTV 增量！"</em></p>
+<p><img alt="误导性数字 vs. 真实故事" src="../../assets/chart_anr_reveal.png" /></p>
+<h3 id="_7">我为什么不买账</h3>
+<p>我知道一件前后对比无法解释的事情：<strong>月底发薪日效应（Payday Effect）</strong>。</p>
+<p>在尼日利亚（以及许多新兴市场），工资发放集中在<strong>每月 25-31 号</strong>。这会在所有用户中产生一波巨大的、可预测的交易量飙升——<strong>与设备内存无关</strong>。</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph decomposition ["这 15% 并非全是策略效果"]
+        A["观测到：1-2G GTV +15%"] --&gt; B{"什么驱动了增长？"}
+        B --&gt;|"约 90%"| C["发薪日效应\n（第 25-31 天自然飙升）"]
+        B --&gt;|"约 10%"| D["真实策略效果\n（广告位调整带来的增量）"]
+    end</code></pre>
+<p>策略生效的时间窗口（第 16-31 天）与发薪日时段（第 25-31 天）<strong>完全重叠</strong>。任何朴素的前后对比，都会把策略效果和季节性效应<strong>混为一谈</strong>。</p>
+<hr />
+<h2 id="difference-in-differences-did">四、分析框架：Difference-in-Differences (DID)</h2>
+<h3 id="did">为什么选择 DID？</h3>
+<p><strong>Difference-in-Differences</strong> 是一种准实验方法，专门用于无法进行随机实验时估计因果效应。它的核心思想是找到一个<strong>天然对照组</strong>——经历了相同外部环境，但没有被干预。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">分组</th>
+<th style="text-align: left;">干预前（第 1-15 天）</th>
+<th style="text-align: left;">干预后（第 16-31 天）</th>
+<th style="text-align: left;">角色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1-2G 设备</strong></td>
+<td style="text-align: left;">正常展示所有广告</td>
+<td style="text-align: left;"><strong>特定高资源广告位被关闭</strong>，其余正常</td>
+<td style="text-align: left;">Treatment</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>&gt;2G 设备</strong></td>
+<td style="text-align: left;">正常展示所有广告</td>
+<td style="text-align: left;">无变化，所有广告正常展示</td>
+<td style="text-align: left;">Control</td>
+</tr>
+</tbody>
+</table>
+<p>核心公式：</p>
+<div class="arithmatex">\[
+\text{DID} = \underbrace{(\bar{Y}_{T,post} - \bar{Y}_{T,pre})}_{\text{实验组变化}} - \underbrace{(\bar{Y}_{C,post} - \bar{Y}_{C,pre})}_{\text{对照组变化（仅含发薪日效应）}}
+\]</div>
+<p>对照组的变化量捕获了<strong>反事实（Counterfactual）</strong>——即如果不做任何干预，1-2G 用户的 GTV 会如何变化。将其减去后，我们就能隔离出纯粹的策略效果。</p>
+<h3 id="parallel-trends">关键假设：Parallel Trends（平行趋势）</h3>
+<p>DID 要求两组在<strong>不受干预的情况下</strong>会遵循相同的趋势。我通过检验干预前时段来验证这一假设：</p>
+<p><img alt="Parallel Trends 验证（干预前时段）" src="../../assets/chart_anr_parallel_trends.png" /></p>
+<p>在第 1-15 天（干预发生之前），两组的 GTV 指数几乎完美同步——周末一起下跌，工作日一起回升。这验证了 <strong>Parallel Trends 假设</strong>成立，&gt;2G 用户可以作为有效的 Control Group。</p>
+<hr />
+<h2 id="_8">五、核心结果：从噪声中分离信号</h2>
+<h3 id="did-22">DID 2×2 矩阵</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">干预前（第 1-15 天）</th>
+<th style="text-align: center;">干预后（第 16-31 天）</th>
+<th style="text-align: center;">Δ 变化率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Treatment（1-2G）</strong></td>
+<td style="text-align: center;">₦48.9B/天</td>
+<td style="text-align: center;">₦56.3B/天</td>
+<td style="text-align: center;"><strong>+15.1%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Control（&gt;2G）</strong></td>
+<td style="text-align: center;">₦126.7B/天</td>
+<td style="text-align: center;">₦143.7B/天</td>
+<td style="text-align: center;">+13.5%</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DID（Net Lift）</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>+1.6%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">全景图</h3>
+<p><img alt="ANR 干预：DID 分析 — 索引化日趋势" src="../../assets/chart_anr_did_trends.png" /></p>
+<p><strong>GTV 面板（上）解读：</strong></p>
+<ul>
+<li><strong>第 1-15 天：</strong> 两组走势完全同步（Parallel Trends ✓）</li>
+<li><strong>第 16-24 天：</strong> 轻微分叉，但肉眼难以区分</li>
+<li><strong>第 25-31 天（发薪日区域，阴影部分）：</strong> 两条线<strong>一起暴涨</strong>——这就是让朴素对比产生 15% 假象的混淆因素</li>
+</ul>
+<p><strong>广告点击面板（下）解读：</strong></p>
+<ul>
+<li><strong>第 16 天：</strong> 1-2G 的广告点击量出现<strong>显著下跌</strong>（被关闭的广告位约占总量三分之一）——策略精准生效</li>
+<li><strong>&gt;2G：</strong> 完全平稳——确认配置变更只作用于目标人群</li>
+</ul>
+<h3 id="did_1">DID 分解</h3>
+<p><img alt="DID 分解：各组干预前后变化" src="../../assets/chart_anr_did_bars.png" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指标</th>
+<th style="text-align: center;">Naive（仅看 1-2G）</th>
+<th style="text-align: center;">DID（Net Lift）</th>
+<th style="text-align: left;">解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>GTV</strong></td>
+<td style="text-align: center;">+15.1%</td>
+<td style="text-align: center;"><strong>+1.6%</strong></td>
+<td style="text-align: left;">真实因果增量比朴素数字<strong>小了 10 倍</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ad Click</strong></td>
+<td style="text-align: center;">-35.2%</td>
+<td style="text-align: center;"><strong>-35.1%</strong></td>
+<td style="text-align: left;">与朴素值几乎一致——证实这是纯策略效应，不受季节性影响</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_10">六、权衡：这笔账到底值不值？</h2>
+<p>DID 分析把讨论焦点从"我们赚了多少？"重新框定为<strong>"我们付出了什么代价？"</strong></p>
+<h3 id="_11">广告位关闭的代价</h3>
+<p><img alt="广告点击量：策略调整的代价" src="../../assets/chart_anr_adclick_cliff.png" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指标</th>
+<th style="text-align: left;">调整前</th>
+<th style="text-align: left;">调整后</th>
+<th style="text-align: left;">影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1-2G 日均广告点击</td>
+<td style="text-align: left;">~898K</td>
+<td style="text-align: left;">~582K</td>
+<td style="text-align: left;"><strong>-35%（-316K/天）</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-2G 日均 GTV（因果增量）</td>
+<td style="text-align: left;">₦48.9B</td>
+<td style="text-align: left;">~₦49.7B</td>
+<td style="text-align: left;"><strong>+1.6%（+₦0.8B/天）</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">最终建议</h3>
+<div class="admonition success">
+<p class="admonition-title">核心结论</p>
+<p>此次策略调整缓解了支付成功页的 ANR 问题，并带来了微弱的 GTV 改善（+1.6%），但代价是被关闭广告位约 35% 的点击量损失。<strong>长期建议不是永久关闭这些广告位，而是用轻量化方案替换重型广告组件（静态 Banner、懒加载素材），在维持低内存设备稳定性的同时恢复广告收入。</strong></p>
+</div>
+<p>这个分析将后续路线图从"保持广告位关闭"转向了"让广告组件变轻"。</p>
+<hr />
+<h2 id="sql">七、SQL 实现</h2>
+<p>DID 2×2 矩阵可以直接在 SQL 中计算（兼容 Hive / SparkSQL）：</p>
+<h3 id="22-did">查询一：生成 2×2 DID 矩阵</h3>
+<div class="language-sql highlight"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">did_matrix</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="n">device_memory</span><span class="p">,</span>
+<span class="w">        </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="k">day</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Pre&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;Post&#39;</span><span class="w"> </span><span class="k">END</span><span class="w">  </span><span class="k">AS</span><span class="w"> </span><span class="k">period</span><span class="p">,</span>
+<span class="w">        </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">                                         </span><span class="k">AS</span><span class="w"> </span><span class="n">n_days</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">gtv</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">                               </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_daily_gtv</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">ad_click</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">                           </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_daily_ad_click</span><span class="p">,</span>
+<span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="n">gtv</span><span class="p">)</span><span class="w">                                          </span><span class="k">AS</span><span class="w"> </span><span class="n">total_gtv</span><span class="p">,</span>
+<span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="n">ad_click</span><span class="p">)</span><span class="w">                                     </span><span class="k">AS</span><span class="w"> </span><span class="n">total_ad_click</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">anr_simulated</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">        </span><span class="n">device_memory</span><span class="p">,</span>
+<span class="w">        </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="k">day</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Pre&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;Post&#39;</span><span class="w"> </span><span class="k">END</span>
+<span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">did_matrix</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">device_memory</span><span class="p">,</span><span class="w"> </span><span class="k">period</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="did_2">查询二：一行输出 DID 结论</h3>
+<div class="language-sql highlight"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">did_matrix</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="n">device_memory</span><span class="p">,</span>
+<span class="w">        </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="k">day</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Pre&#39;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;Post&#39;</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">period</span><span class="p">,</span>
+<span class="w">        </span><span class="k">AVG</span><span class="p">(</span><span class="n">gtv</span><span class="p">)</span><span class="w">      </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_gtv</span><span class="p">,</span>
+<span class="w">        </span><span class="k">AVG</span><span class="p">(</span><span class="n">ad_click</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_ad</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">anr_simulated</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">device_memory</span><span class="o">=</span><span class="s1">&#39;1-2G&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">period</span><span class="o">=</span><span class="s1">&#39;Post&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">avg_gtv</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="o">/</span>
+<span class="w">        </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">device_memory</span><span class="o">=</span><span class="s1">&#39;1-2G&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">period</span><span class="o">=</span><span class="s1">&#39;Pre&#39;</span><span class="w">  </span><span class="k">THEN</span><span class="w"> </span><span class="n">avg_gtv</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">naive_gtv_pct</span><span class="p">,</span>
+
+<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">device_memory</span><span class="o">=</span><span class="s1">&#39;&gt;2G&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">period</span><span class="o">=</span><span class="s1">&#39;Post&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">avg_gtv</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="o">/</span>
+<span class="w">        </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">device_memory</span><span class="o">=</span><span class="s1">&#39;&gt;2G&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">period</span><span class="o">=</span><span class="s1">&#39;Pre&#39;</span><span class="w">  </span><span class="k">THEN</span><span class="w"> </span><span class="n">avg_gtv</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">control_gtv_pct</span><span class="p">,</span>
+
+<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">device_memory</span><span class="o">=</span><span class="s1">&#39;1-2G&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">period</span><span class="o">=</span><span class="s1">&#39;Post&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">avg_gtv</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="o">/</span>
+<span class="w">        </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">device_memory</span><span class="o">=</span><span class="s1">&#39;1-2G&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">period</span><span class="o">=</span><span class="s1">&#39;Pre&#39;</span><span class="w">  </span><span class="k">THEN</span><span class="w"> </span><span class="n">avg_gtv</span><span class="w"> </span><span class="k">END</span><span class="p">)</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">device_memory</span><span class="o">=</span><span class="s1">&#39;&gt;2G&#39;</span><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="k">period</span><span class="o">=</span><span class="s1">&#39;Post&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">avg_gtv</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="o">/</span>
+<span class="w">        </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">device_memory</span><span class="o">=</span><span class="s1">&#39;&gt;2G&#39;</span><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="k">period</span><span class="o">=</span><span class="s1">&#39;Pre&#39;</span><span class="w">  </span><span class="k">THEN</span><span class="w"> </span><span class="n">avg_gtv</span><span class="w"> </span><span class="k">END</span><span class="p">)</span>
+<span class="w">    </span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">did_gtv_net_lift_pct</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">did_matrix</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h2 id="_13">八、方法论讨论与局限性</h2>
+<h3 id="did_3">为什么选 DID 而非其他方法？</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方法</th>
+<th style="text-align: center;">是否考虑过？</th>
+<th style="text-align: left;">理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>A/B Test</strong></td>
+<td style="text-align: center;">首选方案</td>
+<td style="text-align: left;">不可行——全局配置无法设备级随机分流 + GTV 高方差需要长窗口</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DID</strong></td>
+<td style="text-align: center;"><strong>最终采用</strong></td>
+<td style="text-align: left;">设备内存天然划分 Treatment/Control；Parallel Trends 假设成立</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Regression Discontinuity</strong></td>
+<td style="text-align: center;">考虑过</td>
+<td style="text-align: left;">没有清晰的 Running Variable（天数不够平滑）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Synthetic Control</strong></td>
+<td style="text-align: center;">考虑过</td>
+<td style="text-align: left;">对于两组明确定义的对比而言过于复杂；DID 可解释性更强</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CUPED</strong></td>
+<td style="text-align: center;">考虑过</td>
+<td style="text-align: left;">适用于 A/B Test 中的方差缩减，此场景不适用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">局限性</h3>
+<ol>
+<li><strong>无个体层面随机化</strong> — DID 识别的是 ATT（Average Treatment Effect on the Treated），而非 ATE</li>
+<li><strong>干预后时间窗较短</strong> — 仅 16 天；长期效果（用户留存、重新激活）未被捕获</li>
+<li><strong>潜在溢出效应</strong> — 如果 1-2G 用户因不再看到广告而改变了行为，进而影响 &gt;2G 用户的指标，则 Control Group 会被污染（可能性低但存在）</li>
+<li><strong>发薪日效应的形状假设</strong> — 发薪日对两组的影响幅度可能不完全一致；我假设按比例相似，Parallel Trends 支持这一点但无法完全保证</li>
+</ol>
+<hr />
+<h2 id="_15">九、反思：我是如何构建这个故事的</h2>
+<h3 id="_16">从零散笔记到完整的案例研究</h3>
+<p>这个项目最初只是一堆凌乱的工作记录——SQL 查询、数据透视表、以及一句感慨：<em>"ANR 这件事这么对比其实参考价值不大……到月底本身就有流量高峰期"</em>。</p>
+<p>那句沮丧的观察，实际上就是整个 DID 分析的<strong>种子</strong>——我意识到了问题所在（发薪日混淆），接下来需要的只是一个严谨的框架来证明它。</p>
+<p>以下是我将零散工作产出转化为结构化叙事的过程：</p>
+<pre class="mermaid"><code>flowchart TD
+    A["原始工作产出\n（SQL、透视表、群聊讨论）"] --&gt; B["识别核心张力：\n业务方相信 +15%，\n但我知道存在混淆"]
+    B --&gt; C["选择分析框架：\nDID 分离信号与噪声"]
+    C --&gt; D["生成可复现的证据：\n仿真数据集 + 数学验证"]
+    D --&gt; E["构建叙事弧：\n钩子 - 复杂化 - 揭示 - 权衡"]
+    E --&gt; F["Portfolio 级案例研究\n配合清晰的可视化"]</code></pre>
+<h3 id="storytelling">我使用的 Storytelling 原则</h3>
+<p><strong>1. 用令人震惊的数字开头，然后拆解它。</strong></p>
+<blockquote>
+<p>"+15%" 就是钩子。它之所以引人入胜，是因为它是<em>错的</em>——而展示它为什么错，才能体现分析的深度。</p>
+</blockquote>
+<p><strong>2. 让混淆因素变得"肉眼可见"。</strong></p>
+<blockquote>
+<p>发薪日效应在这个故事里不是抽象的统计概念——它是一个具体的、人尽皆知的市场行为。任何在 Fintech 或新兴市场工作过的人都会立刻产生共鸣。</p>
+</blockquote>
+<p><strong>3. 用 Control Group 制造"顿悟时刻"。</strong></p>
+<blockquote>
+<p>当你展示 &gt;2G 用户在没有任何干预的情况下<em>也涨了 13.5%</em>，听众会瞬间意识到策略几乎没有撬动什么。这就是叙事的转折点。</p>
+</blockquote>
+<p><strong>4. 不隐藏代价。</strong></p>
+<blockquote>
+<p>广告点击量 -35% 不是脚注——它是第二个重要发现。分析的完整性取决于你是否呈现了账本的两面。这展示的是商业成熟度，而非仅仅是技术能力。</p>
+</blockquote>
+<p><strong>5. 以建议结尾，而不仅仅是发现。</strong></p>
+<blockquote>
+<p>"让广告变轻"是可执行的。它表明我不只是在做数学——而是将分析连接回了产品决策。</p>
+</blockquote>
+<h3 id="portfolio">作为 Portfolio 案例，这个项目展示了什么？</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">本案例展示的能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>因果推断思维</strong></td>
+<td style="text-align: left;">在无随机化条件下识别并处理 Confounding</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>方法选型</strong></td>
+<td style="text-align: left;">在朴素方法（前后对比）和复杂方法（Synthetic Control）之间选择最合适的 DID</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>挑战业务认知</strong></td>
+<td style="text-align: left;">用严谨证据有策略地反驳 "+15%" 的叙事</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>商业判断力</strong></td>
+<td style="text-align: left;">将结果框定为权衡（GTV vs. 广告收入），而非单一数字</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>沟通表达</strong></td>
+<td style="text-align: left;">将统计概念翻译为直观的、可视化的论证</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_17">附录：仿真数据集生成说明</h2>
+<p>本案例使用的数据集为<strong>仿真数据</strong>（保护商业机密），但经过<strong>精确的数学校准</strong>，可完美复现真实分析中的 DID 数学关系。</p>
+<h3 id="_18">核心校准参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">参数</th>
+<th style="text-align: left;">取值</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>PAYDAY_BOOST_GTV</code></td>
+<td style="text-align: left;">30.9%</td>
+<td style="text-align: left;">发薪日 GTV 涨幅（线性爬坡，均值 30.9%），作用于所有用户</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TREATMENT_GTV</code></td>
+<td style="text-align: left;">+1.32%</td>
+<td style="text-align: left;">关闭广告带来的真实 GTV 因果增量（仅作用于 1-2G，干预后）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TREATMENT_AD</code></td>
+<td style="text-align: left;">-35%</td>
+<td style="text-align: left;">关闭特定广告位导致的广告点击量下降（被关闭位约占总量 1/3）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>WEEKEND_DIP</code></td>
+<td style="text-align: left;">-7~10%</td>
+<td style="text-align: left;">自然的周末活跃度下降（DAU、GTV、广告点击）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NOISE_σ</code></td>
+<td style="text-align: left;">0.8~1.2%</td>
+<td style="text-align: left;">日级随机噪声，增加数据真实感</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_19">参数推导</h3>
+<p>上述参数由以下目标方程组联立求解：</p>
+<div class="arithmatex">\[
+\begin{cases}
+\text{Naive} = (1+\tau)\left(1 + \frac{7 \cdot \beta}{16}\right) - 1 = 0.15 \\[6pt]
+\text{DID\%} = \tau \cdot \left(1 + \frac{7 \cdot \beta}{16}\right) = 0.015
+\end{cases}
+\implies \tau = \frac{0.015}{1.135} \approx 0.01322, \quad \beta = \frac{0.135 \times 16}{7} \approx 0.309
+\]</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 总览">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                总览
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../growth-accounting/" class="md-footer__link md-footer__link--next" aria-label="下一页: Growth Accounting Framework">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Growth Accounting Framework
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

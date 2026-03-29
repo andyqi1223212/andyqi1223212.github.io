@@ -1,0 +1,1661 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人项目与实习经历展示">
+      
+      
+      
+        <link rel="canonical" href="https://andyqi1223212.github.io/projects/ad-channel-analysis/">
+      
+      
+        <link rel="prev" href="../growth-accounting/">
+      
+      
+        <link rel="next" href="../../about/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>广告渠道特征分析 - 齐昊宇 | Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#36" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="齐昊宇 | Portfolio" class="md-header__button md-logo" aria-label="齐昊宇 | Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            齐昊宇 | Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              广告渠道特征分析
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  项目经历
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于我
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="齐昊宇 | Portfolio" class="md-nav__button md-logo" aria-label="齐昊宇 | Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    齐昊宇 | Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目经历
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目经历
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anr-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ANR 性能优化与实验设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../growth-accounting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growth Accounting Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    广告渠道特征分析
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    广告渠道特征分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        摘要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、背景：阶梯状分布的异常
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、背景：阶梯状分布的异常">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发现过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析框架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三个核心度量
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、核心发现：四维异常特征
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、核心发现：四维异常特征">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ctit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 CTIT：点击与安装之间缺乏因果关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-itet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 ITET：转化用户行为像自然用户
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ctit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 昼夜节律：凌晨 CTIT 飙升
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 子渠道一致性：36 个"壳"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、多平台校准：避免"唯 Google 论"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ctit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、漏斗分解：揭示"两条 CTIT 世界"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、漏斗分解：揭示&#34;两条 CTIT 世界&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、整改效果评估：结构幻觉
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、产出与影响
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、产出与影响">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反作弊规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分层行为基线（可复用）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        商业影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、方法论讨论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、方法论讨论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最核心的"不可解释"点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portfolio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、反思：作为 Portfolio 案例，这个项目展示了什么？
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于我
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        摘要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、背景：阶梯状分布的异常
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、背景：阶梯状分布的异常">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发现过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析框架
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三个核心度量
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、核心发现：四维异常特征
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、核心发现：四维异常特征">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ctit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 CTIT：点击与安装之间缺乏因果关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-itet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 ITET：转化用户行为像自然用户
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ctit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 昼夜节律：凌晨 CTIT 飙升
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 子渠道一致性：36 个"壳"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、多平台校准：避免"唯 Google 论"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ctit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、漏斗分解：揭示"两条 CTIT 世界"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、漏斗分解：揭示&#34;两条 CTIT 世界&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、整改效果评估：结构幻觉
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、产出与影响
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、产出与影响">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反作弊规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分层行为基线（可复用）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        商业影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、方法论讨论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、方法论讨论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分析边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最核心的"不可解释"点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portfolio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、反思：作为 Portfolio 案例，这个项目展示了什么？
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="36">当 36 个子渠道呈现同一种异常：广告渠道反作弊特征分析</h1>
+<blockquote>
+<p><strong>角色：</strong> Data Analyst，移动支付 Fintech（尼日利亚市场）
+<strong>工具：</strong> Python (Pandas, Matplotlib/Seaborn)、AppsFlyer 原始数据、KS 检验
+<strong>关键词：</strong> Click Flooding, CTIT, ITET, 归因质量, 反作弊, EDA</p>
+</blockquote>
+<hr />
+<h2 id="_1">摘要</h2>
+<p>在核查 AppsFlyer 平台数据时，我发现一个网盟渠道旗下 36 个子渠道的 Click → Install → First_Transaction 数量呈<strong>异常阶梯状分布</strong>——正常情况下，不同子渠道应有差异化特征。</p>
+<p>我拉取了 Google Ads / Facebook / TikTok 及该网盟数月原始数据，从 <strong>CTIT（点击-安装时间差）、ITET（安装-首次交易时间差）、昼夜节律、子渠道一致性</strong> 四个维度进行 EDA，并引入多平台基线校准避免"唯 Google 论"。最终发现：</p>
+<ul>
+<li>网盟 <strong>CTIT 中位数是 Google 的 28 倍</strong>，分布缺乏正常渠道的"头部聚集"特征</li>
+<li>但转化用户的 <strong>ITET 却与 Google 搜索用户几乎一致</strong>（2.2h vs 2.0h）——行为像自然用户，不像被广告影响的新客</li>
+<li>全量安装 vs 转化用户 CTIT 差 <strong>98-608 倍</strong>，短 CTIT 安装 CVR 仅 0.23%</li>
+</ul>
+<p>产出反作弊规则，协助优化归因逻辑，将网盟渠道 <strong>UAC 降低 20%</strong>。</p>
+<hr />
+<h2 id="_2">一、背景：阶梯状分布的异常</h2>
+<h3 id="_3">发现过程</h3>
+<p>在日常核查 AppsFlyer 后台数据时，我注意到一个反常现象：某高怀疑度网盟下的<strong>多个子渠道拥有非常相似的 Click → Install → First_Transaction 数量</strong>。</p>
+<p>正常来说，不同的子渠道代表不同的流量来源（不同的媒体、不同的广告主），它们的数据应该存在一定差异。而这种<strong>阶梯状的均匀分布</strong>暗示着一个统一的系统在人为分配流量。</p>
+<h3 id="_4">分析框架</h3>
+<p>我收集了 AppsFlyer 数月原始数据，对可信渠道（Google / Facebook / TikTok）与嫌疑网盟进行系统性对比。核心分析框架：</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph question ["业务问题"]
+        A["Last-Click 归因下\n网盟渠道的转化是否可信？"]
+    end
+    subgraph part1 ["Part 1：嫌疑网盟 vs Google"]
+        B["CTIT / ITET / 昼夜 / 子渠道一致性"]
+    end
+    subgraph part2 ["Part 2：多平台基线校准"]
+        C["Touch Type / 归因窗口 / 跨平台差异"]
+    end
+    subgraph part3 ["Part 3：漏斗分解"]
+        D["全量安装 vs 转化用户 / 分桶 CVR"]
+    end
+    subgraph synthesis ["合成"]
+        E["交叉验证 - 规则产出 - 归因优化"]
+    end
+    question --&gt; part1 --&gt; part2 --&gt; part3 --&gt; synthesis</code></pre>
+<h3 id="_5">三个核心度量</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">度量</th>
+<th style="text-align: left;">回答什么问题</th>
+<th style="text-align: left;">不受什么干扰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CTIT</strong>（Click → Install）</td>
+<td style="text-align: left;">归因的点击和安装之间有没有因果关系？</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ITET</strong>（Install → First_Transaction）</td>
+<td style="text-align: left;">用户安装后的行为像不像被广告"塑造"出来的新客？</td>
+<td style="text-align: left;">几乎不受归因机制影响，是"用户质量指纹"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>分桶 CVR</strong></td>
+<td style="text-align: left;">不同延迟段的安装，谁真正产生转化？</td>
+<td style="text-align: left;">需要全量安装数据</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">二、核心发现：四维异常特征</h2>
+<h3 id="21-ctit">2.1 CTIT：点击与安装之间缺乏因果关系</h3>
+<p>真实广告渠道中，用户点击广告后应在几分钟内完成安装，CTIT 分布应"头重尾轻"。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指标</th>
+<th style="text-align: left;">嫌疑网盟</th>
+<th style="text-align: left;">Google（Baseline）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">CTIT 中位数</td>
+<td style="text-align: left;"><strong>3.68h</strong></td>
+<td style="text-align: left;"><strong>0.13h（≈8min）</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">&lt; 10min 占比</td>
+<td style="text-align: left;">22.7%</td>
+<td style="text-align: left;">53.5%</td>
+</tr>
+<tr>
+<td style="text-align: left;">KS 检验</td>
+<td style="text-align: left;">D=0.344, p≈0</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="CTIT 综合面板" src="../../assets/comprehensive_report.png" /></p>
+<p>网盟的 CTIT 中位数是 Google 的 <strong>28 倍</strong>，CDF 曲线近似线性上升——这是<strong>随机/均匀分布</strong>的特征，而非广告驱动的"点击即安装"模式。</p>
+<h3 id="22-itet">2.2 ITET：转化用户行为像自然用户</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指标</th>
+<th style="text-align: left;">嫌疑网盟</th>
+<th style="text-align: left;">Google（同期）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ITET 中位数</td>
+<td style="text-align: left;"><strong>2.2h</strong></td>
+<td style="text-align: left;"><strong>2.0h</strong></td>
+</tr>
+</tbody>
+</table>
+<p>两者<strong>几乎完全一致</strong>。对比其他渠道：TikTok 的 ITET 为 10.6h，Facebook 为 19.2h。网盟转化用户的安装后行为不处于内容/社交渠道的区间，而是恰好与<strong>最高意图的搜索型用户</strong>一致。</p>
+<h3 id="23-ctit">2.3 昼夜节律：凌晨 CTIT 飙升</h3>
+<ul>
+<li>网盟凌晨点击占比 <strong>9.7%</strong>（Google 仅 4.9%），但安装分布与 Google 一致</li>
+<li>凌晨时段中位 CTIT 飙升至 <strong>10-30 小时</strong>：凌晨发出的点击要等十几小时后才"撞上"一个安装</li>
+</ul>
+<p>安装是真人行为，但<strong>点击分布过于平坦</strong> → 暗示全天候运行的脚本。</p>
+<h3 id="24-36">2.4 子渠道一致性：36 个"壳"</h3>
+<p>36 个子渠道名字各异，但<strong>全部呈现相同的异常 CTIT 模式</strong>，无一达到 Baseline 水平：</p>
+<ul>
+<li>所有子渠道 CTIT &lt; 10min 占比在 <strong>14%-32%</strong>，没有一个达到 Google 的 54%</li>
+<li>Kruskal-Wallis 检验 H=458.94, p≈0：有统计差异，但仅是程度差异，<strong>方向完全一致</strong></li>
+</ul>
+<p><img alt="子渠道分析" src="../../assets/subpublisher_analysis.png" /></p>
+<hr />
+<h2 id="google">三、多平台校准：避免"唯 Google 论"</h2>
+<p>CTIT 长不一定是作弊——不同渠道类型天然有不同特征。引入 Facebook 和 TikTok 建立分层基线：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">渠道</th>
+<th style="text-align: center;">CTIT 中位（Click-only）</th>
+<th style="text-align: center;">ITET 中位</th>
+<th style="text-align: left;">渠道类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Google</strong></td>
+<td style="text-align: center;">4min</td>
+<td style="text-align: center;">1.7h</td>
+<td style="text-align: left;">搜索意图型</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TikTok</strong></td>
+<td style="text-align: center;">3.81h</td>
+<td style="text-align: center;">10.6h</td>
+<td style="text-align: left;">内容发现型</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Facebook</strong></td>
+<td style="text-align: center;">171h</td>
+<td style="text-align: center;">19.2h</td>
+<td style="text-align: left;">社交被动型</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>嫌疑网盟</strong></td>
+<td style="text-align: center;">3.78h</td>
+<td style="text-align: center;"><strong>2.2h</strong></td>
+<td style="text-align: left;"><strong>？</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="四平台 CTIT 对比" src="../../assets/ctit_platform_comparison.png" /></p>
+<p><strong>核心矛盾浮现：</strong> 网盟的 CTIT 形似 TikTok（内容发现型），但 ITET 却形似 Google（搜索高意图型）。一个网盟的 ITET 比 Facebook/TikTok 快 5-10 倍——除非获取的用户<strong>本就不是广告驱动的</strong>。</p>
+<p><img alt="四平台 ITET 对比" src="../../assets/itet_platform_comparison.png" /></p>
+<p>KS 检验确认：网盟 ITET 与 Google 的距离（D=0.040）远小于与 TikTok（D=0.086）或 Facebook（D=0.141）的距离。</p>
+<hr />
+<h2 id="ctit">四、漏斗分解：揭示"两条 CTIT 世界"</h2>
+<p>当拿到<strong>全量安装</strong>数据（而非仅转化用户）后，发现了被掩盖的关键结构：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指标</th>
+<th style="text-align: left;">1月全量安装</th>
+<th style="text-align: left;">1月转化用户</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">数量</td>
+<td style="text-align: left;">1,000,000</td>
+<td style="text-align: left;">7,965</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CTIT 中位数</strong></td>
+<td style="text-align: left;"><strong>0.06h (3.6min)</strong></td>
+<td style="text-align: left;"><strong>5.88h</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">&lt; 10min 占比</td>
+<td style="text-align: left;">77.6%</td>
+<td style="text-align: left;">22.3%</td>
+</tr>
+</tbody>
+</table>
+<p>网盟全量安装的 CTIT 与 <strong>Google 几乎一致</strong>（0.06h vs 0.07h）——确实在产生快速安装。但这些安装的 CVR 极低：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">CTIT 桶</th>
+<th style="text-align: center;">安装占比</th>
+<th style="text-align: center;">CVR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">&lt; 10min</td>
+<td style="text-align: center;">77.6%</td>
+<td style="text-align: center;"><strong>0.23%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">1-6h</td>
+<td style="text-align: center;">2.7%</td>
+<td style="text-align: center;"><strong>4.54%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">&gt; 1天</td>
+<td style="text-align: center;">5.6%</td>
+<td style="text-align: center;"><strong>4.26%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>CVR 与 CTIT 呈正向阶梯关系</strong>——CTIT 越长，CVR 越高。这与正常渠道<strong>恰好相反</strong>（正常渠道中即点即装的高意图用户 CVR 最高）。</p>
+<p><img alt="漏斗分析" src="../../assets/funnel_overview.png" /></p>
+<h3 id="_7">混合模型</h3>
+<div class="language-text highlight"><pre><span></span><code>第一层：真实广告投放（占安装 60-78%）
+  点击→快速安装（CTIT &lt; 10min）
+  但 CVR = 0.23% → 质量极差，用途是充安装量
+
+第二层：有机转化劫持（占转化 50-75%）
+  后台持续盲发点击 → 自然用户自行安装并交易时
+  恰好在 7 天窗口内有点击记录
+  CTIT 长（5-24h+），CVR 高达 4-5%
+  用途是贡献&quot;转化业绩&quot;
+</code></pre></div>
+<p><img alt="与 Baseline 交叉验证" src="../../assets/crosscheck_baselines.png" /></p>
+<hr />
+<h2 id="_8">五、整改效果评估：结构幻觉</h2>
+<p>2月要求网盟调整投放策略后：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">1月</th>
+<th style="text-align: left;">2月</th>
+<th style="text-align: left;">判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">CTIT 中位数（转化用户）</td>
+<td style="text-align: left;">3.68h</td>
+<td style="text-align: left;"><strong>24.04h</strong></td>
+<td style="text-align: left;">恶化 554%</td>
+</tr>
+<tr>
+<td style="text-align: left;">KS vs Baseline</td>
+<td style="text-align: left;">0.344</td>
+<td style="text-align: left;"><strong>0.538</strong></td>
+<td style="text-align: left;">恶化 56%</td>
+</tr>
+<tr>
+<td style="text-align: left;">整体 CVR</td>
+<td style="text-align: left;">0.80%</td>
+<td style="text-align: left;"><strong>1.74%</strong></td>
+<td style="text-align: left;">↑ 但...</td>
+</tr>
+<tr>
+<td style="text-align: left;">&lt; 10min 桶 CVR</td>
+<td style="text-align: left;">0.23%</td>
+<td style="text-align: left;"><strong>0.24%</strong></td>
+<td style="text-align: left;"><strong>不变</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Top3 子渠道集中度</td>
+<td style="text-align: left;">20.8%</td>
+<td style="text-align: left;"><strong>79.6%</strong></td>
+<td style="text-align: left;">异常集中</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="综合评估面板" src="../../assets/comprehensive_comparison.png" /></p>
+<p><strong>CVR 翻倍是安装结构变化</strong>（少投了 88 万低质安装），<strong>不是用户质量提升</strong>——短 CTIT 桶 CVR 从 0.23% 到 0.24%，几乎不变。</p>
+<hr />
+<h2 id="_9">六、产出与影响</h2>
+<h3 id="_10">反作弊规则</h3>
+<p>基于分析结果，产出以下归因规则优化建议：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">规则</th>
+<th style="text-align: left;">依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CTIT 过滤</strong></td>
+<td style="text-align: left;">拒绝 CTIT &gt; 24h 的点击归因</td>
+<td style="text-align: left;">长 CTIT 转化高度暗示自然用户劫持</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>短 CTIT 过滤</strong></td>
+<td style="text-align: left;">拒绝 CTIT &lt; 2s</td>
+<td style="text-align: left;">潜在 click injection</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Touch Type 拆分</strong></td>
+<td style="text-align: left;">对高 VTA 平台必须分开分析</td>
+<td style="text-align: left;">避免 VTA 拉长 CTIT 造成误判</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>网盟惩罚系数</strong></td>
+<td style="text-align: left;">降低网盟渠道归因权重</td>
+<td style="text-align: left;">Last-Click 易被利用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">分层行为基线（可复用）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">渠道类型</th>
+<th style="text-align: center;">CTIT 中位参考</th>
+<th style="text-align: center;">ITET 预期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">搜索型（Google）</td>
+<td style="text-align: center;">~4min</td>
+<td style="text-align: center;">~1.7h（高意图）</td>
+</tr>
+<tr>
+<td style="text-align: left;">短视频型（TikTok）</td>
+<td style="text-align: center;">~3.8h</td>
+<td style="text-align: center;">~10.6h（中意图）</td>
+</tr>
+<tr>
+<td style="text-align: left;">社交型（Facebook）</td>
+<td style="text-align: center;">~171h</td>
+<td style="text-align: center;">~19.2h（低意图）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">商业影响</h3>
+<ul>
+<li>优化归因逻辑后，将网盟渠道 <strong>UAC 降低 20%</strong></li>
+<li>沉淀的监控框架（分桶 CVR、ITET 对比、子渠道离散度）可持续应用于新渠道评估</li>
+</ul>
+<hr />
+<h2 id="_13">七、方法论讨论</h2>
+<h3 id="_14">分析边界</h3>
+<div class="admonition warning">
+<p class="admonition-title">能证明什么 vs 不能证明什么</p>
+<p><strong>能做到的：</strong></p>
+<ul>
+<li>刻画渠道行为特征并与多平台基线对比</li>
+<li>揭示"短 CTIT 不转化、长 CTIT 才转化"的反常结构</li>
+<li>提供可复用的监控框架</li>
+</ul>
+<p><strong>不能做到的：</strong></p>
+<ul>
+<li>仅凭 CTIT 长不能单独"定罪"（Facebook 中位 CTIT 达 7 天仍是正常渠道）</li>
+<li>短 CTIT CVR 极低也可能是投放策略差、素材质量低等非欺诈原因</li>
+<li>缺少停投实验（关停网盟后观察 Organic 变化），无法从因果层面证明"劫持"</li>
+</ul>
+</div>
+<h3 id="_15">最核心的"不可解释"点</h3>
+<p>即便完全承认广告效果可以滞后，以下组合仍然难以用正常渠道行为解释：</p>
+<ol>
+<li>78 万次快速安装的 CVR 仅 0.23%，<strong>两个月完全一致</strong>——如果广告在影响用户，快装人群不应该质量如此之差且毫无改善</li>
+<li>长 CTIT 转化用户的 ITET 与 Google 搜索用户几乎一致（KS D=0.04）——"被广告影响的用户"行为恰好和最高意图的搜索用户一样</li>
+<li>35 个子渠道各获得 3.7-4.0 万安装（CV &lt; 0.1），流量分配的均匀度难以用多个独立来源解释</li>
+</ol>
+<hr />
+<h2 id="portfolio">八、反思：作为 Portfolio 案例，这个项目展示了什么？</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">本案例展示的能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>发现问题的敏锐度</strong></td>
+<td style="text-align: left;">从 AppsFlyer 后台的阶梯状分布主动发现异常，而非等业务方提需求</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EDA 工程能力</strong></td>
+<td style="text-align: left;">Python (Pandas) 处理多渠道、数月量级的原始日志数据</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>多维度交叉验证</strong></td>
+<td style="text-align: left;">不依赖单一指标判断，四维度 + 四平台 + 漏斗分解逐层深入</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>分析客观性</strong></td>
+<td style="text-align: left;">明确标注分析边界（能证明什么、不能证明什么），不过度推断</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>商业落地</strong></td>
+<td style="text-align: left;">产出可执行的归因规则和监控框架，UAC 降低 20%</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../growth-accounting/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Growth Accounting Framework">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Growth Accounting Framework
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../about/" class="md-footer__link md-footer__link--next" aria-label="下一页: 关于我">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                关于我
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
