@@ -1,4 +1,5 @@
-# MkDocs → GitHub Pages（仓库 Settings → Pages → Source 选 GitHub Actions）
+# MkDocs 构建后推送到 gh-pages 分支；仓库 Settings → Pages 选「Deploy from a branch」→ gh-pages → / (root)
+# （比「GitHub Actions」artifact 源更不易漏配，避免 main 根目录无 index.html 导致 404）
 name: deploy
 
 on:
@@ -6,38 +7,34 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: gh-pages-deploy
+  cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Install dependencies
         run: pip install mkdocs-material mkdocs-glightbox
+
       - name: Build site
         run: mkdocs build --strict
+
       - name: Disable Jekyll (GitHub Pages)
         run: touch site/.nojekyll
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Push to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          force_orphan: true

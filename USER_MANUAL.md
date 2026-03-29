@@ -161,48 +161,91 @@ nav:
 
 ## 四、部署到互联网（GitHub Pages）
 
-当你准备把网站发布到线上时：
+### 4.1 本仓库采用的方式：Actions 构建 + 推送到 `gh-pages` 分支
+
+仓库根目录有 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)：每次你向 **`main`** 分支 **push** 后，会在云端 `mkdocs build`，再用 [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) 把 **`site/`** 推到 **`gh-pages` 分支**（仅含静态网页，与源码 `main` 分离）。
+
+**为什么不用「只选 GitHub Actions 作为 Pages 源」的 artifact 部署？**  
+那种方式需在 Settings 里**精确**选 *GitHub Actions*；若误留成 *Deploy from a branch → main / (root)*，**`main` 根目录没有 `index.html`**（Markdown 在 `docs/` 里），对外就会一直 **404**。推送到 **`gh-pages`** 并在 Pages 里选该分支，行为更直观。
+
+**首次启用（务必做一次）**
+
+1. 先 **push 一次 `main`**，等 **[Actions](https://github.com/andyqi1223212/andyqi1223212.github.io/actions)** 里 **`deploy` 绿勾**（会自动创建 `gh-pages` 分支）。
+2. 打开仓库 **Settings → Pages**。
+3. **Build and deployment → Source** 选 **Deploy from a branch**。
+4. **Branch** 选 **`gh-pages`**，文件夹选 **`/ (root)`**，保存。
+
+**日常更新（不必本地执行 `mkdocs gh-deploy`）**
 
 ```bash
-# 1. 在 GitHub 创建仓库（比如 username.github.io 或 my-portfolio）
+cd /path/to/my-website
+git add .
+git commit -m "[Cursor] 更新说明"
+git push origin main
+```
 
-# 2. 在 my-website 目录初始化 git
-cd /Users/qihaoyu/Documents/builderprac_new/folder1/my-website
+等待约 1～3 分钟，再打开 **`https://你的用户名.github.io/`**。
+
+**用户主页仓库的网址**：仓库名为 `你的用户名.github.io` 时，站点地址为：
+
+`https://你的用户名.github.io/`
+
+（无子路径；示例：[https://andyqi1223212.github.io/](https://andyqi1223212.github.io/)）
+
+### 4.2 若你曾把 Pages 设成「GitHub Actions」源
+
+可以继续保持；但**与当前 workflow（推 `gh-pages`）二选一即可**。若改用本仓库新 workflow，请把 Pages **改回** *Deploy from a branch → gh-pages*，否则仍可能 404 或两套源混淆。
+
+### 4.3 本地 `mkdocs gh-deploy`（可选）
+
+与 CI 同理，也是往 `gh-pages` 推构建结果；日常只 push `main` 让 Actions 跑即可，无需重复。
+
+### 4.4 首次从零创建仓库并推送（备忘）
+
+```bash
+cd /path/to/my-website
 git init
 git add .
 git commit -m "initial site"
-
-# 3. 关联远程仓库
 git remote add origin https://github.com/你的用户名/仓库名.git
+git branch -M main
 git push -u origin main
-
-# 4. 一键部署到 GitHub Pages
-mkdocs gh-deploy
 ```
 
-之后每次更新内容：
-
-```bash
-git add .
-git commit -m "更新了xxx项目"
-git push
-mkdocs gh-deploy
-```
-
-网站地址：`https://你的用户名.github.io/仓库名/`
-
-### 使用 GitHub Actions 部署（本仓库已配置）
-
-若仓库根目录已有 `.github/workflows/deploy.yml`（本站点已包含）：
-
-1. 将 `main` 分支推送到 GitHub 后，打开仓库 **Settings → Pages**。
-2. 在 **Build and deployment** 里，**Source** 选择 **GitHub Actions**（不要选 Deploy from a branch）。
-3. 等待 **Actions** 里 `deploy` 工作流成功（绿勾）。
-4. 用户站 `用户名.github.io` 的访问地址为：`https://你的用户名.github.io/`（无子路径）。
+若推送含 `.github/workflows/` 下的文件，使用 **HTTPS + Personal Access Token** 时，令牌需同时勾选 **`repo`** 与 **`workflow`** 权限，否则会被拒绝。
 
 ---
 
-## 五、常见问题
+## 五、上线后：在哪里看网站 & GitHub 各入口是什么意思
+
+### 5.1 在网上打开你的网站
+
+- 在浏览器地址栏输入：**`https://andyqi1223212.github.io/`**（将用户名换成你的 GitHub 用户名时，规则相同：`https://<用户名>.github.io/`）。
+- 若刚 push 完仍是旧版：**硬刷新**（Mac：`Cmd + Shift + R`）或等 1～2 分钟再试（CDN/浏览器缓存）。
+- 想确认是否已发布成功：打开仓库 **[Actions](https://github.com/andyqi1223212/andyqi1223212.github.io/actions)**，最新一次 **deploy** 应为绿色成功。
+
+### 5.2 GitHub 仓库页上常见入口（结合本站点）
+
+| 入口 | 含义（白话） |
+|------|----------------|
+| **Code（代码）** | 你在网上的「源码柜」：`docs/` 里的 Markdown、`mkdocs.yml`、工作流文件等都在这里；和本机文件夹内容对应（以最新 push 为准）。 |
+| **Commits（提交历史）** | 每一次 `git commit` 的记录；可回看「哪天改了什么」。 |
+| **Actions** | **自动干活**：本仓库里会跑 **deploy**（构建 MkDocs + 部署到 Pages）。push 后先看这里是否绿勾；红了点进去看日志排错。 |
+| **Settings → Pages** | **网站从哪一坨文件发布**：本仓库应设为 **Deploy from a branch** → **`gh-pages`** → **`/ (root)`**（见第四节）。 |
+| **Issues / Pull Requests** | 单人维护可少用；多人协作或给自己记待办时可用。 |
+
+**和本地的关系**：本机 `my-website` 是「工作副本」；**GitHub 上的 `main` 是源码**。别人在浏览器里看到的站点，来自 **`gh-pages` 分支上的静态文件**（由 Actions 从 `main` 构建后写入），不是直接打开 `.md`。
+
+### 5.3 推荐维护循环（以后都这么干）
+
+1. **改内容**：只改 `docs/`、`mkdocs.yml`、图片等（不要手改 `site/`）。
+2. **本地看效果**：`mkdocs serve`，浏览器打开 <http://127.0.0.1:8000>。
+3. **提交并上传**：`git add` → `git commit` → `git push origin main`。
+4. **确认上线**：Actions 成功 → 打开 `https://你的用户名.github.io/` 检查。
+
+---
+
+## 六、常见问题
 
 ### Q: 图片不显示？
 - 检查路径是否为**相对路径**（不要用 `/Users/...` 这种绝对路径）
@@ -226,9 +269,23 @@ mkdocs gh-deploy
 ### Q: `:material-xxx:` 显示成英文而不是图标？
 - 确认 `mkdocs.yml` 的 `markdown_extensions` 里包含 `pymdownx.emoji` 且 `emoji_index` / `emoji_generator` 两行与仓库示例一致；改完后重新 `mkdocs serve`。
 
+### Q: `git push` 提示不允许更新 workflow / 需要 workflow 权限？
+- 使用 **HTTPS + PAT** 时，令牌除 **`repo`** 外还需勾选 **`workflow`**，否则不能推送 `.github/workflows/` 下文件。或改用 **SSH** 推送。
+
+### Q: `RPC failed` / `HTTP 400` 推送中断？
+- 可尝试：`git config --global http.postBuffer 524288000`，以及 `git config --global http.version HTTP/1.1` 后重试；仍失败可换网络或改用 SSH。
+
+### Q: 线上还是旧页面？
+- 先看 **Actions** 是否已成功；再等 1～2 分钟并 **强制刷新** 浏览器。
+
+### Q: `https://用户名.github.io/` 一直 404？
+1. **Settings → Pages** 是否已选 **Deploy from a branch** → **`gh-pages`** → **`/ (root)`**？若仍是 **main** 根目录，必 404（`main` 没有站点根 `index.html`）。
+2. **Actions** 里 `deploy` 是否成功？失败时点进日志看报错。
+3. 第一次部署前 **`gh-pages` 尚不存在**：先等一次成功的 `deploy` workflow，再回 Pages 下拉框里选 `gh-pages`。
+
 ---
 
-## 六、后续可扩展
+## 七、后续可扩展
 
 - **添加交互 Demo**：在仓库加子目录部署前端项目，MD 里写链接即可
 - **搜索优化**：已内置全文搜索（支持中文）
