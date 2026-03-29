@@ -16,6 +16,10 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      # 避免 Linux 默认 ASCII locale 下中文站点名/内容触发编码错误
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
     steps:
       - uses: actions/checkout@v4
 
@@ -24,7 +28,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install mkdocs-material mkdocs-glightbox
+        run: pip install -r requirements.txt
 
       # 暂不用 --strict：部分环境下与本地一致的警告会被 strict 判失败，导致整站无法发布
       - name: Build site
