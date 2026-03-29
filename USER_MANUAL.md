@@ -295,6 +295,9 @@ git push -u origin main
 ### Q: Annotations 里 Node.js 20 deprecated 是失败原因吗？
 - **通常不是**。那是 **弃用提醒**；真正导致 **exit code 1** 的是另一条 **error**（例如 `mkdocs build failed`）。本仓库 workflow 已设置 **`FORCE_JAVASCRIPT_ACTIONS_TO_NODE24`**，用于按官方说明提前使用 Node 24，减少该警告。
 
+### Q: CI 报 `Error reading page ... 'NoneType' object has no attribute 'replace'`（pymdownx.highlight / pygments）？
+- 多为 **`pymdownx.highlight` 里 `anchor_linenums` + `line_spans`** 与 **较新 Pygments** 组合导致。本仓库 `mkdocs.yml` 已改为仅保留 **`pygments_lang_class`**；若你自行加回行号锚点选项，可能在 Linux CI 上复现。
+
 ### Q: `https://用户名.github.io/` 一直 404？
 1. **Settings → Pages** 是否已选 **Deploy from a branch** → **`gh-pages`** → **`/ (root)`**？若仍是 **main** 根目录，必 404（`main` 没有站点根 `index.html`）。
 2. **Actions** 里 `deploy` 是否成功？失败时点进日志看报错。

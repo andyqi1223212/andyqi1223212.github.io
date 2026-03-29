@@ -1,3 +1,5 @@
 # CI 与本地一致；不装 glightbox 避免 Linux runner 上偶发构建失败
 mkdocs>=1.6,<2
 mkdocs-material>=9.5,<10
+# 与 pymdownx.highlight 兼容：过新 Pygments 曾与 anchor_linenums/line_spans 组合触发 NoneType.replace
+pygments>=2.15,<2.20
