@@ -1,11 +1,11 @@
-# MkDocs → gh-pages；Pages 设置：Deploy from branch → gh-pages → / (root)
+# MkDocs → gh-pages；Pages：Deploy from branch → gh-pages → / (root)
 name: deploy
 
 on:
   push:
     branches: [main]
 
-# GITHUB_TOKEN 需要能推 gh-pages：仓库 Settings → Actions → General → Workflow permissions 选「Read and write」
+# GITHUB_TOKEN 推 gh-pages：Settings → Actions → General → Workflow permissions = Read and write
 permissions:
   contents: write
 
@@ -19,6 +19,10 @@ jobs:
     env:
       LANG: C.UTF-8
       LC_ALL: C.UTF-8
+      # 消除 Node 20 弃用警告，并提前对齐 Actions 默认 Node 24
+      # https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - uses: actions/checkout@v4
 
@@ -31,16 +35,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # 不用 `mkdocs | tee`：在 pipefail 下部分环境会以 pipeline 最后一程的退出码为准，导致构建失败仍显示成功或反之混乱
       - name: Build site
         run: |
           set -euxo pipefail
           python -m mkdocs --version
-          python -m mkdocs build --verbose 2>&1 | tee mkdocs-build.log
+          if ! python -m mkdocs build --verbose > mkdocs-build.log 2>&1; then
+            echo "::error::mkdocs build failed, tail of log:"
+            tail -n 120 mkdocs-build.log
+            exit 1
+          fi
           test -f site/index.html
-
-      - name: Print mkdocs log tail on failure
-        if: failure()
-        run: tail -n 200 mkdocs-build.log || true
 
       - name: Disable Jekyll (GitHub Pages)
         run: touch site/.nojekyll

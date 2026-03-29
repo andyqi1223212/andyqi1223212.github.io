@@ -183,6 +183,8 @@ nav:
 
 这样 `GITHUB_TOKEN` 才能在 workflow 里执行 **peaceiris** 的推送。若此处为只读，常见现象是 **Build 成功、Deploy/Push 失败**；个别环境下整条 job 也会报错。
 
+**若你刚从只读改成 Read and write**：到 **Actions** 里对最近一次失败的 **deploy** 点 **Re-run all jobs**，或随便改一个字再 `git push`，让 workflow 用新权限重跑一遍。
+
 **日常更新（不必本地执行 `mkdocs gh-deploy`）**
 
 ```bash
@@ -289,6 +291,9 @@ git push -u origin main
 ### Q: Actions 里「Build site」失败，是我账号权限不够吗？
 - **一般不是**「登录权限」问题：`mkdocs build` 在 GitHub 提供的 runner 上跑，不读你本机文件。常见原因是 **MkDocs 校验/插件**（本仓库已放宽 `validation`、并暂时关闭 **glightbox** 以保证 CI 稳定）。请点开失败 job，展开 **Build site**，看日志最后几十行英文报错。
 - 若 **Build 绿、Push 失败**，再检查上一节 **Workflow permissions** 是否已为 **Read and write**。
+
+### Q: Annotations 里 Node.js 20 deprecated 是失败原因吗？
+- **通常不是**。那是 **弃用提醒**；真正导致 **exit code 1** 的是另一条 **error**（例如 `mkdocs build failed`）。本仓库 workflow 已设置 **`FORCE_JAVASCRIPT_ACTIONS_TO_NODE24`**，用于按官方说明提前使用 Node 24，减少该警告。
 
 ### Q: `https://用户名.github.io/` 一直 404？
 1. **Settings → Pages** 是否已选 **Deploy from a branch** → **`gh-pages`** → **`/ (root)`**？若仍是 **main** 根目录，必 404（`main` 没有站点根 `index.html`）。
