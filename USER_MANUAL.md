@@ -32,18 +32,25 @@ my-website/
 
 ### 2.1 本地预览
 
+**推荐**（自动杀旧进程、清空 `site/`、禁止浏览器缓存）：
+
 ```bash
-# 1. 激活 Python 环境
-source /Users/qihaoyu/Documents/builderprac_new/folder1/venv/bin/activate
-
-# 2. 进入网站目录
 cd /Users/qihaoyu/Documents/builderprac_new/folder1/my-website
+chmod +x dev.sh   # 首次需要
+./dev.sh
+```
 
-# 3. 启动预览服务（支持热更新，改文件后浏览器自动刷新）
+或手动：
+
+```bash
+source /Users/qihaoyu/Documents/builderprac_new/folder1/venv/bin/activate
+cd /Users/qihaoyu/Documents/builderprac_new/folder1/my-website
 mkdocs serve
 ```
 
-打开浏览器访问 **http://127.0.0.1:8000** 即可预览。
+打开浏览器访问 **http://127.0.0.1:8000** 即可预览（**不要用** `github.io` 审阅未 push 的修改）。
+
+改 `docs/` 下文件后，浏览器通常会**自动刷新**；若仍见旧文案，用 **Cmd+Shift+R** 硬刷新一次。
 
 按 `Ctrl+C` 停止服务。
 
@@ -295,6 +302,13 @@ git push -u origin main
 
 ### Q: `RPC failed` / `HTTP 400` 推送中断？
 - 可尝试：`git config --global http.postBuffer 524288000`，以及 `git config --global http.version HTTP/1.1` 后重试；仍失败可换网络或改用 SSH。
+
+### Q: 本地改了文案，Cmd+R 还是旧的？
+1. **地址必须是** `http://127.0.0.1:8000/`，不是 `https://xxx.github.io/`（线上要等 push + Actions）。
+2. **不要用** `mkdocs serve` 裸命令，请用 **`./dev.sh`**（内含 `--livereload`）。当前 MkDocs CLI 默认 **关闭** livereload，会导致：不监听文件变更、页面一直是启动时的旧构建。
+3. **不要**用浏览器直接打开项目里的 `site/` 文件夹；`mkdocs serve` 构建在临时目录里。
+4. 保存 `.md` 后浏览器应**自动刷新**；若仍不对，**Cmd+Shift+R** 硬刷新。
+5. 已关闭 `navigation.instant`，避免无刷新导航缓存旧页。
 
 ### Q: 线上还是旧页面？
 - 先看 **Actions** 是否已成功；再等 1～2 分钟并 **强制刷新** 浏览器。

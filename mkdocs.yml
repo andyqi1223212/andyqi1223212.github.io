@@ -18,13 +18,15 @@ theme:
   language: zh
   palette:
     scheme: slate
-    primary: indigo
-    accent: cyan
+    primary: black
+    accent: grey
   font:
     text: Inter
     code: JetBrains Mono
   features:
-    - navigation.instant
+    - header.autohide
+    # 开发时 instant 会缓存页面，改 md 后点导航仍见旧文案；本地预览稳定后再考虑开启
+    # - navigation.instant
     - navigation.tabs
     - navigation.sections
     - navigation.top
@@ -41,6 +43,7 @@ extra_css:
   - assets/extra.css
 
 extra_javascript:
+  - javascripts/dev-nocache.js
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
@@ -69,6 +72,10 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: false
+
+# 仅 mkdocs serve 生效：响应头禁止缓存，解决 Cmd+R 仍见旧页
+hooks:
+  - hooks.py
 
 plugins:
   - search:
