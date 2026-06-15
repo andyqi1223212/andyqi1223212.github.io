@@ -87,7 +87,11 @@ hide:
 
 用 DID 证明 +15% GTV 中约 90% 是发薪日季节性效应，真实因果增量仅 +1.6%。
 
-<p class="card-cta"><a href="projects/anr-optimization.md">查看项目 →</a></p>
+<p class="card-cta" markdown>
+
+[查看项目 →](projects/anr-optimization.md)
+
+</p>
 
 </div>
 
@@ -99,7 +103,11 @@ hide:
 
 主动引入 Growth Accounting，用 Overlap Window 将 MAU 拆解为四分量，定位渠道漏水点。
 
-<p class="card-cta"><a href="projects/growth-accounting.md">查看项目 →</a></p>
+<p class="card-cta" markdown>
+
+[查看项目 →](projects/growth-accounting.md)
+
+</p>
 
 </div>
 
@@ -111,7 +119,11 @@ hide:
 
 四维度 + 四平台交叉验证，揭示网盟 CTIT/ITET 异常，将 UAC 降低 20%。
 
-<p class="card-cta"><a href="projects/ad-channel-analysis.md">查看项目 →</a></p>
+<p class="card-cta" markdown>
+
+[查看项目 →](projects/ad-channel-analysis.md)
+
+</p>
 
 </div>
 
