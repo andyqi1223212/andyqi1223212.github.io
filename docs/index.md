@@ -15,6 +15,7 @@ hide:
 <div class="hero-actions" markdown>
 
 [查看项目 →](projects/index.md){ .md-button .md-button--primary }
+[阅读 Blog](blog/index.md){ .md-button }
 [关于我](about.md){ .md-button }
 
 </div>
@@ -68,6 +69,20 @@ hide:
 </div>
 
 </div>
+
+</div>
+
+---
+
+<div class="page-section about-snippet" markdown>
+
+## 📝 最新文章
+
+### [用多 Agent 做一个 AI 反思产品：我的技术思考](blog/ai-product-system.md)
+
+记录我做一个多 Agent AI 反思产品时，对上下文组装、Router、评测和安全入库这些技术问题的思考。
+
+[阅读文章 →](blog/ai-product-system.md)
 
 </div>
 

@@ -90,4 +90,7 @@ nav:
       - ANR 性能优化与实验设计: projects/anr-optimization.md
       - Growth Accounting Framework: projects/growth-accounting.md
       - 广告渠道特征分析: projects/ad-channel-analysis.md
+  - Blog:
+      - 总览: blog/index.md
+      - 用多 Agent 做一个 AI 反思产品: blog/ai-product-system.md
   - 关于我: about.md
