@@ -93,4 +93,5 @@ nav:
   - Blog:
       - 总览: blog/index.md
       - 用多 Agent 做一个 AI 反思产品: blog/ai-product-system.md
+      - 从实习里的模糊业务需求到 AI 小工具: blog/from-vague-need-to-ai-tool.md
   - 关于我: about.md

@@ -6,6 +6,22 @@
 
 <div class="project-card" markdown>
 
+### [从实习里的模糊业务需求到 AI 小工具](from-vague-need-to-ai-tool.md)
+
+<p class="card-keywords">AI-assisted Workflow · ETL · 任务光谱 · 业务自动化</p>
+
+记录我在实习中如何把分散在飞书表、广告后台和 TB 系统里的渠道核算流程，拆成可配置、可评测、可交付的本地 GUI 工具。
+
+<p class="card-cta" markdown>
+
+[阅读文章 →](from-vague-need-to-ai-tool.md)
+
+</p>
+
+</div>
+
+<div class="project-card" markdown>
+
 ### [用多 Agent 做一个 AI 反思产品：我的技术思考](ai-product-system.md)
 
 <p class="card-keywords">上下文工程 · 确定性路由 · Verifier's Law · AI 产品评测</p>
