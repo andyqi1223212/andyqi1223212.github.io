@@ -1,0 +1,442 @@
+/* ── 精致深色极简：设计令牌 ── */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #000000;
+  --md-default-fg-color: #e8e8e8;
+  --md-default-fg-color--light: #9a9a9a;
+  --md-default-fg-color--lighter: #6b6b6b;
+  --md-default-fg-color--lightest: #2a2a2a;
+  --md-primary-fg-color: #000000;
+  --md-primary-fg-color--light: #1a1a1a;
+  --md-primary-fg-color--dark: #000000;
+  --md-accent-fg-color: #b0b0b0;
+  --md-typeset-a-color: #d4d4d4;
+  --md-code-bg-color: #141414;
+}
+
+/* 顶栏：纯黑 + 轻模糊 */
+.md-header {
+  background-color: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: none;
+}
+
+.md-tabs {
+  background-color: rgba(0, 0, 0, 0.88);
+}
+
+/* 正文排版 */
+.md-typeset {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.md-typeset h2 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #f0f0f0;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  color: #ececec;
+}
+
+.md-typeset p {
+  margin-bottom: 1.1em;
+}
+
+.md-typeset hr {
+  border-color: #1f1f1f;
+  margin: 3rem 0;
+}
+
+/* 柔和按钮（覆盖 Material primary 高亮） */
+.md-typeset .md-button {
+  background-color: #1f1f1f;
+  color: #e8e8e8;
+  border: 1px solid #2e2e2e;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.md-typeset .md-button:hover,
+.md-typeset .md-button:focus {
+  background-color: #2a2a2a;
+  border-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.md-typeset .md-button--primary {
+  background-color: #2a2a2a;
+  border-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.md-typeset .md-button--primary:hover {
+  background-color: #353535;
+  border-color: #454545;
+}
+
+/* ── 页面分区 ── */
+.page-section {
+  padding: 1rem 0 0.5rem;
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-muted {
+  color: var(--md-default-fg-color--light);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+/* ── Hero ── */
+.hero-section {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.hero-section h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin-bottom: 0.6rem;
+  color: #ffffff;
+}
+
+.hero-section .hero-tagline {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #c8c8c8;
+  margin-bottom: 0;
+}
+
+.hero-section .text-muted {
+  margin-top: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* 头像占位（后续放入 avatar.png 后取消 display:none） */
+.hero-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border: 2px solid #222;
+}
+
+.hero-avatar--placeholder {
+  display: none;
+}
+
+/* ── About 摘要块 ── */
+.about-snippet {
+  background: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin-top: 0.5rem;
+}
+
+.about-snippet p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── 首页核心能力（纵向卡片） ── */
+.capability-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.capability-item {
+  background: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+}
+
+.capability-item p {
+  margin: 0.45rem 0 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.capability-item p:last-child {
+  margin-bottom: 0;
+}
+
+.capability-item strong {
+  color: #f0f0f0;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+/* ── 技能标签 ── */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: #1a1a1a;
+  color: #a8a8a8;
+  border: 1px solid #2a2a2a;
+}
+
+/* ── 项目卡片 Grid ── */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.project-card {
+  background: #111111;
+  border: 1px solid #222222;
+  border-radius: 16px;
+  padding: 1.5rem 1.6rem;
+  margin-bottom: 0;
+  transition: background-color 0.2s, border-color 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  background: #161616;
+  border-color: #333333;
+  box-shadow: none;
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.project-card h3 a {
+  color: #f0f0f0;
+  text-decoration: none;
+}
+
+.project-card h3 a:hover {
+  color: #ffffff;
+}
+
+.project-card p {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.project-card .card-keywords {
+  font-size: 0.82rem;
+  color: var(--md-default-fg-color--lighter);
+  margin-bottom: 0.75rem;
+}
+
+.project-card .card-cta {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.project-card .card-cta a {
+  font-size: 0.88rem;
+  color: #b8b8b8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.project-card .card-cta a:hover {
+  color: #ffffff;
+}
+
+/* ── About 页经历块 ── */
+.experience-block {
+  background: #0d0d0d;
+  border-left: 3px solid #333;
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
+}
+
+.experience-block blockquote {
+  border-left-color: #333;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 1rem;
+}
+
+/* 图片 */
+.md-typeset img {
+  border-radius: 12px;
+}
+
+/* Material 图标对齐（项目页仍可能使用） */
+.md-typeset h3 .twemoji {
+  display: inline-block;
+  vertical-align: -0.2em;
+  margin-right: 0.35rem;
+}
+
+.md-typeset h3 .twemoji svg {
+  width: 1.35em;
+  height: 1.35em;
+}
+
+/* 首页全宽：隐藏侧栏后内容居中 */
+.md-content__inner > .md-typeset > .hero-section:first-child {
+  margin-top: -0.5rem;
+}
+
+@media screen and (max-width: 76.1875em) {
+  .hero-section {
+    padding-top: 3rem;
+  }
+}
+
+/* ── Blog：技术洞察可视化模块 ── */
+.insight-hero {
+  background: linear-gradient(135deg, #121212 0%, #080808 100%);
+  border: 1px solid #242424;
+  border-radius: 18px;
+  padding: 1.6rem 1.8rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.insight-hero p {
+  color: #cfcfcf;
+  font-size: 1rem;
+}
+
+.principle-grid,
+.evidence-grid,
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.principle-card,
+.metric-card {
+  background: #0f0f0f;
+  border: 1px solid #252525;
+  border-radius: 14px;
+  padding: 1.15rem 1.25rem;
+}
+
+.principle-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.55rem;
+  font-size: 0.98rem;
+  color: #f4f4f4;
+}
+
+.principle-card p,
+.metric-card p {
+  color: #a8a8a8;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.metric-card strong {
+  color: #f0f0f0;
+}
+
+.flow-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+  margin: 1.5rem 0 1.75rem;
+}
+
+.flow-step {
+  position: relative;
+  background: #101010;
+  border: 1px solid #242424;
+  border-radius: 14px;
+  padding: 1rem 1.05rem;
+}
+
+.flow-step p {
+  color: #a8a8a8;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+.flow-step strong {
+  color: #ffffff;
+}
+
+.quote-panel {
+  border-left: 3px solid #666;
+  background: #0d0d0d;
+  border-radius: 0 14px 14px 0;
+  padding: 1.15rem 1.35rem;
+  margin: 1.5rem 0;
+}
+
+.quote-panel p {
+  color: #f0f0f0;
+  font-size: 1.05rem;
+  margin-bottom: 0;
+}
+
+.demo-embed {
+  border: 1px solid #242424;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #080808;
+  margin: 1.5rem 0 1rem;
+}
+
+.demo-embed iframe {
+  display: block;
+  width: 100%;
+  height: 720px;
+  border: 0;
+  background: #090909;
+}
+
+@media screen and (max-width: 760px) {
+  .demo-embed iframe {
+    height: 860px;
+  }
+}

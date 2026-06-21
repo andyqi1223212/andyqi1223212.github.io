@@ -1,0 +1,1589 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人项目与实习经历展示">
+      
+      
+      
+        <link rel="canonical" href="https://andyqi1223212.github.io/blog/ai-product-system/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../from-vague-need-to-ai-tool/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>用多 Agent 做一个 AI 反思产品 - 齐昊宇 | Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#agent-ai" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="齐昊宇 | Portfolio" class="md-header__button md-logo" aria-label="齐昊宇 | Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            齐昊宇 | Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              用多 Agent 做一个 AI 反思产品
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  项目经历
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于我
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="齐昊宇 | Portfolio" class="md-nav__button md-logo" aria-label="齐昊宇 | Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    齐昊宇 | Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目经历
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目经历
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/anr-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ANR 性能优化与实验设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/growth-accounting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growth Accounting Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/ad-channel-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    广告渠道特征分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用多 Agent 做一个 AI 反思产品
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用多 Agent 做一个 AI 反思产品
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 先看最终形态：把长回答压成稳定结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 第一个思考：AI 产品 = 模型能力 × 上下文质量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 第一个思考：AI 产品 = 模型能力 × 上下文质量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一性原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        能力信号
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 可视化：上下文到底是怎么被组装进模型的
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第二个思考：自然语言也要像软件一样有接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-router-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 第三个思考：Router 不能让 LLM 自由发挥
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 第四个思考：评测器不要贪心，只判能低成本验证的事
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 第四个思考：评测器不要贪心，只判能低成本验证的事">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        它不判什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        它判什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 我不套通用 benchmark，因为我要测自己的决策边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. AI 只建议，真正写库的是脚本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 记忆不是覆盖，而是保留演化轨迹
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 这件事对应的 AI 产品能力
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 这件事对应的 AI 产品能力">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拆业务指标和流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断 LLM 边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设计评测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        做上下文工程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-vague-need-to-ai-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从实习里的模糊业务需求到 AI 小工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于我
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 先看最终形态：把长回答压成稳定结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 第一个思考：AI 产品 = 模型能力 × 上下文质量
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 第一个思考：AI 产品 = 模型能力 × 上下文质量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一性原理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        能力信号
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 可视化：上下文到底是怎么被组装进模型的
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第二个思考：自然语言也要像软件一样有接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-router-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 第三个思考：Router 不能让 LLM 自由发挥
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 第四个思考：评测器不要贪心，只判能低成本验证的事
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 第四个思考：评测器不要贪心，只判能低成本验证的事">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        它不判什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        它判什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 我不套通用 benchmark，因为我要测自己的决策边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. AI 只建议，真正写库的是脚本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 记忆不是覆盖，而是保留演化轨迹
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 这件事对应的 AI 产品能力
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 这件事对应的 AI 产品能力">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拆业务指标和流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断 LLM 边界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设计评测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        做上下文工程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="agent-ai">用多 Agent 做一个 AI 反思产品：我的技术思考</h1>
+<div class="insight-hero">
+<p><strong>一句话项目背景</strong>：我把和 AI 深聊后真正有用的部分，压缩成一张“晶体卡”。它不保存几千字对话，只保存被触发时最需要的三件事：发生了什么、先抓住哪句话、接下来做哪个小动作。项目背景和使用场景我之前写在这篇文章里：<a href="https://www.superlinear.academy/c/share-your-projects/3-agent">天天内耗的大学生，用 3 个 agent 给自己造了一个“改命工具”</a>。</p>
+<p><strong>这篇文章想讲的不是项目故事，而是我做完以后对技术的理解</strong>：一个原本只能靠人感觉判断的问题，怎样被拆成可路由、可装配上下文、可质检、可回滚的 AI 产品系统。</p>
+</div>
+<hr />
+<h2 id="0">0. 先看最终形态：把长回答压成稳定结构</h2>
+<p>人在焦虑被触发的那一秒，读不进几千字安慰。他真正需要的不是完整对话，而是能让自己先停下来的短结构。</p>
+<div class="language-html highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">card</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">what_happened</span><span class="p">&gt;</span>这不是预测未来，而是焦虑在用想象力制造痛苦。<span class="p">&lt;/</span><span class="nt">what_happened</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">first_sentence</span><span class="p">&gt;</span>害怕在心里，我在此刻。<span class="p">&lt;/</span><span class="nt">first_sentence</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">small_action</span><span class="p">&gt;</span>问：这个担心能不能导出一个具体动作？不能就标记为噪音。<span class="p">&lt;/</span><span class="nt">small_action</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">card</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>这个 HTML 例子不是为了炫技，而是为了说明项目的第一性原理：</p>
+<blockquote>
+<p>AI 产品不是把模型生成的长答案原封不动交给用户，而是把模糊的智能输出整理成稳定结构。</p>
+</blockquote>
+<p>结构稳定以后，才谈得上检索、更新、评测和产品化。</p>
+<hr />
+<h2 id="1-ai">1. 第一个思考：AI 产品 = 模型能力 × 上下文质量</h2>
+<p>应用层 AI 产品的主战场，通常不是训练模型，而是上下文工程。</p>
+<p>白话讲：模型像一个能力很强但不了解你业务的人。你不只是问它“帮我做得更好”，而要决定它工作时应该看到什么、不应该看到什么、按什么顺序看、最后输出成什么结构。</p>
+<div class="principle-grid">
+<div class="principle-card">
+<h3 id="_1">第一性原理</h3>
+<p>模型决定基础能力；上下文决定它能不能做好这道具体题。</p>
+</div>
+<div class="principle-card">
+<h3 id="_2">我的实现</h3>
+<p>我没有 fine-tune。改进都发生在上下文：原始问题、历史候选、风格词典、结构约束、质检规则被拆开给不同角色看。</p>
+</div>
+<div class="principle-card">
+<h3 id="_3">能力信号</h3>
+<p>真正的能力不是“会写 prompt”，而是知道上下文该怎么拆、谁该看什么、哪些材料应该被禁止注入。</p>
+</div>
+</div>
+<p>我一开始犯过一个错：以为示例越多越好，于是把大量历史回答、风格反馈、好句坏句都塞给模型。结果输出反而越来越平均，既有一点安慰，又有一点分析，最后变成黏糊糊的 AI 腔。</p>
+<p>后来我才意识到，长上下文不是越长越聪明。它更像开会：如果一个人同时听产品愿景、用户吐槽、历史代码、风格要求、质检规则、部署脚本，他不一定更清楚，反而可能分不清自己这一步到底该干什么。</p>
+<p>所以我把工作台拆开。不是因为我喜欢复杂架构，而是因为每一步要解决的问题不同：</p>
+<div class="flow-strip">
+<div class="flow-step">
+<p><strong>1. 问题分诊</strong></p>
+<p>只看用户这次的问题和少量历史候选，判断这是新问题，还是旧问题的新补充。</p>
+</div>
+<div class="flow-step">
+<p><strong>2. 写成短卡</strong></p>
+<p>不看原始长对话，只看分诊结果和风格词典，把诊断翻成用户能用的短结构。</p>
+</div>
+<div class="flow-step">
+<p><strong>3. 质检</strong></p>
+<p>不看写作者 prompt，也不看原始对话，只看成品卡和规则，判断有没有破坏契约。</p>
+</div>
+<div class="flow-step">
+<p><strong>4. 安全入库</strong></p>
+<p>不调用模型，只由脚本把通过质检的结果写进文件。</p>
+</div>
+</div>
+<p>这背后的产品判断是：<strong>上下文不是资料仓库，而是工作台。工作台上只应该放这一步真正要用的工具。</strong></p>
+<p>这也是我在面试或作品展示里更想传递的信号：我不是在堆 agent，而是在设计“信息如何进入模型”的系统。</p>
+<hr />
+<h2 id="2">2. 可视化：上下文到底是怎么被组装进模型的</h2>
+<p>“上下文工程”很容易听起来像一个大词，所以我专门做了一个交互式 HTML demo，用来展示同一条对话在不同阶段到底装进了哪些上下文块。</p>
+<div class="demo-embed">
+<iframe loading="lazy" src="../context-assembly-demo.html" title="上下文组装演示"></iframe>
+</div>
+<p><a class="md-button" href="../context-assembly-demo.html">打开完整上下文组装演示 →</a></p>
+<p>这个 demo 展示的是我项目里最关键的 <code>build_context</code> 过程。每个 prompt 的 frontmatter 会声明自己需要哪些输入：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">inputs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">question_md</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">markdown_file</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">route_helper_output</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">json</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">schema_excerpts</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">doc_section_set</span><span class="p p-Indicator">,</span><span class="nt"> sections</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">v3_fewshot</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">example_set</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>然后 <code>build_context()</code> 按顺序把这些块拼成最终 user message：</p>
+<div class="language-python highlight"><pre><span></span><code><span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;markdown_file&quot;</span><span class="p">:</span>
+    <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">read_file</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;json&quot;</span><span class="p">:</span>
+    <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;doc_section_set&quot;</span><span class="p">:</span>
+    <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extract_doc_sections</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sections</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;doc_full&quot;</span><span class="p">:</span>
+    <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">read_file</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;example_set&quot;</span><span class="p">:</span>
+    <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">format_examples</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
+</code></pre></div>
+<p>这里真正有意思的不是代码，而是设计：</p>
+<ul>
+<li><code>doc_section_set</code> 只抽文档中特定章节，避免把整份规则灌给模型。</li>
+<li><code>doc_full</code> 只用于唯一权威文件，比如风格词典，因为那份文件必须完整。</li>
+<li><code>example_set</code> 用少量高质量样本对齐风格，而不是把所有历史样本塞进去。</li>
+<li><code>forbidden_inputs</code> 明确声明某个阶段不能读什么，防止上下文污染。</li>
+</ul>
+<p>这就是我理解的上下文工程：<strong>不是把资料塞满，而是让每个阶段只看到它该看的东西。</strong></p>
+<hr />
+<h2 id="3">3. 第二个思考：自然语言也要像软件一样有接口</h2>
+<p>很多人写 prompt 的方式像许愿：“请你深刻一点、自然一点、不要 AI 味、要有洞察。”</p>
+<p>问题是，这种指令不可测试，也不可复用。它更像对浏览器说“请把网页做高级一点”，而不是写出明确的 HTML。</p>
+<p>HTML 为什么稳定？因为它有结构：</p>
+<div class="language-html highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>标题<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>段落<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>按钮<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>浏览器不需要猜“这里是不是标题”。结构已经告诉它了。</p>
+<p>我在这个项目里做的事，本质上也是给自然语言任务设计接口。一个“好回答”太模糊，所以我把它拆成三个字段：</p>
+<ul>
+<li><strong>机制</strong>：这次触发背后的因果结构是什么。</li>
+<li><strong>入口句</strong>：触发当下先抓住哪一句话。</li>
+<li><strong>小动作</strong>：5 分钟内身体真的能做什么。</li>
+</ul>
+<p>这样一来，“写得好不好”至少有一部分变得可检查：</p>
+<ul>
+<li>入口句是不是太长？</li>
+<li>小动作是不是真的能执行？</li>
+<li>机制有没有退化成空泛安慰？</li>
+<li>新增内容是不是覆盖了旧内容？</li>
+</ul>
+<p>这就是 Software 3.0 的一个朴素版本：当自然语言变成新的编程界面，软件工程原则没有消失，反而更重要了。你还是需要拆任务、定接口、做单元测试、处理异常。</p>
+<hr />
+<h2 id="4-router-llm">4. 第三个思考：Router 不能让 LLM 自由发挥</h2>
+<p>LLM 很擅长读懂语义，但它不是稳定的规则引擎。尤其在分类、路由、选择下一步动作这种地方，它偶尔抖一下，后果会被后面的流程放大。</p>
+<p>我的项目里有一个具体问题：一段新对话来了，它应该变成一张新卡，还是补充到旧卡下面？</p>
+<p>如果交给 LLM 直接决定，它可能今天觉得是新卡，明天觉得是旧卡。单看一句输出差别不大，但对知识库来说，这是结构污染：该合并的东西散了，该分开的东西被揉在一起了。</p>
+<p>所以我做了一个很轻的确定性路由器：</p>
+<div class="evidence-grid">
+<div class="metric-card">
+<p><strong>先召回</strong></p>
+<p>Python 从旧卡里检索最相近的 top-5，而不是让模型凭空回忆。</p>
+</div>
+<div class="metric-card">
+<p><strong>再判断</strong></p>
+<p>规则层给出初步建议和置信度，不确定时才让 LLM 做语义复核。</p>
+</div>
+<div class="metric-card">
+<p><strong>最后设闸</strong></p>
+<p>写入前仍然要过质检，不通过就进入人工 review。</p>
+</div>
+</div>
+<p>这背后的技术判断是“确定性路由器”：<strong>LLM 处理模糊语义，规则层处理稳定边界。</strong></p>
+<p>这种边界意识可以迁移到任何业务 AI：LLM 读非结构化材料、提出假设；规则层处理明确计算和权限边界；高风险动作交给人或安全脚本确认。你不需要知道我的个人成长领域，也能看懂这个系统形状。</p>
+<p>更具体一点，Router 的数据流是这样：</p>
+<div class="language-text highlight"><pre><span></span><code>用户对话.md
+  │
+  │  1. 剥掉 AI response，只保留用户真正问的话
+  ▼
+question_text
+  │
+  │  2. 和每张旧卡的 title + trigger + questions 做字符 trigram 匹配
+  ▼
+top-5 candidates + score
+  │
+  │  3. 显式阈值给 route_hint
+  ▼
+{ route_hint, confidence, candidates }
+  │
+  │  4. LLM 只在候选范围内复核语义
+  ▼
+最终 route：new / update / meta
+</code></pre></div>
+<p>这一步对我很重要。确定性路由器不是为了显得高级，而是因为 route 是一个小决策、大后果的开关：路由错了，后面的生成再漂亮，也是在错误的知识结构上加工。</p>
+<hr />
+<h2 id="5">5. 第四个思考：评测器不要贪心，只判能低成本验证的事</h2>
+<p>我一开始也想过：能不能让质检模型判断一张卡“是不是真的治愈用户”“机制是不是深刻”？</p>
+<p>后来我放弃了。</p>
+<p>因为这类判断太像人类品味，短期内很难低成本验证。一个心理机制到底有没有用，可能要看用户下次被触发时能不能想起来、想起来后能不能做动作、做完后有没有松动。这不是一次模型打分能解决的。</p>
+<p>所以我把质检模型的职责收窄到可验证的部分：</p>
+<div class="principle-grid">
+<div class="principle-card">
+<h3 id="_4">它不判什么</h3>
+<p>不判“人生道理是不是真的对”，不判“这段话有没有真正改变一个人”。</p>
+</div>
+<div class="principle-card">
+<h3 id="_5">它判什么</h3>
+<p>字段是否完整、入口句是否过长、新增内容是否覆盖旧卡、有没有复制旧内容假装更新。</p>
+</div>
+<div class="principle-card">
+<h3 id="_6">为什么</h3>
+<p>越容易验证的任务，越容易被 AI 稳定做好。这就是 Verifier's Law。</p>
+</div>
+</div>
+<p>这句话对 AI 产品落地非常关键。</p>
+<p>换成任何真实业务助手，第一版都不要急着证明“AI 真的懂业务”。可以先证明更具体的事：报告有没有漏掉核心指标；结论和数据有没有矛盾；建议动作有没有超出权限；有没有使用不合规表达；诊断是否能指出对应证据，而不是只给笼统建议。</p>
+<p><strong>评测不是为了显得严谨，而是为了知道系统在哪些边界上可以被信任。</strong></p>
+<hr />
+<h2 id="6-benchmark">6. 我不套通用 benchmark，因为我要测自己的决策边界</h2>
+<p>很多 AI 项目会说“效果不错”，但进入产品落地以后，这句话没用。你必须说清楚：哪里不错，怎么证明，错了代价是什么。</p>
+<p>我给质检模型做了一个 20 条的 golden dataset。真实数据有个麻烦：我线上留下来的卡几乎都是好卡，因为坏卡当时没有入库。只有正样本，证明不了质检模型能不能拦住坏卡。</p>
+<p>所以我做了一个工程补偿：拿真实好卡，人工注入一处明确违规，构造负样本。</p>
+<div class="metric-row">
+<div class="metric-card">
+<p><strong>负样本来源</strong></p>
+<p>真实卡 + 单点扰动，而不是凭空编坏例子。</p>
+</div>
+<div class="metric-card">
+<p><strong>核心指标</strong></p>
+<p>漏放率：该拦的坏卡有没有被拦住。</p>
+</div>
+<div class="metric-card">
+<p><strong>真实发现</strong></p>
+<p>同一输入重跑会 fail/pass 跳变，所以评测器自身稳定性也要测。</p>
+</div>
+</div>
+<p>一次真实跑分里，9 条应该拦截的坏卡全部被拦下，漏放为 0；同时有 3 条误拦，属于把本来可以通过的卡送去人工 review。对质量闸门来说，这是可以接受的失败方向：宁可多看几张，也不要把坏卡放进库。</p>
+<p>更有意思的是，我还观察到质检模型本身会抖。同一条输入，temperature 设 0，第一次 fail，重跑又 pass。</p>
+<p>这让我意识到一个更深的评测点：<strong>评测器本身也要被评测。</strong></p>
+<p>如果一个商家诊断报告今天被判合格，明天同样输入又被判违规，产品经理就不能只看 accuracy，还要看稳定性。边界样本要跑多次，看 flip rate；必要时用多数投票，或者直接送人工。</p>
+<hr />
+<h2 id="7-ai">7. AI 只建议，真正写库的是脚本</h2>
+<p>LLM 的创造力是优点，也是风险。它会补全、联想、改写，有时还会自信地做出你没授权的事。</p>
+<p>所以我的项目里，模型不会直接改知识库。</p>
+<p>模型做三类事：提出诊断、写出候选卡片、给出质检 verdict。真正入库的是 Python 脚本，而且只有质检结果是 pass 才自动写入。不是 pass，就进入人工 review。还有一个 <code>--no-push</code> 模式，可以跑完整条链路但不碰真实数据。</p>
+<p>这里我的理解是“AI 建议，人或安全脚本执行”。关键不是有没有自动化，而是自动化发生在哪一层。</p>
+<p>在任何有真实后果的产品里，这个边界都很重要。AI 可以提出建议，但真正改变用户资产、权限、评级、预算或知识库状态的动作，都应该经过规则层和人工确认。</p>
+<hr />
+<h2 id="8">8. 记忆不是覆盖，而是保留演化轨迹</h2>
+<p>这个项目里还有一个看似小、但很关键的产品设计：旧卡不被覆盖，新理解只追加。</p>
+<p>一开始我自然地以为，更新就是把旧字段改掉。后来 dogfood 后发现不对。晶体卡不是普通数据库记录，它记录的是一个人在某个时间点理解自己的方式。旧机制、旧入口句、旧小动作不是“过时字段”，而是历史资产。</p>
+<p>所以现在更新逻辑是：原卡保留，新洞察挂在更新历史里，用户可以看到这个问题是怎么一层层长出来的。</p>
+<p>这和很多业务系统也有关。任何长期跟踪对象，不管是用户、商家、项目还是知识库，都不应该只保留“最新状态”。更好的做法是保留每次诊断、每次动作、每次结果回填。</p>
+<p>只看当前状态，你只能问“现在怎么样”。保留演化轨迹，你才能问“哪个动作真的带来了变化”。</p>
+<hr />
+<h2 id="9-ai">9. 这件事对应的 AI 产品能力</h2>
+<div class="principle-grid">
+<div class="principle-card">
+<h3 id="_7">拆业务指标和流程</h3>
+<p>不要笼统说“用 AI 提升效率”，而要拆到问题识别、候选召回、诊断生成、合规质检、动作建议、效果回填。</p>
+</div>
+<div class="principle-card">
+<h3 id="llm">判断 LLM 边界</h3>
+<p>语义材料交给 LLM，确定规则交给代码，高风险动作留给人。</p>
+</div>
+<div class="principle-card">
+<h3 id="_8">设计评测</h3>
+<p>先做任务对齐的离线评测和人工校准，再看线上代理指标，最后才谈业务指标。</p>
+</div>
+<div class="principle-card">
+<h3 id="_9">做上下文工程</h3>
+<p>用户画像、历史记录、规则文档、候选样本、评价标准和禁止输入，要按任务分层装配。</p>
+</div>
+</div>
+<p>所以这个项目虽然从一个很私人的问题开始，但它训练的是一个很通用的 AI 产品能力：</p>
+<div class="quote-panel">
+<p>把模糊的人类判断，拆成有边界、有证据、有评测、有回滚的系统。</p>
+</div>
+<p>这就是我真正想展示的 technical insight。不是“我会用 agent”，而是我知道 agent 在产品系统里应该站在哪、不能碰哪、错了怎么发现、怎么把人的判断重新接回系统。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 总览">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                总览
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../from-vague-need-to-ai-tool/" class="md-footer__link md-footer__link--next" aria-label="下一页: 从实习里的模糊业务需求到 AI 小工具">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                从实习里的模糊业务需求到 AI 小工具
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/dev-nocache.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

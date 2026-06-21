@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上下文组装演示</title>
+<style>
+  :root{
+    --bg:#090909; --panel:#111; --panel2:#171717; --line:#2a2a2a;
+    --ink:#eeeeee; --muted:#a8a8a8; --dim:#707070;
+    --py:#34d399; --llm:#a78bfa; --route:#f5c542; --ctx:#5b9bd5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+    line-height:1.65;font-size:14px}
+  .wrap{max-width:1120px;margin:0 auto;padding:24px 18px 42px}
+  h1{font-size:22px;margin:0 0 8px}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  button{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+    border-radius:10px;padding:10px 12px;font:inherit}
+  button.on{border-color:var(--route);background:#17140a}
+  .pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}
+  .stage{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:12px;cursor:pointer}
+  .stage.on{border-color:var(--ctx);background:var(--panel2)}
+  .badge{display:inline-block;border-radius:999px;padding:1px 8px;font-size:11px;margin-bottom:6px}
+  .py{background:#10241c;color:#86efac;border:1px solid #24533e}
+  .llm{background:#221b38;color:#c4b5fd;border:1px solid #46356f}
+  .grid{display:grid;grid-template-columns:1.4fr .8fr;gap:14px}
+  .box{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:14px}
+  .block{border:1px solid var(--line);background:#0c0c0c;border-radius:10px;padding:10px;margin:10px 0}
+  .block.route{border-color:var(--route);box-shadow:0 0 0 1px rgba(245,197,66,.25)}
+  .type{color:var(--ctx);font-size:12px;font-family:ui-monospace,Menlo,monospace}
+  .name{font-weight:650}
+  .src{color:var(--dim);font-size:12px;font-family:ui-monospace,Menlo,monospace}
+  pre{white-space:pre-wrap;background:#080808;border:1px solid #222;border-radius:8px;padding:10px;color:#bdbdbd;font-size:12px}
+  .why{color:var(--muted)}
+  .out{border-color:#24533e;background:#0c1712}
+  .matrix{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}
+  .matrix th,.matrix td{border:1px solid var(--line);padding:8px;text-align:center}
+  .matrix th{background:var(--panel2);color:var(--muted)}
+  .hl{background:#1a1608;color:var(--route);font-weight:700}
+  @media(max-width:820px){.pipe{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>上下文组装演示：同一条对话，如何被装配给不同阶段</h1>
+  <p class="sub">核心不是“prompt 写得长”，而是每个阶段只看它该看的上下文。route 像电闸，会决定某些上下文块是否注入。</p>
+
+  <div class="tabs">
+    <button data-route="new">new：新建卡</button>
+    <button data-route="update" class="on">update：更新旧卡</button>
+    <button data-route="meta">meta：横切元卡</button>
+  </div>
+
+  <div class="pipe" id="pipe"></div>
+  <div class="grid">
+    <div class="box" id="ctx"></div>
+    <div class="box" id="side"></div>
+  </div>
+  <div class="box" style="margin-top:14px">
+    <b>三种 route 的装配差异</b>
+    <table class="matrix">
+      <tr><th>上下文块</th><th>new</th><th>update</th><th>meta</th></tr>
+      <tr><td>用户问题 + route_helper 候选</td><td>有</td><td>有</td><td>有</td></tr>
+      <tr><td>schema / rubric 抽章节</td><td>有</td><td>有</td><td>有</td></tr>
+      <tr><td>existing_card 原卡全文</td><td>无</td><td class="hl">注入</td><td>无</td></tr>
+      <tr><td>A 的输出方向</td><td class="hl">机制草图</td><td class="hl">追加指令</td><td class="hl">横切证据</td></tr>
+      <tr><td>B 输出形态</td><td class="hl">完整卡</td><td class="hl">增量层</td><td class="hl">元卡</td></tr>
+      <tr><td>Judge route-aware checks</td><td>2 条</td><td class="hl">12 条</td><td>5 条</td></tr>
+    </table>
+  </div>
+</div>
+<script>
+const stages=[
+  {id:"router",name:"Router",engine:"Python",why:"确定性路由器：先用 trigram + 阈值召回候选，不让 LLM 从空白处拍板。",
+    blocks:["question_md：剥掉 AI response，只保留用户问题","chains.json：每张旧卡的 title + trigger + questions","thresholds：update_high=0.40 / update_medium=0.13 / meta_min_cross_axis=0.10"],
+    out:r=>r==="update"?"route_hint=update, confidence=medium, candidates=[IC-005,IC-011,IC-006...]":r==="meta"?"route_hint=update/meta 候选混杂，等待 LLM 复核":"route_hint=new, confidence=high"},
+  {id:"diagnose",name:"诊断",engine:"LLM",why:"LLM 做语义复核：判断 Router 的候选是不是真同源，并输出下游需要的方向。",
+    blocks:["question_md：完整用户对话","route_helper_output：top-5 候选 + route_hint","schema_excerpts：只抽 patterns / axis / routing 章节","synthesis_excerpts：只抽用户画像相关章节","v3_fewshot：少量良质卡示例"],
+    out:r=>r==="update"?"route=update, target_ic_id=IC-005, update_directives={...}":r==="meta"?"route=meta, meta_evidence={child_ic_ids,...}":"route=new, mechanism_sketch=..."},
+  {id:"write",name:"成卡",engine:"LLM",why:"写作者只把诊断翻译成卡，不重新诊断。update 时才注入原卡，避免重复并保证 append-only。",
+    blocks:["pipeline_a_draft：上一步结构化诊断","style_lexicon：风格词典整份注入","schema_lint：只抽 mechanism / anchor / micro_steps 约束"],
+    routeBlock:"existing_card：仅 update 注入，用来对照原卡，不覆盖原卡",
+    out:r=>r==="update"?"output_kind=update_entry：只追加新层":r==="meta"?"output_kind=meta_card：带 child relations":"output_kind=full_card：完整新卡"},
+  {id:"judge",name:"质检",engine:"LLM",why:"评测独立性：不读写作者 prompt，不读原始对话，只对成品和规则打分。",
+    blocks:["b_output：唯一评分对象","route_context：只供契约检查","rubric_excerpts：只抽评分规则相关章节","schema_lint：只抽内容 lint / 反例"],
+    routeBlock:"existing_card：仅 update 注入，检查有没有复制旧内容或越权修改",
+    out:r=>r==="update"?"verdict=pass/fail + 12 条 update 契约检查":r==="meta"?"verdict=pass/fail + 5 条 meta 检查":"verdict=pass/fail + 2 条 new 检查"},
+  {id:"merge",name:"入库",engine:"Python",why:"高风险动作不交给 LLM。只有 verdict=pass 才自动写库，否则进人工 review。",
+    blocks:["b.json：待入库内容","judge.json：verdict + fail reasons","schema：Python 再校验一道"],
+    out:r=>r==="update"?"append 到 updates[]，原卡不覆盖":r==="meta"?"写入 meta card":"写入 full card"}
+];
+let route="update", stage="write";
+const $=s=>document.querySelector(s);
+function render(){
+  document.querySelectorAll("button[data-route]").forEach(b=>{b.classList.toggle("on",b.dataset.route===route);b.onclick=()=>{route=b.dataset.route;render()}});
+  $("#pipe").innerHTML=stages.map(s=>`<div class="stage ${s.id===stage?'on':''}" onclick="stage='${s.id}';render()"><span class="badge ${s.engine==='Python'?'py':'llm'}">${s.engine}</span><br><b>${s.name}</b></div>`).join("");
+  const s=stages.find(x=>x.id===stage);
+  const blocks=[...s.blocks];
+  if(s.routeBlock && route==="update") blocks.push(s.routeBlock);
+  $("#ctx").innerHTML=`<b>注入 ${s.name} 的上下文窗口</b>`+blocks.map(x=>`<div class="block ${x.startsWith('existing_card')?'route':''}"><div class="name">${x.split("：")[0]}</div><div class="src">${x.split("：").slice(1).join("：")}</div></div>`).join("")+`<div class="block out"><b>输出</b><pre>${s.out(route)}</pre></div>`;
+  $("#side").innerHTML=`<b>第一性原理</b><p class="why">${s.why}</p><hr style="border-color:#222"><b>对应的技术思考</b><p class="why">${stage==="router"?"确定性路由器 / 长上下文检索":stage==="diagnose"?"任务分解 / 验证者定律":stage==="write"?"上下文装配 / 单一职责":stage==="judge"?"评测独立性 / Verifier's Law":"AI 建议，人或脚本执行"}</p>`;
+}
+render();
+</script>
+</body>
+</html>

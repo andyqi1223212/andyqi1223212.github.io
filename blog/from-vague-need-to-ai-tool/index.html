@@ -1,0 +1,1366 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人项目与实习经历展示">
+      
+      
+      
+        <link rel="canonical" href="https://andyqi1223212.github.io/blog/from-vague-need-to-ai-tool/">
+      
+      
+        <link rel="prev" href="../ai-product-system/">
+      
+      
+        <link rel="next" href="../../about/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>从实习里的模糊业务需求到 AI 小工具 - 齐昊宇 | Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="齐昊宇 | Portfolio" class="md-header__button md-logo" aria-label="齐昊宇 | Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            齐昊宇 | Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              从实习里的模糊业务需求到 AI 小工具
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  项目经历
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于我
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="齐昊宇 | Portfolio" class="md-nav__button md-logo" aria-label="齐昊宇 | Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    齐昊宇 | Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目经历
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目经历
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/anr-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ANR 性能优化与实验设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/growth-accounting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Growth Accounting Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/ad-channel-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    广告渠道特征分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-product-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用多 Agent 做一个 AI 反思产品
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从实习里的模糊业务需求到 AI 小工具
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从实习里的模糊业务需求到 AI 小工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ai_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先别急着上 AI：这个实习问题到底在问什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：把"算账"还原成一条 ETL 链路
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：给每一块找它该待的位置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二步：给每一块找它该待的位置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        确定的部分 → 交给程序，不要交给 LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        会变、但有规律的部分 → 做成"带默认值的配置"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        需要判断的部分 → surface 给人，而不是替人拍板
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        后来我又加了一个追踪 Tab：因为业务不会只在月底发生
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反直觉的结论：最关键的 AI 决策，是把 LLM 挡在运行时之外
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎么证明它算对了：哪怕是确定性工具，也需要"标准答案"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最后一公里：让不懂代码的人也能用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        收口：一个可复用的判断框架
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于我
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ai_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先别急着上 AI：这个实习问题到底在问什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：把"算账"还原成一条 ETL 链路
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：给每一块找它该待的位置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二步：给每一块找它该待的位置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        确定的部分 → 交给程序，不要交给 LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        会变、但有规律的部分 → 做成"带默认值的配置"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        需要判断的部分 → surface 给人，而不是替人拍板
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        后来我又加了一个追踪 Tab：因为业务不会只在月底发生
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反直觉的结论：最关键的 AI 决策，是把 LLM 挡在运行时之外
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎么证明它算对了：哪怕是确定性工具，也需要"标准答案"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最后一公里：让不懂代码的人也能用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        收口：一个可复用的判断框架
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ai">从实习里的模糊业务需求到 AI 小工具：一次「任务光谱」的实践</h1>
+<blockquote>
+<p>我在实习里遇到过一个很具体、但一开始非常模糊的问题：我们 App 的主要运营市场在尼日利亚，投放团队会在不同渠道维护不同的飞书在线表格和后台数据；而每个渠道在 App 里的注册、首交、留存表现，又沉淀在内部 TB 系统里。每次想核算某个渠道、或者追踪某段日期的投放效果，都要先确认日期范围，再去各处下载数据、重新聚合、重新分类、重新算一遍。</p>
+</blockquote>
+<p>这个动作本身不难，难的是它<strong>每次都要重复</strong>。今天看 2 月 1 日到 2 月 7 日，明天可能又要看 2 月 1 日到 2 月 8 日；今天下载的是哪个时间点的数据、某个表有没有覆盖到这几天、某个渠道这次应该归到大媒体还是厂商，时间久了都会变成认知负担。最后人不是卡在某个复杂算法上，而是卡在一堆低价值但必须准确的操作里。</p>
+<p>这篇文章记录的，就是我怎么把这个实习里的业务问题，拆成一个可以被 AI 辅助构建、但最终能稳定运行的小工具：业务同事上传几张表，调整少量参数，就能生成月报和消耗追踪结果。</p>
+<p>但真正想分享的不是"我做了个工具"，而是中间那个<strong>判断过程</strong>——尤其是一个有点反直觉的结论：在这个问题里，最关键的一次 AI 决策，是<strong>把 LLM 挡在运行时之外</strong>。</p>
+<p><img alt="工具会先把渠道、参数和分类显式展示出来，而不是让人继续在多张表之间来回查。" src="../assets/etl-spend-params.png" /></p>
+<p><em>工具的第一个价值，是把分散在表格和人脑里的渠道规则，变成一张可复核、可调整的参数表。</em></p>
+<!-- more -->
+
+<hr />
+<h2 id="ai_1">先别急着上 AI：这个实习问题到底在问什么</h2>
+<p>在业务现场，问题通常不会以"请你设计一个 ETL 系统"这种形式出现。它更像是："这个月报能不能自动算？""这些渠道规则能不能以后不用每次手改？""能不能做个界面让不懂代码的人也能用？"</p>
+<p>这些听起来都像是在问"能不能用 AI 做一个工具"。但如果你顺着这句话直接去想"那我写个 prompt，把 Excel 丢给大模型让它帮我算"，几乎一定会做出一个<strong>不稳定</strong>的东西——它这个月算对了，下个月换一批数据就悄悄错给你看，而且你还查不出来它哪一步错了。对一个<strong>财务口径</strong>的计算来说，这是不可接受的。</p>
+<p>所以我习惯先把问题换一种问法：</p>
+<blockquote>
+<p><strong>这件事里，哪些该交给程序（确定性），哪些该交给 AI（模糊/语义），哪些必须留给人（判断）？</strong></p>
+</blockquote>
+<p>这就是我一直在用的一个心智模型——<strong>任务光谱（task spectrum）</strong>。一个需求很少是"纯 AI"或"纯人工"的，它通常是这三段的混合。Builder 的核心功夫，不是会调多牛的模型，而是<strong>能把一个需求准确地切成这三段，再让每一段待在它最该待的地方</strong>。</p>
+<p>下面就用这个框架，把我实习里的这个广告投放月报问题拆开。</p>
+<hr />
+<h2 id="etl">第一步：把"算账"还原成一条 ETL 链路</h2>
+<p>模糊需求的背后，往往藏着一条没有被显式说出来的流程。我做的第一件事，不是写代码，而是<strong>找到那张承载了"隐性知识"的参考 Excel</strong>，把业务同学在手工月报里默认执行的算法逆向出来。</p>
+<p>还原之后，它本质上是一条经典的 <strong>ETL（Extract–Transform–Load）</strong>：</p>
+<ul>
+<li><strong>Extract（抽取）</strong>：从各渠道日报里，取出某个月每个渠道的实际消耗。</li>
+<li><strong>Transform（转换）</strong>：这是最复杂的一段，而且是<strong>分层</strong>的——<ol>
+<li>汇率换算：<code>消耗 × 渠道汇率 ÷ 黑市汇率</code></li>
+<li>扣税：<code>× 税率后系数</code>（渠道承担的 VAT）</li>
+<li>核减：<code>× 核减保留比</code>（和渠道谈下来的折扣）</li>
+</ol>
+</li>
+<li><strong>Load（装载）</strong>：把每个渠道的结果，汇总成"大媒体 / 厂商 / 网盟"三类，输出成一张标准报表。</li>
+</ul>
+<p>把它写成一个统一的式子，对每个渠道都是：</p>
+<div class="language-text highlight"><pre><span></span><code>最终成本(USD) = 原始消耗 × (渠道汇率 / 黑市汇率) × 税率后系数 × 核减保留比
+</code></pre></div>
+<p>我后来用 2 月的试跑数据跑了一遍，才真正感受到这个问题为什么不能靠手工长期维护：一个月的 <code>消耗.xlsx</code> 里能识别出 10 个渠道，其中 9 个渠道月消耗超过 100 美元；同一个月的 TB 数据里有 73 个不同的 <code>media_source</code>。这还只是一个月。如果每个月都靠人记住"这个渠道汇率是多少、那个渠道税率是多少、这个 media_source 归到哪一类"，迟早会出错。</p>
+<p><img alt="TB 数据会按大媒体、厂商、网盟聚合，同时保留每个 media_source 的明细供排查。" src="../assets/etl-tb-detail.png" /></p>
+<p><em>TB 不是只有一个总数。真正有用的是：先按业务口径聚合，再保留可追溯的 source 明细。</em></p>
+<div class="admonition note">
+<p class="admonition-title">拆解的标准：能不能对应到不同的动作</p>
+<p>拆链路不是越细越好。我判断"该不该再拆一层"的标准只有一个：<strong>拆出来的两块，是不是对应着两个不同的处理方式</strong>。汇率、税、核减之所以要分成三层，正是因为它们的"变与不变"完全不同（见下一节）——如果它们永远一起变，那分层就是多余的。</p>
+</div>
+<hr />
+<h2 id="_1">第二步：给每一块找它该待的位置</h2>
+<p>链路清楚之后，把它放到任务光谱上，三段就自然浮现了。</p>
+<h3 id="llm">确定的部分 → 交给程序，不要交给 LLM</h3>
+<p>上面那条公式是<strong>纯确定性</strong>的。同样的输入永远得到同样的输出，对错有唯一标准。这种东西<strong>天生属于程序</strong>：写成几行 Python，既快、又准、又能复算（auditable）。</p>
+<p>这里有个容易踩的坑：很多人会觉得"我都用 AI 了，这点乘除法当然也丢给大模型"。但<strong>确定性计算交给 LLM 是纯粹的退步</strong>——你用一个会幻觉、不可复算、还要花钱花延迟的东西，去替代一个本来 100% 可靠的乘法。</p>
+<h3 id="_2">会变、但有规律的部分 → 做成"带默认值的配置"</h3>
+<p>接下来是真正麻烦的地方：<strong>业务规则会变，而且每个渠道还不一样。</strong></p>
+<ul>
+<li>传音（Transsion）不参与核减，核减保留比固定是 <code>1.0</code>；</li>
+<li>大部分渠道汇率是 <code>1250</code>，但传音是 <code>1355.5</code>；</li>
+<li>税率后系数大多是 <code>1.0</code>，但 COOKE 是 <code>0.925</code>、Inspire 是 <code>0.825</code>；</li>
+<li>还有按美元结算的渠道（kyawake、Grid），它们根本没有汇率折算这一步。</li>
+</ul>
+<p>如果把这些规则<strong>硬编码</strong>进程序，那这工具就是一次性的——下个月汇率一变就得改代码，业务同学根本没法自己维护。</p>
+<p>所以这一段我没有写死，而是抽成了一份<strong>配置（带合理默认值）</strong>：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">black_market_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1650</span><span class="w">     </span><span class="c1"># 系统黑市汇率</span>
+<span class="w">  </span><span class="nt">default_channel_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1250</span><span class="w">  </span><span class="c1"># 默认渠道汇率</span>
+<span class="w">  </span><span class="nt">default_discount_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span><span class="w"> </span><span class="c1"># 默认核减保留比</span>
+
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">传音商店</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">channel_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1355.5</span>
+<span class="w">    </span><span class="nt">discount_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w">       </span><span class="c1"># 传音不核减</span>
+<span class="w">  </span><span class="nt">kyawake美</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">currency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">USD</span>
+<span class="w">    </span><span class="nt">channel_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1650</span><span class="w">        </span><span class="c1"># 美元结算：汇率=黑市汇率，相除即抵消</span>
+</code></pre></div>
+<p>这里有个我挺满意的小设计：<strong>美元结算渠道，我没有给它写一个 <code>if currency == 'USD'</code> 的特例分支，而是把它的渠道汇率默认设成黑市汇率本身。</strong> 这样 <code>1650 / 1650 = 1</code>，汇率那一步自动抵消，公式对所有渠道<strong>保持统一</strong>。少一个分支，就少一处会出 bug、会让人困惑的地方。</p>
+<p>把"会变的"和"不变的"分开，是这一步的灵魂：<strong>不变的逻辑沉在代码里，会变的参数浮在配置上</strong>。</p>
+<h3 id="surface">需要判断的部分 → surface 给人，而不是替人拍板</h3>
+<p>总有一些东西，规则给不出答案，得人来定。比如：</p>
+<ul>
+<li>这个月到底有哪些渠道要算（有些消耗几美元的可以直接忽略）；</li>
+<li>某个渠道这次按什么参数；</li>
+<li>某个媒体到底归到"厂商"还是"网盟"。</li>
+<li>追踪数据要看到哪一天，因为业务经常不是等月底才看，而是要看"截至 2 月 7 日"、"截至今天"这种中间状态。</li>
+</ul>
+<p>我的处理不是让程序（或 AI）替人决定，而是<strong>把这些判断点全部暴露在界面上</strong>：自动识别出消耗超过阈值的渠道，把每个渠道的参数用默认值填好、做成一张<strong>可编辑的表格</strong>，人想改就改、想删就删。</p>
+<p>这正好呼应了那条原则——<strong>AI / 程序的任务不是"替人拍板"，而是减少人要看的东西，并把最值得人看的东西摆到最前面。</strong> 人不用从一百列 Excel 里大海捞针，只需要在一张已经填好默认值的表上，复核几个真正需要他判断的格子。</p>
+<p><img alt="媒体分类不是写死在代码里，而是可以在界面里维护。" src="../assets/etl-media-classification.png" /></p>
+<p><em>大媒体、厂商、网盟的分类有默认值，但业务口径变化时，使用者可以自己改。</em></p>
+<hr />
+<h2 id="tab">后来我又加了一个追踪 Tab：因为业务不会只在月底发生</h2>
+<p>月报解决的是"月底结算"问题，但实习里的真实场景还有另一类需求：<strong>过程中就要知道现在花了多少钱、效果怎么样。</strong></p>
+<p>这件事如果继续用 Excel 会很麻烦。因为追踪不是固定看月底，而是经常会问：</p>
+<ul>
+<li>2 月 1 日到 2 月 7 日花了多少？</li>
+<li>截止今天，大媒体和中小渠道分别消耗多少？</li>
+<li>Google / Facebook / TikTok 的消耗分别在后台表里，TB 又是另一张表，能不能放在一起看？</li>
+<li>如果今天看 2 月 7 日、明天看 2 月 8 日，是不是每次都要重新下载、重新透视、重新拼表？</li>
+</ul>
+<p>所以我在 GUI 里单独做了一个<strong>消耗追踪 Tab</strong>。它一次导入五类文件：中小渠道消耗、Facebook、Google、TikTok、TB。用户只需要选开始日期和截止日期，工具就会在同一个页面里把消耗和首交指标拼出来。</p>
+<p><img alt="追踪页把五类数据源、大媒体换算参数、日期选择放在同一个界面里。" src="../assets/etl-tracking-upload.png" /></p>
+<p><em>追踪 Tab 解决的不是"读一张表"，而是把多个后台和飞书表的数据，在一个可选日期范围里重新对齐。</em></p>
+<p>这一步真正的痛点，不是"读 Excel"本身，而是<strong>不同来源的时间口径不一样</strong>。我用试跑数据跑的时候就发现：</p>
+<table>
+<thead>
+<tr>
+<th>数据源</th>
+<th>日期范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中小渠道消耗</td>
+<td>2023-04-03 到 2026-03-03</td>
+</tr>
+<tr>
+<td>Facebook</td>
+<td>2026-02-01 到 2026-02-28</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>2022-08-01 到 2026-02-28</td>
+</tr>
+<tr>
+<td>TikTok</td>
+<td>2026-02-01 到 2026-02-28</td>
+</tr>
+<tr>
+<td>TB</td>
+<td>2026-02-01 到 2026-02-28</td>
+</tr>
+</tbody>
+</table>
+<p>如果不做校验，一个很隐蔽的问题就会出现：你以为自己在看"2 月 1 日到 2 月 7 日"，但某个数据源其实没有覆盖这个区间，最后结果看起来有数，实际上口径已经歪了。所以我给追踪 Tab 加了日期覆盖提示：某个文件在所选日期里没有数据，或者只覆盖了一部分天数，界面会直接提示出来。</p>
+<p>我也把追踪分成了两种视图：</p>
+<ul>
+<li><strong>明细视图</strong>：看到每个渠道 / source，适合排查问题；</li>
+<li><strong>聚合视图</strong>：汇总成 <code>tiktok/facebook</code>、<code>google</code>、<code>中小媒体+厂商</code>，适合给业务看。</li>
+</ul>
+<p>用 2 月 1 日到 2 月 7 日的试跑数据跑出来，一个聚合结果大概是这样（金额做了四舍五入）：</p>
+<table>
+<thead>
+<tr>
+<th>分组</th>
+<th style="text-align: right;">转换后消耗（USD）</th>
+<th style="text-align: right;">切面首交</th>
+<th style="text-align: right;">T0 首交</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tiktok/facebook</td>
+<td style="text-align: right;">约 78.6K</td>
+<td style="text-align: right;">27,696</td>
+<td style="text-align: right;">13,299</td>
+</tr>
+<tr>
+<td>google</td>
+<td style="text-align: right;">约 347.6K</td>
+<td style="text-align: right;">72,396</td>
+<td style="text-align: right;">27,985</td>
+</tr>
+<tr>
+<td>中小媒体+厂商</td>
+<td style="text-align: right;">约 53.0K</td>
+<td style="text-align: right;">50,699</td>
+<td style="text-align: right;">20,488</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="明细视图保留每个渠道/source 的消耗和首交表现，便于业务同学排查具体问题。" src="../assets/etl-tracking-detail.png" /></p>
+<p><em>聚合视图适合汇报，明细视图适合排查。两者切换，才是真正贴合业务使用的形态。</em></p>
+<p>这里面还藏着一个产品细节：<strong>分类必须可配置</strong>。TB 里的 <code>media_source</code> 不是天然就知道自己属于"大媒体"、"厂商"还是"网盟"。比如 <code>facebook</code>、<code>google</code>、<code>tiktokglobal_int</code> 是大媒体；传音、小米是厂商；剩下的大多归网盟。这个判断有默认值，但不能写死，因为业务口径可能会变。所以我把分类也做成了配置区：默认填好，业务同学需要时可以改。</p>
+<p>这就是我对这个 Tab 的理解：它不是一个"多读几张表"的功能，而是在把一个动态的业务问题产品化——<strong>日期是可选的，分类是可调的，参数是可改的，口径有校验，结果能在明细和聚合之间切换。</strong></p>
+<hr />
+<h2 id="ai-llm">反直觉的结论：最关键的 AI 决策，是把 LLM 挡在运行时之外</h2>
+<p>走到这里，整个工具里<strong>运行时没有一行调用大模型</strong>。它就是"程序做确定性计算 + 配置承载可变规则 + 人做最终复核"。</p>
+<p>那这还算"AI 工具"吗？</p>
+<p>我觉得这恰恰是最值得讲的一点。判断<strong>要不要在运行时用 LLM</strong>，我用三个维度：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>这个问题的答案</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任务是语义的，还是确定性的？</td>
+<td>纯确定性（乘除法）</td>
+<td>不需要 LLM</td>
+</tr>
+<tr>
+<td>算错了代价多大？</td>
+<td>财务数据，错了直接亏钱</td>
+<td>不能容忍幻觉</td>
+</tr>
+<tr>
+<td>对错能否低成本验证？</td>
+<td>能，有唯一正确答案</td>
+<td>更该用确定性程序</td>
+</tr>
+</tbody>
+</table>
+<p>三个维度全部指向"别在运行时用 LLM"。<strong>明明能用 AI，却判断出这里不该用——这本身就是一次 AI 能力边界的判断，而且我认为它比"硬塞一个大模型进去"要成熟得多。</strong></p>
+<p>那 AI 在哪？<strong>AI 的角色是 builder，不是 runtime。</strong> 真正用大模型的地方，是<strong>构建这个工具的过程本身</strong>：把实习里那个模糊的业务需求、那张缠绕的 Excel、以及不断补充的渠道规则，一步步翻译成结构化的代码、配置和界面。它是"翻译官"和"施工队"，不是"算账先生"。</p>
+<blockquote>
+<p>区分 <strong>build-time AI</strong> 和 <strong>run-time AI</strong>，是我从这个小项目里收获最大的一条。很多"AI 落地"之所以不稳，是因为把本该在 build-time 用一次的 AI，错放到了每次运行都要赌一把的 run-time。</p>
+</blockquote>
+<hr />
+<h2 id="_3">怎么证明它算对了：哪怕是确定性工具，也需要"标准答案"</h2>
+<p>工具能跑 ≠ 工具算对。所以最后一步，是<strong>评测</strong>。</p>
+<p>确定性工具的评测，反而比 AI 系统更干净：它有<strong>唯一正确答案</strong>。我手里正好有一份以前手工计算、且已被业务采用的结果表，于是它就成了我的 <strong>golden dataset（标准答案集）</strong>。我让工具跑同一个月的数据，把输出和这张表<strong>逐格比对</strong>。</p>
+<ul>
+<li>完全对得上的，说明逻辑还原正确；</li>
+<li>对不上的，要么是我哪一层公式错了，要么是某个渠道的特例没覆盖到——每一处不一致，都是一条要回去修的线索。</li>
+</ul>
+<p>这件事让我意识到：<strong>"我觉得它对" 和 "我能用一张标准答案证明它对"，是两个完全不同的工程成熟度。</strong> 哪怕是最简单的确定性工具，没有这一步，你都不敢把它交给别人用。</p>
+<hr />
+<h2 id="_4">最后一公里：让不懂代码的人也能用</h2>
+<p>工具自己能跑，离"别人能用"还差很远。实习里的真实使用者是业务同学，不一定懂代码，让他们去敲 <code>streamlit run</code> 是不现实的。</p>
+<p>所以我又补了两段，把"最后一公里"铺平：</p>
+<ul>
+<li>把命令行版本升级成一个<strong>网页界面</strong>（拖文件、点按钮、下载报表），不碰任何代码；</li>
+<li>写了一个 macOS 上<strong>双击即可运行</strong>的启动脚本，自动建环境、装依赖、起服务、开浏览器——第一次用的人什么都不用配置。</li>
+</ul>
+<p>这一步没什么技术含量，但它是"一个 demo"和"一个真的有人在用的产品"之间的分界线。<strong>能不能被一个完全不懂技术的人独立用起来，是检验落地的最硬标准。</strong></p>
+<hr />
+<h2 id="_5">收口：一个可复用的判断框架</h2>
+<p>回头看，这个小工具真正可复用的，不是那几行汇率公式，而是面对"能不能用 AI 做 X"时的那套拆解动作：</p>
+<ol>
+<li><strong>先把模糊需求还原成一条清晰的链路</strong>（这里是 ETL）；</li>
+<li><strong>把链路铺到任务光谱上</strong>：确定的归程序，会变的归配置，要判断的 surface 给人；</li>
+<li><strong>判断 LLM 该在 build-time 还是 run-time</strong>——很多时候，最好的答案是"运行时根本不用"；</li>
+<li><strong>用一份标准答案证明它真的对</strong>；</li>
+<li><strong>再花力气铺平最后一公里</strong>，让不懂技术的人也能独立用起来。</li>
+</ol>
+<p>一句话总结，还是那句老话，但我现在更信它了：</p>
+<blockquote>
+<p><strong>确定的自动化，不确定的智能化，关键判断留给人。</strong></p>
+</blockquote>
+<p>而 builder 的价值，就在于<strong>准确地划出这三者的边界</strong>。</p>
+<hr />
+<p><em>这是我第一个真正用在实习工作场景里的 AI build。写下来，是为了复盘一次把模糊业务需求拆成可交付 AI-assisted workflow 的过程。</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../ai-product-system/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 用多 Agent 做一个 AI 反思产品">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                用多 Agent 做一个 AI 反思产品
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../about/" class="md-footer__link md-footer__link--next" aria-label="下一页: 关于我">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                关于我
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/dev-nocache.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
