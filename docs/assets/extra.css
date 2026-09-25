@@ -564,3 +564,20 @@
   .great-switch:not(#great-step-0):checked ~ .great-side { display: block; }
   .great-node { min-height: 4rem; }
 }
+
+/* Feature Causal：让七步链上的因果连接在宽窄屏都可读 */
+.feature-explorer .great-connector {
+  height: auto;
+  min-height: 1.55rem;
+  padding: 0.16rem 0.25rem;
+  line-height: 1.35;
+  font-size: 0.62rem;
+  text-align: center;
+}
+.feature-explorer .great-axis { overflow-x: auto; }
+.feature-explorer .great-axis div { min-width: 6.2rem; }
+@media screen and (max-width: 640px) {
+  .feature-explorer .great-axis { flex-direction: column; overflow: visible; }
+  .feature-explorer .great-axis div { min-width: 0; }
+  .feature-explorer .great-axis i { transform: rotate(90deg); }
+}

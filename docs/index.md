@@ -112,6 +112,22 @@ hide:
 
 <div class="project-card" markdown>
 
+### [Super Like：从会话质量到首次使用验证](projects/feature-causal.md)
+
+<p class="card-keywords">使用分布 · 实验分母 · 因果判断</p>
+
+先从已形成 Match 的聊天质量与会员零使用分布找到首次使用方向，再与同事、业务对齐主分析分母，避免用亮眼的条件指标误判整体策略增量。
+
+<p class="card-cta" markdown>
+
+[查看项目 →](projects/feature-causal.md)
+
+</p>
+
+</div>
+
+<div class="project-card" markdown>
+
 ### 📱 [ANR 因果推断：当 "+15%" 只是海市蜃楼](projects/anr-optimization.md)
 
 <span class="tag">DID</span> <span class="tag">SQL</span> <span class="tag">准实验</span>
