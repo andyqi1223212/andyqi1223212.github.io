@@ -1,178 +1,172 @@
 ---
 hide:
   - navigation
+  - toc
 ---
 
-<div class="hero-section" markdown>
+<div class="portfolio-home" markdown>
 
-# 👋 你好，我是齐昊宇
+<div class="portfolio-hero" markdown>
 
-<p class="hero-tagline">数据科学 · 增长策略 · AI-native</p>
+<p class="portfolio-eyebrow">数据分析 / 数据科学 · 作品集</p>
 
-<p class="text-muted">用数据穿透噪音，做正确的事，构建复利的系统 📈</p>
-<p class="text-muted">热情的 AI Builder 🧑‍💻，具备完整的项目落地经验</p>
+# 齐昊宇
 
-<div class="hero-actions" markdown>
+<p class="portfolio-hero__lead">从业务信号出发，找到值得验证的判断。</p>
 
-[查看项目 →](projects/index.md){ .md-button .md-button--primary }
-[阅读 Blog](blog/index.md){ .md-button }
-[关于我](about.md){ .md-button }
+<p class="portfolio-hero__detail">北交大信管在读。用 SQL、实验与建模分析增长和用户问题；每个案例提供数据、判断与局限。</p>
 
-</div>
+<div class="portfolio-hero__actions" markdown>
 
-</div>
-
----
-
-<div class="page-section about-snippet" markdown>
-
-## 🧑‍💻 关于我
-
-北交大信管大三，正在寻找**数据科学、数据分析或增长策略**方向的实习。
-
-我习惯用系统思维构建可复用的分析框架，用 AI 加速「问题 → 假设 → 验证」的闭环，并把统计结论翻译成可落地的商业语言。
-
-[阅读完整介绍 →](about.md)
-
-</div>
-
----
-
-<div class="page-section" markdown>
-
-## ✨ 核心能力
-
-<div class="capability-list" markdown>
-
-<div class="capability-item" markdown>
-
-**数学基础扎实**
-
-掌握机器学习与实验方法的心智/数学原理，拒绝黑盒经验。
-
-</div>
-
-<div class="capability-item" markdown>
-
-**学习迭代能力**
-
-能够快速掌握工作流，极速穿透业务整体背景。
-
-</div>
-
-<div class="capability-item" markdown>
-
-**低阻力型交付**
-
-保持无 Ego 的沟通状态与纯粹的结果导向；视失败为认知迭代的样本，用成长型心态推动跨团队协作。
+[看代表案例 ↓](#selected-work){ .md-button .md-button--primary }
+[联系我](mailto:1263046508@QQ.COM){ .md-button }
 
 </div>
 
 </div>
 
-</div>
+<div class="portfolio-section-head" markdown>
 
----
-
-<div class="page-section about-snippet" markdown>
-
-## 📝 最新文章
-
-### [用多 Agent 做一个 AI 反思产品：我的技术思考](blog/ai-product-system.md)
-
-记录我做一个多 Agent AI 反思产品时，对上下文组装、Router、评测和安全入库这些技术问题的思考。
-
-[阅读文章 →](blog/ai-product-system.md)
+## 精选案例 {#selected-work}
 
 </div>
 
----
+<div class="case-grid" markdown>
 
-<div class="page-section" markdown>
+<div class="case-card" markdown>
 
-## 🚀 精选项目
+[![Super Like：验证首次使用策略的案例封面](assets/images/cover-feature-causal.svg)](projects/feature-causal.md){ .case-cover-link }
 
-<div class="project-grid" markdown>
+<div class="case-card__body" markdown>
 
-<div class="project-card" markdown>
+<p class="case-card__meta">01 / 实验设计 · 因果判断</p>
 
-### [高价值用户识别：从地区规则到双目标评分](projects/is-great.md)
+### [Super Like：验证首次使用策略](projects/feature-causal.md)
 
-<p class="card-keywords">SQL 规则审计 · 覆盖与单位价值 · 双目标评分</p>
+<p class="case-card__summary">核心动作：分析使用分布，设计首次使用实验，锁定完整目标人群。</p>
 
-`is_great` 原来按地区标记高价值用户。香港分析将候选规则的覆盖率从 27.45% 扩到 46.94%；随后把旧规则留作基线，分别预测未来互动与付费，并用分组误差修正学历特征。
+<p class="case-card__signal">关键判断：Match 后质量只是线索；决策看全体目标用户的深聊增量。</p>
 
-<p class="card-cta" markdown>
+<p class="case-card__cta" markdown>
 
-[查看项目 →](projects/is-great.md)
+[查看案例 →](projects/feature-causal.md)
 
 </p>
 
 </div>
 
-<div class="project-card" markdown>
+</div>
 
-### [Super Like：从会话质量到首次使用验证](projects/feature-causal.md)
+<div class="case-card" markdown>
 
-<p class="card-keywords">使用分布 · 实验分母 · 因果判断</p>
+[![高价值用户：双目标评分的案例封面](assets/images/cover-is-great.svg)](projects/is-great.md){ .case-cover-link }
 
-先从已形成 Match 的聊天质量与会员零使用分布找到首次使用方向，再与同事、业务对齐主分析分母，避免用亮眼的条件指标误判整体策略增量。
+<div class="case-card__body" markdown>
 
-<p class="card-cta" markdown>
+<p class="case-card__meta">02 / 规则审计 · 预测建模</p>
 
-[查看项目 →](projects/feature-causal.md)
+### [高价值用户：双目标评分](projects/is-great.md)
+
+<p class="case-card__summary">核心动作：审计地区规则，分别建模预测未来互动与付费。</p>
+
+<p class="case-card__signal">关键判断：同地区用户仍有差异；互动与付费需要分别排序。</p>
+
+<p class="case-card__cta" markdown>
+
+[查看案例 →](projects/is-great.md)
 
 </p>
 
 </div>
 
-<div class="project-card" markdown>
+</div>
 
-### 📱 [ANR 因果推断：当 "+15%" 只是海市蜃楼](projects/anr-optimization.md)
+<div class="case-card" markdown>
 
-<span class="tag">DID</span> <span class="tag">SQL</span> <span class="tag">准实验</span>
+[![ANR 优化：用 DID 估计效果的案例封面](assets/images/cover-anr-did.svg)](projects/anr-optimization.md){ .case-cover-link }
 
-用 DID 证明 +15% GTV 中约 90% 是发薪日季节性效应，真实因果增量仅 +1.6%。
+<div class="case-card__body" markdown>
 
-<p class="card-cta" markdown>
+<p class="case-card__meta">03 / 准实验 · 商业权衡</p>
 
-[查看项目 →](projects/anr-optimization.md)
+### [ANR 优化：用 DID 估计效果](projects/anr-optimization.md)
+
+<p class="case-card__summary">核心动作：以未受影响设备为对照，用 DID 估计广告位调整的效果。</p>
+
+<p class="case-card__signal">关键判断：GTV 观察增长 +15.1%，DID 估计约 +1.6%；再权衡广告点击损失。</p>
+
+<p class="case-card__cta" markdown>
+
+[查看案例 →](projects/anr-optimization.md)
 
 </p>
 
 </div>
 
-<div class="project-card" markdown>
-
-### 📈 [Growth Accounting：拆解增长的「漏水桶」](projects/growth-accounting.md)
-
-<span class="tag">用户增长</span> <span class="tag">Overlap Window</span>
-
-主动引入 Growth Accounting，用 Overlap Window 将 MAU 拆解为四分量，定位渠道漏水点。
-
-<p class="card-cta" markdown>
-
-[查看项目 →](projects/growth-accounting.md)
-
-</p>
+</div>
 
 </div>
 
-<div class="project-card" markdown>
+<p class="portfolio-more" markdown>
 
-### 🛡️ [广告渠道反作弊：36 个子渠道的同一种异常](projects/ad-channel-analysis.md)
-
-<span class="tag">反作弊</span> <span class="tag">Python EDA</span>
-
-四维度 + 四平台交叉验证，揭示网盟 CTIT/ITET 异常，将 UAC 降低 20%。
-
-<p class="card-cta" markdown>
-
-[查看项目 →](projects/ad-channel-analysis.md)
+[查看全部项目 →](projects/index.md)
 
 </p>
 
+<div class="portfolio-divider"></div>
+
+<div class="portfolio-section-head" markdown>
+
+## 更多项目
+
+<p>增长拆解和渠道反作弊，也是我在实习中处理过的业务问题。</p>
+
 </div>
+
+<div class="portfolio-secondary-grid" markdown>
+
+<div class="portfolio-secondary-card" markdown>
+
+<span>04 / 用户增长</span>
+
+### [Growth Accounting：拆解 MAU 的漏水桶](projects/growth-accounting.md)
+
+用 Overlap Window 区分新增、回流、留存与流失，定位买量后的留存缺口。
+
+</div>
+
+<div class="portfolio-secondary-card" markdown>
+
+<span>05 / 渠道质量</span>
+
+### [广告渠道反作弊：36 个子渠道的同一种异常](projects/ad-channel-analysis.md)
+
+从 CTIT / ITET 异常入手，跨平台校准，再拆解渠道转化漏斗。
+
+</div>
+
+</div>
+
+<div class="portfolio-divider"></div>
+
+<div class="portfolio-section-head" markdown>
+
+## 文章与工具
+
+<p>项目之外的做法与反思，放在这里继续展开。</p>
+
+</div>
+
+<div class="portfolio-notes" markdown>
+
+- [从模糊业务需求到 AI 小工具](blog/from-vague-need-to-ai-tool.md) · 渠道核算流程、界面与代码实现
+- [用多 Agent 做一个 AI 反思产品](blog/ai-product-system.md) · 上下文组装、路由与评测
+
+</div>
+
+<div class="portfolio-contact" markdown>
+
+**想了解我的背景或讨论案例？** [查看背景与联系方式 →](about.md)
 
 </div>
 

@@ -1,85 +1,125 @@
-# 🚀 项目经历
+---
+hide:
+  - navigation
+  - toc
+---
 
-<div class="project-grid" markdown>
+<div class="portfolio-list" markdown>
 
-<div class="project-card" markdown>
+<p class="portfolio-eyebrow">SELECTED WORK</p>
 
-### [高价值用户识别：从地区规则到双目标评分](is-great.md)
+# 项目案例
 
-<p class="card-keywords">SQL 规则审计 · 覆盖与单位价值 · 双目标评分</p>
+<p class="portfolio-intro">每个案例围绕一个具体判断：先交代问题和结论，再展开证据、方法与局限。</p>
 
-`is_great` 原来按地区标记高价值用户。香港分析将候选规则的覆盖率从 27.45% 扩到 46.94%；随后把旧规则留作基线，分别预测未来互动与付费，并用分组误差修正学历特征。
+<div class="case-grid" markdown>
 
-<p class="card-cta" markdown>
+<div class="case-card" markdown>
 
-[查看项目 →](is-great.md)
+[![Super Like：验证首次使用策略的案例封面](../assets/images/cover-feature-causal.svg)](feature-causal.md){ .case-cover-link }
 
-</p>
+<div class="case-card__body" markdown>
 
-</div>
+<p class="case-card__meta">01 / 实验设计 · 因果判断</p>
 
-<div class="project-card" markdown>
+### [Super Like：验证首次使用策略](feature-causal.md)
 
-### [Super Like：从会话质量到首次使用验证](feature-causal.md)
+<p class="case-card__summary">核心动作：分析使用分布，设计首次使用实验，锁定完整目标人群。</p>
 
-<p class="card-keywords">使用分布 · 实验分母 · 因果判断</p>
+<p class="case-card__signal">关键判断：Match 后质量只是线索；决策看全体目标用户的深聊增量。</p>
 
-先从已形成 Match 的聊天质量与会员零使用分布找到首次使用方向，再与同事、业务对齐主分析分母，避免用亮眼的条件指标误判整体策略增量。
+<p class="case-card__cta" markdown>
 
-<p class="card-cta" markdown>
-
-[查看项目 →](feature-causal.md)
-
-</p>
-
-</div>
-
-<div class="project-card" markdown>
-
-### 📱 [ANR 因果推断：当 "+15%" 只是海市蜃楼](anr-optimization.md)
-
-<p class="card-keywords">Difference-in-Differences · 准实验 · 发薪日混淆</p>
-
-策略全量上线无法 A/B，用 DID 以 >2G 设备为对照组，剥离季节性后证明 GTV 真实因果增量仅 +1.6%（而非 +15%）。
-
-<p class="card-cta" markdown>
-
-[查看项目 →](anr-optimization.md)
+[查看案例 →](feature-causal.md)
 
 </p>
 
 </div>
 
-<div class="project-card" markdown>
+</div>
 
-### 📈 [Growth Accounting：拆解增长的「漏水桶」](growth-accounting.md)
+<div class="case-card" markdown>
 
-<p class="card-keywords">Growth Accounting · Overlap Window · MAU 拆解</p>
+[![高价值用户：双目标评分的案例封面](../assets/images/cover-is-great.svg)](is-great.md){ .case-cover-link }
 
-在 MAU 停滞但买量不停的背景下，用 SQL 窗口函数构建 Overlap Window，将 MAU 拆解为四分量并定位网盟漏水点。
+<div class="case-card__body" markdown>
 
-<p class="card-cta" markdown>
+<p class="case-card__meta">02 / 规则审计 · 预测建模</p>
 
-[查看项目 →](growth-accounting.md)
+### [高价值用户：双目标评分](is-great.md)
+
+<p class="case-card__summary">核心动作：审计地区规则，分别建模预测未来互动与付费。</p>
+
+<p class="case-card__signal">关键判断：同地区用户仍有差异；互动与付费需要分别排序。</p>
+
+<p class="case-card__cta" markdown>
+
+[查看案例 →](is-great.md)
 
 </p>
 
 </div>
 
-<div class="project-card" markdown>
+</div>
 
-### 🛡️ [广告渠道反作弊：36 个子渠道的同一种异常](ad-channel-analysis.md)
+<div class="case-card" markdown>
 
-<p class="card-keywords">Click Flooding · CTIT/ITET · 四平台基线</p>
+[![ANR 优化：用 DID 估计效果的案例封面](../assets/images/cover-anr-did.svg)](anr-optimization.md){ .case-cover-link }
 
-从 AppsFlyer 阶梯状分布发现异常，四维度 EDA + 多平台校准 + 漏斗分解，产出反作弊规则，网盟 UAC 降低 20%。
+<div class="case-card__body" markdown>
 
-<p class="card-cta" markdown>
+<p class="case-card__meta">03 / 准实验 · 商业权衡</p>
 
-[查看项目 →](ad-channel-analysis.md)
+### [ANR 优化：用 DID 估计效果](anr-optimization.md)
+
+<p class="case-card__summary">核心动作：以未受影响设备为对照，用 DID 估计广告位调整的效果。</p>
+
+<p class="case-card__signal">关键判断：GTV 观察增长 +15.1%，DID 估计约 +1.6%；再权衡广告点击损失。</p>
+
+<p class="case-card__cta" markdown>
+
+[查看案例 →](anr-optimization.md)
 
 </p>
 
 </div>
+
+</div>
+
+</div>
+
+<div class="portfolio-divider"></div>
+
+## 更多案例
+
+<div class="portfolio-secondary-grid" markdown>
+
+<div class="portfolio-secondary-card" markdown>
+
+<span>04 / 用户增长</span>
+
+### [Growth Accounting：拆解 MAU 的漏水桶](growth-accounting.md)
+
+在 MAU 停滞、买量持续的背景下，按用户状态拆解增长并定位漏水环节。
+
+</div>
+
+<div class="portfolio-secondary-card" markdown>
+
+<span>05 / 渠道质量</span>
+
+### [广告渠道反作弊：36 个子渠道的同一种异常](ad-channel-analysis.md)
+
+从归因时间异常出发，结合跨平台基线与漏斗分析评估渠道质量。
+
+</div>
+
+</div>
+
+<p class="portfolio-more" markdown>
+
+[阅读文章与工具复盘 →](../blog/index.md)
+
+</p>
 
 </div>

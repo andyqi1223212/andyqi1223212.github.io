@@ -17,9 +17,18 @@ theme:
   name: material
   language: zh
   palette:
-    scheme: slate
-    primary: black
-    accent: grey
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - scheme: slate
+      primary: indigo
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
   font:
     text: Inter
     code: JetBrains Mono
@@ -85,15 +94,15 @@ plugins:
 
 nav:
   - 首页: index.md
-  - 项目经历:
+  - 项目案例:
       - 总览: projects/index.md
-      - 高价值用户识别：规则与双目标评分: projects/is-great.md
       - Super Like：从会话质量到首次使用验证: projects/feature-causal.md
+      - 高价值用户识别：规则与双目标评分: projects/is-great.md
       - ANR 性能优化与实验设计: projects/anr-optimization.md
       - Growth Accounting Framework: projects/growth-accounting.md
       - 广告渠道特征分析: projects/ad-channel-analysis.md
-  - Blog:
+  - 文章与工具:
       - 总览: blog/index.md
       - 用多 Agent 做一个 AI 反思产品: blog/ai-product-system.md
       - 从实习里的模糊业务需求到 AI 小工具: blog/from-vague-need-to-ai-tool.md
-  - 关于我: about.md
+  - 背景与联系: about.md

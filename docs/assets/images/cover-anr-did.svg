@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">ANR 策略因果估计</title><desc id="d">GTV 观察增长约 15%，DID 估计策略增量约 1.6%。</desc>
+<rect width="640" height="360" fill="#faeee7"/><path d="M0 286 C110 250 198 294 300 230 S516 210 640 120" fill="none" stroke="#ebad87" stroke-width="60" opacity=".18"/>
+<rect x="36" y="36" width="153" height="28" rx="14" fill="#9e4d31"/><text x="53" y="56" fill="#fff" font-size="15" font-family="Arial, sans-serif" letter-spacing="2">CAUSAL IMPACT</text>
+<text x="37" y="144" fill="#9c553a" font-size="48" font-weight="700" font-family="Arial, sans-serif">+15.1%</text><text x="36" y="177" fill="#986b5b" font-size="20" font-family="Arial, sans-serif">观察到的 GTV 增长</text>
+<path d="M332 128H399" stroke="#c77e5e" stroke-width="5"/><path d="m390 117 18 11-18 11" fill="none" stroke="#c77e5e" stroke-width="5"/>
+<text x="425" y="144" fill="#752e1e" font-size="53" font-weight="700" font-family="Arial, sans-serif">+1.6%</text><text x="425" y="177" fill="#915243" font-size="20" font-family="Arial, sans-serif">DID 估计</text>
+<rect x="38" y="235" width="564" height="60" rx="11" fill="#fff" stroke="#e6c4b5"/><text x="62" y="273" fill="#7c4634" font-size="21" font-family="Arial, sans-serif">把共同时间变化从策略效果中分离</text>
+</svg>

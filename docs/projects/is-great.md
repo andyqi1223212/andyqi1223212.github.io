@@ -9,8 +9,8 @@
 点主图中的一步，右侧就展开这一环的**问题、数据和操作**。主图始终留在视野里。
 
 <div class="great-explorer" role="group" aria-label="高价值用户识别决策链">
-  <input class="great-switch" type="radio" name="great-step" id="great-step-0">
-  <input class="great-switch" type="radio" name="great-step" id="great-step-1" checked>
+  <input class="great-switch" type="radio" name="great-step" id="great-step-0" checked>
+  <input class="great-switch" type="radio" name="great-step" id="great-step-1">
   <input class="great-switch" type="radio" name="great-step" id="great-step-2">
   <input class="great-switch" type="radio" name="great-step" id="great-step-3">
   <input class="great-switch" type="radio" name="great-step" id="great-step-4">

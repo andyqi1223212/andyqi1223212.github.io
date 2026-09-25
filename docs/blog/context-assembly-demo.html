@@ -42,6 +42,20 @@
   .matrix th{background:var(--panel2);color:var(--muted)}
   .hl{background:#1a1608;color:var(--route);font-weight:700}
   @media(max-width:820px){.pipe{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+
+  html[data-theme="light"]{
+    --bg:#f7f8fb; --panel:#fff; --panel2:#edf3fb; --line:#d9e3ef;
+    --ink:#20324d; --muted:#52637b; --dim:#64748a;
+    --py:#167557; --llm:#6a52aa; --route:#996600; --ctx:#315bc2;
+  }
+  html[data-theme="light"] button.on{background:#fff5d8}
+  html[data-theme="light"] .py{background:#e3f5ec;color:#146345;border-color:#b4ddc7}
+  html[data-theme="light"] .llm{background:#eee9ff;color:#5a3cab;border-color:#cfc4f5}
+  html[data-theme="light"] .block{background:#f6f9fd}
+  html[data-theme="light"] pre{background:#eef3f9;border-color:#d7e1ee;color:#31405a}
+  html[data-theme="light"] .out{border-color:#b4ddc7;background:#e8f7ef}
+  html[data-theme="light"] .hl{background:#fff4d6;color:#835b00}
+  html[data-theme="light"] hr{border-color:#d9e3ef!important}
 </style>
 </head>
 <body>
@@ -74,6 +88,25 @@
   </div>
 </div>
 <script>
+
+function syncTheme(){
+  try {
+    const parentScheme=window.parent!==window
+      ? window.parent.document.body.getAttribute("data-md-color-scheme")
+      : null;
+    document.documentElement.dataset.theme=parentScheme==="slate" ? "dark" : "light";
+  } catch {
+    document.documentElement.dataset.theme=window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+}
+syncTheme();
+try {
+  if(window.parent!==window){
+    new MutationObserver(syncTheme).observe(window.parent.document.body,{
+      attributes:true,attributeFilter:["data-md-color-scheme"]
+    });
+  }
+} catch {}
 const stages=[
   {id:"router",name:"Router",engine:"Python",why:"确定性路由器：先用 trigram + 阈值召回候选，不让 LLM 从空白处拍板。",
     blocks:["question_md：剥掉 AI response，只保留用户问题","chains.json：每张旧卡的 title + trigger + questions","thresholds：update_high=0.40 / update_medium=0.13 / meta_min_cross_axis=0.10"],
