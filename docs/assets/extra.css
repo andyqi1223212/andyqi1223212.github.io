@@ -440,3 +440,127 @@
     height: 860px;
   }
 }
+
+/* is_great：左侧决策链与右侧按需展开的证据面板 */
+.great-explorer {
+  display: grid;
+  grid-template-columns: minmax(215px, 0.9fr) minmax(0, 1.35fr);
+  gap: 1rem;
+  align-items: start;
+  margin: 1.25rem 0 2rem;
+}
+
+.great-explorer .great-switch {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.great-map { min-width: 0; }
+
+.great-node {
+  display: grid;
+  grid-template-columns: 1.7rem minmax(0, 1fr) 0.6rem;
+  gap: 0.45rem;
+  align-items: center;
+  min-height: 4.5rem;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid #38536a;
+  border-radius: 10px;
+  background: #122a44;
+  color: #eaf3fb;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.great-node:hover { background: #1a3b5d; transform: translateX(2px); }
+.great-node strong { display: block; font-size: 0.85rem; line-height: 1.35; }
+.great-node small { display: block; margin-top: 0.2rem; color: #b8cad8; font-size: 0.7rem; line-height: 1.35; }
+.great-num { color: #8ebbd9; font: 700 0.7rem/1.2 "JetBrains Mono", monospace; }
+.great-chevron { color: #aacce0; font-size: 1.2rem; }
+.great-connector { display: block; height: 1.35rem; color: #7d96aa; text-align: center; line-height: 1.35rem; }
+
+#great-step-1:checked ~ .great-map label[for="great-step-1"],
+#great-step-2:checked ~ .great-map label[for="great-step-2"],
+#great-step-3:checked ~ .great-map label[for="great-step-3"],
+#great-step-4:checked ~ .great-map label[for="great-step-4"],
+#great-step-5:checked ~ .great-map label[for="great-step-5"],
+#great-step-6:checked ~ .great-map label[for="great-step-6"],
+#great-step-7:checked ~ .great-map label[for="great-step-7"] {
+  background: #23517b;
+  border-color: #95c9ec;
+  box-shadow: 0 0 0 2px rgba(149, 201, 236, 0.12);
+}
+
+.great-side {
+  position: sticky;
+  top: 5rem;
+  min-width: 0;
+  max-height: calc(100vh - 6rem);
+  overflow: auto;
+  border: 1px solid #2c4358;
+  border-radius: 12px;
+  background: #0c1825;
+  scrollbar-width: thin;
+}
+
+.great-empty,
+.great-panel { padding: 1.05rem 1.15rem; }
+.great-empty { min-height: 12rem; color: #b8cad8; }
+.great-empty p { margin: 0.6rem 0 0; }
+.great-panel { display: none; }
+
+.great-switch:not(#great-step-0):checked ~ .great-side .great-empty { display: none; }
+#great-step-1:checked ~ .great-side .great-panel-1,
+#great-step-2:checked ~ .great-side .great-panel-2,
+#great-step-3:checked ~ .great-side .great-panel-3,
+#great-step-4:checked ~ .great-side .great-panel-4,
+#great-step-5:checked ~ .great-side .great-panel-5,
+#great-step-6:checked ~ .great-side .great-panel-6,
+#great-step-7:checked ~ .great-side .great-panel-7 { display: block; }
+
+.great-panel-top { display: flex; justify-content: space-between; align-items: center; color: #8ebbd9; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
+.great-panel-top label { width: 1.7rem; height: 1.7rem; border-radius: 5px; color: #dceaf4; text-align: center; font-size: 1.2rem; line-height: 1.7rem; cursor: pointer; }
+.great-panel-top label:hover { background: #213a50; }
+.great-panel h3 { margin: 0.45rem 0 0.65rem; color: #f2f7fb; font-size: 1.05rem; }
+.great-panel p { margin: 0.65rem 0; color: #d1dce5; font-size: 0.79rem; line-height: 1.65; }
+.great-panel .great-takeaway { padding: 0.55rem 0.7rem; border-left: 2px solid #91c4e5; background: #142d45; color: #f1f7fa; }
+.great-table-wrap { overflow-x: auto; }
+.great-panel table { width: 100%; min-width: 0; margin: 0.65rem 0; font-size: 0.73rem; }
+.great-panel th, .great-panel td { padding: 0.35rem 0.4rem; }
+.great-panel details { margin-top: 0.85rem; padding: 0.2rem 0.65rem; border: 1px solid #36556e; border-radius: 7px; }
+.great-panel summary { color: #aed9f2; font-size: 0.76rem; cursor: pointer; }
+.great-panel pre { overflow-x: auto; padding: 0.55rem; border-radius: 6px; background: #08111b; font-size: 0.67rem; line-height: 1.5; }
+.great-samples { display: grid; gap: 0.5rem; margin: 0.65rem 0; }
+.great-samples > div { display: grid; gap: 0.12rem; padding: 0.55rem 0.65rem; border: 1px solid #36556e; border-radius: 7px; background: #102337; font-size: 0.7rem; line-height: 1.45; }
+.great-samples b { color: #add9f0; }
+.great-samples strong { color: #e7f4fb; }
+
+.great-fork { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.8rem 0; padding: 0.75rem; border-radius: 8px; background: #152f49; font-size: 0.78rem; }
+.great-fork > span { font-weight: 700; }
+.great-fork > div { display: grid; gap: 0.25rem; padding-left: 0.65rem; color: #c5dfef; }
+.great-axis { display: flex; align-items: stretch; gap: 0.2rem; margin: 0.8rem 0; }
+.great-axis div { flex: 1; min-width: 0; padding: 0.55rem 0.35rem; border: 1px solid #476684; border-radius: 6px; background: #173b66; text-align: center; }
+.great-axis div:last-child { background: #174f4c; border-color: #78b9ac; }
+.great-axis b { display: block; font-size: 0.76rem; }
+.great-axis span { display: block; margin-top: 0.2rem; font-size: 0.62rem; line-height: 1.35; }
+.great-axis i { align-self: center; color: #8fb1ca; font-style: normal; }
+.great-ladder { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem; margin: 0.75rem 0; font-size: 0.72rem; }
+.great-ladder span:nth-child(odd) { padding: 0.3rem 0.4rem; border-radius: 5px; background: #173b66; }
+.great-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+.great-metrics div { padding: 0.65rem; border: 1px solid #36556e; border-radius: 7px; }
+.great-metrics small, .great-metrics strong, .great-metrics span { display: block; }
+.great-metrics small { color: #a8c6da; font-size: 0.65rem; }
+.great-metrics strong { color: #f1f8fc; font-size: 0.95rem; }
+.great-metrics span { color: #a9becd; font-size: 0.62rem; }
+.great-diagnostic { display: grid; gap: 0.35rem; margin: 0.8rem 0; text-align: center; font-size: 0.73rem; }
+.great-diagnostic span { padding: 0.45rem; border: 1px solid #416486; border-radius: 6px; background: #173b66; }
+.great-diagnostic b { color: #9fcbe8; font-size: 0.66rem; }
+
+@media screen and (max-width: 640px) {
+  .great-explorer { display: block; }
+  .great-side { display: none; position: fixed; z-index: 10; top: auto; right: 0.55rem; bottom: 0.55rem; left: 0.55rem; max-height: min(72vh, 44rem); box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.65); }
+  .great-switch:not(#great-step-0):checked ~ .great-side { display: block; }
+  .great-node { min-height: 4rem; }
+}

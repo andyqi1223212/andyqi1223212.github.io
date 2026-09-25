@@ -96,6 +96,22 @@ hide:
 
 <div class="project-card" markdown>
 
+### [高价值用户识别：从地区规则到双目标评分](projects/is-great.md)
+
+<p class="card-keywords">SQL 规则审计 · 覆盖与单位价值 · 双目标评分</p>
+
+`is_great` 原来按地区标记高价值用户。香港分析将候选规则的覆盖率从 27.45% 扩到 46.94%；随后把旧规则留作基线，分别预测未来互动与付费，并用分组误差修正学历特征。
+
+<p class="card-cta" markdown>
+
+[查看项目 →](projects/is-great.md)
+
+</p>
+
+</div>
+
+<div class="project-card" markdown>
+
 ### 📱 [ANR 因果推断：当 "+15%" 只是海市蜃楼](projects/anr-optimization.md)
 
 <span class="tag">DID</span> <span class="tag">SQL</span> <span class="tag">准实验</span>
