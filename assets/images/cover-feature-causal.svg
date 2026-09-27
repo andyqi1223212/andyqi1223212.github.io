@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">Super Like 首次使用策略</title><desc id="d">从已形成 Match 的质量线索，转向完整目标人群的策略效果。</desc>
+<defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#172d59"/><stop offset="1" stop-color="#2f5ac5"/></linearGradient></defs>
+<rect width="640" height="360" fill="url(#g)"/><g fill="none" stroke="#a5c4ff" opacity=".22"><circle cx="530" cy="40" r="180"/><circle cx="530" cy="40" r="250"/><path d="M20 304H620M20 320H620M20 336H620"/></g>
+<rect x="36" y="37" width="176" height="27" rx="13" fill="#dce8ff" opacity=".18"/><text x="52" y="56" fill="#dce8ff" font-size="15" font-family="Arial, sans-serif" letter-spacing="2">EXPERIMENT DESIGN</text>
+<text x="36" y="146" fill="white" font-size="53" font-weight="700" font-family="Arial, sans-serif">75.6%</text>
+<text x="38" y="181" fill="#d8e5ff" font-size="22" font-family="Arial, sans-serif">活跃付费用户日零使用</text>
+<path d="M40 238H590" stroke="#b9d1ff" stroke-width="2" opacity=".6"/><circle cx="86" cy="238" r="9" fill="#f6cd7a"/><circle cx="304" cy="238" r="9" fill="#f6cd7a"/><circle cx="548" cy="238" r="9" fill="#f6cd7a"/>
+<text x="40" y="278" fill="#dce8ff" font-size="18" font-family="Arial, sans-serif">质量线索</text><text x="260" y="278" fill="#dce8ff" font-size="18" font-family="Arial, sans-serif">首次使用</text><text x="472" y="278" fill="#dce8ff" font-size="18" font-family="Arial, sans-serif">完整分母</text>
+</svg>
