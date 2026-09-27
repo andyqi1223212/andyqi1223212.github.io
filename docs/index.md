@@ -83,17 +83,17 @@ hide:
 
 <div class="case-card" markdown>
 
-[![ANR 优化：用 DID 估计效果的案例封面](assets/images/cover-anr-did.svg)](projects/anr-optimization.md){ .case-cover-link }
+[![ANR 策略：审视 +15% 的增长的案例封面](assets/images/cover-anr-did.svg)](projects/anr-optimization.md){ .case-cover-link }
 
 <div class="case-card__body" markdown>
 
-<p class="case-card__meta">03 / 准实验 · 商业权衡</p>
+<p class="case-card__meta">03 / 准实验 · 效果评估</p>
 
-### [ANR 优化：用 DID 估计效果](projects/anr-optimization.md)
+### [ANR 策略：审视 +15% 的增长](projects/anr-optimization.md)
 
-<p class="case-card__summary">核心动作：以未受影响设备为对照，用 DID 估计广告位调整的效果。</p>
+<p class="case-card__summary">核心动作：核对处理时点与样本，用同期对照拆开发薪前后的增长。</p>
 
-<p class="case-card__signal">关键判断：GTV 观察增长 +15.1%，DID 估计约 +1.6%；再权衡广告点击损失。</p>
+<p class="case-card__signal">关键判断：对照也涨 13.5%；+1.62 pp 的增长率差，仍依赖比例趋势与发薪可比性。</p>
 
 <p class="case-card__cta" markdown>
 
@@ -129,9 +129,9 @@ hide:
 
 <span>04 / 用户增长</span>
 
-### [Growth Accounting：拆解 MAU 的漏水桶](projects/growth-accounting.md)
+### [Overlap Window：追踪 MAU 每天的进出](projects/growth-accounting.md)
 
-用 Overlap Window 区分新增、回流、留存与流失，定位买量后的留存缺口。
+让相邻 30 天窗口只移动一天，把每日净变化落到用户，再追到渠道与支付批次。
 
 </div>
 

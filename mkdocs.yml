@@ -98,8 +98,8 @@ nav:
       - 总览: projects/index.md
       - Super Like：从会话质量到首次使用验证: projects/feature-causal.md
       - 高价值用户识别：规则与双目标评分: projects/is-great.md
-      - ANR 性能优化与实验设计: projects/anr-optimization.md
-      - Growth Accounting Framework: projects/growth-accounting.md
+      - ANR 策略：DID 与发薪窗口: projects/anr-optimization.md
+      - Growth Accounting：Overlap Window: projects/growth-accounting.md
       - 广告渠道特征分析: projects/ad-channel-analysis.md
   - 文章与工具:
       - 总览: blog/index.md

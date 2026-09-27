@@ -1,184 +1,68 @@
-# 当 MAU 停滞但买量不停：用 Growth Accounting 拆解增长的"漏水桶"
+# Overlap Window：让 MAU 的每天变化都有用户可查
 
-> **角色：** Data Analyst，移动支付 Fintech（尼日利亚市场）
-> **工具：** SQL (Hive/SparkSQL, 窗口函数, 自连接)、自动化看板
-> **关键词：** Growth Accounting, Overlap Window, 用户状态流转, Churn 归因, MAU 拆解
+> **移动支付 · Growth Accounting**　SQL · 30 天滚动窗口 · 用户状态流转
 
----
+买量不断带来新客，月末 MAU 却几乎没涨。新增、留存、召回各有报表，但它们解释不了同一个问题：**今天进入活跃池的人，有多少被退出的人抵消了？**
 
-## 摘要
+我以支付行为定义活跃，把相邻两天的 30 天用户集合对齐。两个窗口共享 29 天，只替换最早一天和最新一天：因此可以把净变化拆成新增、回流与退出，并从退出用户回查最后支付日和获客渠道。这里的精确性来自 **Overlap Window 的边界**。
 
-产品的高速增长阶段正在明显放缓，ROI 在下降。买量花了很多钱，每天进大批新客，但月末一看大盘 MAU 没怎么涨。
+## 决策主线
 
-我发现问题在于：**宏观的 MAU 掩盖了微观的用户状态流转**——拉新、留存、召回、流失的指标各自为战，没有被联动。
+点第 02、03 步看窗口如何移动；第 05 步看 SQL，第 06 步看怎样接到渠道判断。
 
-我主动引入 **Growth Accounting 框架**，使用 **Overlap Window（重叠窗口）** 方法将 MAU 强制拆解为 New / Retained / Resurrected / Churned 四个物理分量，实现了**天级精确归属**。基于此发现某网盟渠道 New Users 虽多但次月 Churn 异常偏高，直接为削减劣质渠道预算提供了数据靶点。
-
----
-
-## 一、背景：买量投入 vs. MAU 停滞的矛盾
-
-### 业务痛点
-
-作为流量分发与平台拉新团队的数据分析师，我日常接触大量广告买量增长数据。当时面临的核心矛盾：
-
-- **现象**：每天通过各渠道获取大批新客，买量预算持续投入
-- **结果**：月末盘点时，大盘 MAU 几乎没涨
-- **疑问**：钱花到哪里去了？用户都去哪儿了？
-
-### 我看到的问题
-
-翻看之前的月报，我发现虽然团队有关于拉新、留存、召回、流失的各项指标，但存在根本性缺陷：
-
-!!! warning "指标体系的断裂"
-    - 拉新团队看 New Users，留存团队看 Retention Rate，流失团队看 Churn Rate——**各自为战**
-    - MAU 仅仅是一个单独的数字，没有被分解为组成部分
-    - **没有人在追踪用户状态之间的流转动态**
-
-换句话说：**宏观的 MAU 掩盖了微观的用户状态流转。**
-
----
-
-## 二、降维破局：Growth Accounting 框架
-
-### 核心思想
-
-为了打破这个黑盒，我利用已有的埋点数据，定义了清晰的用户状态体系：
-
-- **单位**：Users
-- **活跃定义**：Pay action（支付行为）
-- **四种状态**：New → Retained → Churned → Resurrected
-
-![用户状态流转示意](../assets/growth-framework-states.png)
-
-任意时刻的活跃用户（XAU）可以被**强制拆解**为三个来源：
-
-\[
-XAU_{t} = \text{New}_{t} + \text{Retained}_{t} + \text{Resurrected}_{t}
-\]
-
-而每日的 MAU 净增长则是：
-
-\[
-\text{Net Growth} = (\text{New} + \text{Resurrected}) - \text{Churned}
-\]
-
-### 反常识发现
-
-框架搭建后的第一个发现就令人震惊：**Acquire（获客）量很大，但 Churn（流失）也同样巨大**——净增长被高流失吞噬。MAU 没涨不是因为拉新不够，而是因为**留不住人**。
-
----
-
-## 三、Overlap Window：从月级模糊到天级精确
-
-### 传统方法的问题
-
-传统月维度口径（如"1月活跃 vs. 2月活跃"）的问题在于：用户状态归属不精确，无法追踪每天的流转细节。一个用户在月初流失和月末流失，在传统口径下完全无法区分。
-
-### 我的方法：重叠窗口
-
-我放弃传统的非重叠月度对比，改为采用 **Overlapping Windows** 的滚动追踪机制——例如，以"1月1-30日"对比"1月2-31日"，两个窗口仅相差一天：
-
-![Overlap Window 示意图](../assets/overlap-window.png)
-
-### 边界状态的精准捕获
-
-这个框架最强大的地方在于**边界状态的精准捕获**：
-
-| 场景 | 窗口表现 | 含义 | 状态判定 |
-| :--- | :------- | :--- | :------- |
-| 用户仅出现在新窗口（1.2-1.31） | "专属于 01-31" | 要么是首次出现（New），要么是回归（Resurrected） | 通过 `first_time` 标记区分 |
-| 用户两个窗口都有 | 不专属于任何一天 | 在 01-31 窗口仍为 Retained | Retained |
-| 用户仅出现在旧窗口（1.1-1.30） | 从新窗口消失 | 流失——且由于窗口仅差一天，可精确定位到**最后活跃日为 1月1日** | Churned |
-
-**精确 Churn 定位的威力：**
-
-当一个用户出现在"1.1-1.30"的窗口中，却从"1.2-1.31"的窗口消失时，在数学上绝对意味着：**该用户近 30 天的唯一活跃点是 1月1日**。这使得我们能够对每日产生的 Churn 用户进行精确到天的**滞后归因（Delayed Attribution）**——进一步追溯到该用户的获客渠道、当天参与的活动、使用的功能等。
-
-**瞬时流量脉冲的识别：**
-
-同样，如果用户"专属于 01-31"窗口（仅在这一天活跃），这代表着**瞬时流量脉冲**。如果他们是 New，可以定位到精确的获客渠道评估质量；如果是 Resurrected，说明当天某条召回策略极其精准。
-
----
-
-## 四、工程落地：SQL 实现
-
-面对千万级的日活埋点数据，我使用 SQL（窗口函数与自连接）处理时间偏移序列，精准打标每个用户的状态跃迁（State Transition），并构建了底层的自动化数据管道。
-
-### 核心逻辑伪代码
-
-```sql
-WITH window_current AS (
-    -- 以 anchor_date 为基准，取过去30天内有支付行为的用户
-    SELECT DISTINCT user_id
-    FROM user_activity
-    WHERE dt BETWEEN DATE_SUB(anchor_date, 29) AND anchor_date
-      AND event_type = 'pay'
-),
-window_previous AS (
-    -- 以 anchor_date - 1 为基准，取过去30天内有支付行为的用户
-    SELECT DISTINCT user_id
-    FROM user_activity
-    WHERE dt BETWEEN DATE_SUB(anchor_date, 30) AND DATE_SUB(anchor_date, 1)
-      AND event_type = 'pay'
-),
-user_first AS (
-    -- 每个用户的首次活跃日
-    SELECT user_id, MIN(dt) AS first_active_date
-    FROM user_activity
-    WHERE event_type = 'pay'
-    GROUP BY user_id
+<div class="great-explorer feature-explorer evidence-explorer" role="group" aria-label="Growth Accounting决策链">
+<input class="great-switch" type="radio" name="case-step" id="great-step-0" aria-label="返回决策摘要" checked>
+<input class="great-switch" type="radio" name="case-step" id="great-step-1" aria-label="第1步：买来的人，为什么没留在大盘里">
+<input class="great-switch" type="radio" name="case-step" id="great-step-2" aria-label="第2步：把 30 天窗口只移动一天">
+<input class="great-switch" type="radio" name="case-step" id="great-step-3" aria-label="第3步：哪一天退出，哪一天最后支付">
+<input class="great-switch" type="radio" name="case-step" id="great-step-4" aria-label="第4步：四种状态怎样对上 MAU">
+<input class="great-switch" type="radio" name="case-step" id="great-step-5" aria-label="第5步：SQL 怎样保住这两个边界">
+<input class="great-switch" type="radio" name="case-step" id="great-step-6" aria-label="第6步：渠道退出多，就该停买量吗">
+<input class="great-switch" type="radio" name="case-step" id="great-step-7" aria-label="第7步：最后交付给业务什么">
+<div class="great-map">
+<label class="great-node" for="great-step-1"><span class="great-num">01</span><span><strong>买来的人，为什么没留在大盘里</strong><small>新增、留存各看一张表，无法解释 MAU 净变化</small></span><span class="great-chevron">›</span></label>
+<span class="great-connector">↓ 先用同一支付口径，把两天的用户集合对齐</span>
+<label class="great-node" for="great-step-2"><span class="great-num">02</span><span><strong>把 30 天窗口只移动一天</strong><small>移出 1 月 1 日，移入 1 月 31 日，中间 29 天相同</small></span><span class="great-chevron">›</span></label>
+<span class="great-connector">↓ 共享区间相同，集合差就能定位到边界</span>
+<label class="great-node" for="great-step-3"><span class="great-num">03</span><span><strong>哪一天退出，哪一天最后支付</strong><small>1 月 31 日退出；最后支付在 1 月 1 日</small></span><span class="great-chevron">›</span></label>
+<span class="great-connector">↓ 边界解释清楚，再核对四种状态是否守恒</span>
+<label class="great-node" for="great-step-4"><span class="great-num">04</span><span><strong>四种状态怎样对上 MAU</strong><small>当前 = 新增 + 留存 + 回流；变化 = 进入 − 退出</small></span><span class="great-chevron">›</span></label>
+<span class="great-connector">↓ 恒等式对上，才值得把结果做成每天的表</span>
+<label class="great-node" for="great-step-5"><span class="great-num">05</span><span><strong>SQL 怎样保住这两个边界</strong><small>用户日去重，全历史首次支付，补齐无事件的退出日</small></span><span class="great-chevron">›</span></label>
+<span class="great-connector">↓ 保留用户级流转，异常才能追到具体批次</span>
+<label class="great-node" for="great-step-6"><span class="great-num">06</span><span><strong>渠道退出多，就该停买量吗</strong><small>先对齐首次支付批次、观察时长和渠道归属</small></span><span class="great-chevron">›</span></label>
+<span class="great-connector">↓ 规模与质量分开后，再给预算复查排优先级</span>
+<label class="great-node" for="great-step-7"><span class="great-num">07</span><span><strong>最后交付给业务什么</strong><small>每日对账 → 退出名单 → 渠道批次复查</small></span><span class="great-chevron">›</span></label>
+</div>
+<div class="great-side" aria-live="polite"><div class="great-empty"><strong>窗口前进一步，变化只在两端。</strong><div class="overlap-track" role="img" aria-label="旧窗口1月1日至30日，新窗口1月2日至31日，共享1月2日至30日的29天"><div class="overlap-label">旧窗口 · 1/30</div><div class="window-row"><span class="window-out">1/1<br>移出</span><span class="window-common">1/2 — 1/30<br>共享 29 天</span><span class="window-blank">1/31</span></div><div class="overlap-label">新窗口 · 1/31</div><div class="window-row"><span class="window-blank">1/1</span><span class="window-common">1/2 — 1/30<br>共享 29 天</span><span class="window-in">1/31<br>移入</span></div></div><p>今天退出 ≠ 今天才开始不用。<br>今天留存 ≠ 今天支付。<br>今天回流 ≠ 召回策略带来增量。</p><p>理解这三个区别，才能把每日 MAU 变化接到正确的业务动作。</p></div>
+<section class="great-panel great-panel-1" aria-labelledby="case-title-1"><div class="great-panel-top"><span>01 / 07 · 买来的人，为什么没留在大盘里</span><label for="great-step-0" aria-label="收起细节">×</label></div><h3 id="case-title-1">先定义一个能每天对账的增长问题</h3><p>买量持续带来新客，月末 MAU 却没怎么涨。原有月报分别记录拉新、留存与流失，但缺少一条能解释大盘变化的等式。</p><p>我把分析对象统一为<strong>用户</strong>，把活跃统一为<strong>支付行为</strong>。这里每天更新的是过去 30 个自然日有支付的去重用户数，记为 MAU₃₀；它区别于自然月 MAU，也区别于登录活跃。</p><div class="great-axis"><div><b>原报表</b><span>今天新增多少</span></div><i>→</i><div><b>需要补的问题</b><span>同时有多少人退出活跃池</span></div><i>→</i><div><b>可用交付</b><span>MAU₃₀ 的每日流入 / 流出</span></div></div><p class="great-takeaway">先让新增和流失解释同一个支付用户池，才知道大盘停滞是进入少，还是退出多。</p></section>
+<section class="great-panel great-panel-2" aria-labelledby="case-title-2"><div class="great-panel-top"><span>02 / 07 · 把 30 天窗口只移动一天</span><label for="great-step-0" aria-label="收起细节">×</label></div><h3 id="case-title-2">只改两端，才能解释今天的净变化</h3><p>自然月对比适合月报，但每天的增长诊断需要固定长度、每日滚动的窗口。把旧窗口 [t−30, t−1] 平移为新窗口 [t−29, t]，只换掉两端。</p><div class="overlap-track" role="img" aria-label="旧窗口1月1日至30日，新窗口1月2日至31日，共享1月2日至30日的29天"><div class="overlap-label">旧窗口 · 1/30</div><div class="window-row"><span class="window-out">1/1<br>移出</span><span class="window-common">1/2 — 1/30<br>共享 29 天</span><span class="window-blank">1/31</span></div><div class="overlap-label">新窗口 · 1/31</div><div class="window-row"><span class="window-blank">1/1</span><span class="window-common">1/2 — 1/30<br>共享 29 天</span><span class="window-in">1/31<br>移入</span></div></div><p>只要在共享的 29 天里支付过，用户就同时在两个集合里，今天属于 Retained。真正改变 MAU₃₀ 的人，只能从两端找到：今天进入的人，以及最早一天移出后再无支付的人。</p><p class="great-takeaway">Overlap Window 的价值：把大盘的一天变化，精确对应到进入 / 退出活跃池的用户名单。它没有提前发现流失，退出仍有 30 天等待。</p></section>
+<section class="great-panel great-panel-3" aria-labelledby="case-title-3"><div class="great-panel-top"><span>03 / 07 · 哪一天退出，哪一天最后支付</span><label for="great-step-0" aria-label="收起细节">×</label></div><h3 id="case-title-3">同一个用户，有两个不能混写的日期</h3><div class="great-axis"><div><b>1 月 1 日</b><span>最后一次支付</span></div><i>→</i><div><b>1 月 2–30 日</b><span>没有支付<br>仍在 1/30 的 30 天池内</span></div><i>→</i><div><b>1 月 31 日</b><span>当天也未支付<br>从 MAU₃₀ 退出</span></div></div><div class="great-table-wrap"><table><thead><tr><th>支付轨迹举例</th><th>1/31 状态</th><th>为什么</th></tr></thead><tbody><tr><td>1/1 后一直未支付</td><td>Churned</td><td>旧窗有、新窗无；退出日 1/31，最后支付日 1/1。</td></tr><tr><td>只在 1/10 支付，1/31 未支付</td><td>Retained</td><td>1/10 属于共享区间；留存不要求今天支付。</td></tr><tr><td>1/31 首次支付</td><td>New</td><td>新窗有、旧窗无，全历史第一次支付就是今天。</td></tr><tr><td>12/15 支付后停用，1/31 再支付</td><td>Resurrected</td><td>新窗有、旧窗无，但更早有支付历史。</td></tr><tr><td>1/1 和 1/31 都支付</td><td>Retained</td><td>两个窗口各有支付，即使共享区间没有支付。</td></tr></tbody></table></div><p><strong>1/31 是按 30 天规则确认退出的日期，1/1 是可回查的最后支付日期。</strong>1/1 当天可以支付多次，更早也可以支付过。由窗口关系无法知道用户真正决定离开的时刻或原因。</p><details><summary>回流是否证明召回有效？</summary><p>回流只说明用户在旧窗口没有支付、今天重新支付。可能来自发薪、自然需求或触达；要估计召回策略增量，需要同期对照或实验。</p><p>同理，新进入者今天支付，不代表未来只有一天活跃。“瞬时脉冲”要等后续行为才能判断。按这个 30 天退出定义，回流用户 7 天后仍在窗口内；7 日未复购可以另算，但不能叫同口径的“7 日再流失”。</p></details><p class="great-takeaway">精确的是最后支付日和退出记账日；原因需要再查。Retained 也只是两窗都在，不代表每天或今天活跃。</p></section>
+<section class="great-panel great-panel-4" aria-labelledby="case-title-4"><div class="great-panel-top"><span>04 / 07 · 四种状态怎样对上 MAU</span><label for="great-step-0" aria-label="收起细节">×</label></div><h3 id="case-title-4">状态互斥，两个窗口都要能还原</h3><div class="great-samples"><div><b>今天的存量</b><strong>MAU₃₀(t) = New + Retained + Resurrected</strong></div><div><b>昨天的存量</b><strong>MAU₃₀(t−1) = Retained + Churned</strong></div><div><b>今天净变化</b><strong>ΔMAU₃₀ = New + Resurrected − Churned</strong></div></div><p>Churned 已不在当前活跃池，因此不能把四项都加进今天 MAU。相邻窗口移动时，这四类互斥；连续两窗都不在的沉默用户不参与当天对账。</p><details><summary>一个五人例子，验证边界与对账</summary><div class="great-table-wrap"><table><thead><tr><th>用户</th><th>支付记录</th><th>1/31 状态</th></tr></thead><tbody><tr><td>A</td><td>1/1</td><td>退出</td></tr><tr><td>B</td><td>1/10</td><td>留存</td></tr><tr><td>C</td><td>首次 1/31</td><td>新增</td></tr><tr><td>D</td><td>12/15、1/31</td><td>回流</td></tr><tr><td>E</td><td>1/1、1/31</td><td>留存</td></tr></tbody></table></div><p>旧窗 A、B、E 共 3 人；新窗 B、C、D、E 共 4 人。New = 1、Resurrected = 1、Retained = 2、Churned = 1，所以 4 − 3 = 1 + 1 − 1。</p></details><p>按渠道再拆时，用户要有唯一、稳定的归属。否则同一用户在两天间被重新归因，就可能制造某渠道的虚假流入 / 流出。</p><p class="great-takeaway">恒等式既是业务解释，也是数据验收：对不上时先查去重、历史缺口、归因变化与日期边界。</p></section>
+<section class="great-panel great-panel-5" aria-labelledby="case-title-5"><div class="great-panel-top"><span>05 / 07 · SQL 怎样保住这两个边界</span><label for="great-step-0" aria-label="收起细节">×</label></div><h3 id="case-title-5">先保留用户级变化，再聚合成看板</h3><p>底层先把支付明细去重为<strong>用户 × 支付日</strong>。每日输出一行用户状态，保留 anchor_date、first_pay_date、last_pay_date 与获客渠道，才能从大盘下钻回用户。</p><details><summary>可读 SQL：两窗 FULL OUTER JOIN</summary><pre><code>-- :anchor_date 是当天；pay_user_day 已按 user_id × dt 去重。
+WITH curr AS (
+  SELECT DISTINCT user_id FROM pay_user_day
+  WHERE dt BETWEEN DATE_SUB(:anchor_date, 29) AND :anchor_date
+), prev AS (
+  SELECT DISTINCT user_id FROM pay_user_day
+  WHERE dt BETWEEN DATE_SUB(:anchor_date, 30)
+               AND DATE_SUB(:anchor_date, 1)
 )
-SELECT
-    anchor_date,
-    CASE
-        WHEN c.user_id IS NOT NULL AND p.user_id IS NOT NULL THEN 'Retained'
-        WHEN c.user_id IS NOT NULL AND p.user_id IS NULL
-             AND f.first_active_date = anchor_date THEN 'New'
-        WHEN c.user_id IS NOT NULL AND p.user_id IS NULL
-             AND f.first_active_date < anchor_date THEN 'Resurrected'
-        WHEN c.user_id IS NULL AND p.user_id IS NOT NULL THEN 'Churned'
-    END AS user_state,
-    COUNT(*) AS user_count
-FROM window_current c
-FULL OUTER JOIN window_previous p ON c.user_id = p.user_id
-LEFT JOIN user_first f ON COALESCE(c.user_id, p.user_id) = f.user_id
-GROUP BY 1, 2;
-```
-
-产出的自动化看板支持：
-
-- 每日用户状态流转追踪
-- Churn 用户的渠道来源归因
-- 各渠道 / 活动的 Retain 效果对比
-
----
-
-## 五、业务价值：定位"漏水点"
-
-基于此底层数据，我搭建了针对拉新渠道的**"用户资产流转看板"**。
-
-!!! success "核心发现"
-    后续对近期数据深入拆解发现：**某些网盟渠道虽然带来的 New Users 多，但其次月转化为 Churned 的比例异常偏高**。
-
-这直接协助用户增长团队定位到了"漏水点"：
-
-| 维度 | 发现 | 行动 |
-| :--- | :--- | :--- |
-| **渠道质量** | 网盟渠道 A 的 New→Churn 转化率是主流渠道的 2.5 倍 | 削减该渠道预算 |
-| **留存策略** | Resurrected 用户的 7 日再流失率高达 45% | 优化召回后的承接流程 |
-| **买量 ROI** | 真实 "净获客" 远低于 "毛获客" | 调整 ROI 计算口径，纳入 Churn 成本 |
-
-这些发现为后续削减劣质渠道预算、优化留存策略提供了直接的数据靶点，也为团队的渠道买量优化指明了方向。
-
----
-
-## 六、反思：这个项目展示了什么？
-
-| 维度               | 本案例展示的能力                                                  |
-| :----------------- | :--------------------------------------------------------------- |
-| **主动性**         | 不是等业务方提需求，而是自主发现指标体系的断裂并主动引入框架       |
-| **指标思维**       | 从单一 MAU 数字到四分量拆解，重新定义了团队看增长的方式           |
-| **工程能力**       | 用 SQL 窗口函数处理千万级数据，构建可复用的自动化管道             |
-| **业务判断力**     | 从数据中识别"漏水桶"模式，将分析连接到预算决策                   |
-| **框架化思维**     | 将散乱的日常指标整合为一套可解释、可追踪的统一框架                |
+SELECT :anchor_date AS anchor_date,
+       COALESCE(c.user_id, p.user_id) AS user_id,
+       CASE
+         WHEN c.user_id IS NOT NULL AND p.user_id IS NOT NULL
+           THEN &#x27;Retained&#x27;
+         WHEN c.user_id IS NULL THEN &#x27;Churned&#x27;
+         WHEN f.first_pay_date = :anchor_date THEN &#x27;New&#x27;
+         WHEN f.first_pay_date &lt; :anchor_date THEN &#x27;Resurrected&#x27;
+         ELSE &#x27;Unknown_history&#x27;
+       END AS state
+FROM curr c
+FULL OUTER JOIN prev p ON c.user_id=p.user_id
+LEFT JOIN first_pay_user f
+  ON COALESCE(c.user_id,p.user_id)=f.user_id;</code></pre><p><code>first_pay_user</code> 保存全历史首次支付；不能只在近 30 天里取 MIN，也不能以注册日代替首次支付。Unknown_history 单列并排查，不硬塞进 New。存在未知历史时，当前窗用 New + Retained + Resurrected + Unknown_history 对账；净变化用 New + Resurrected + Unknown_history − Churned 对账。未知清零后，再发布完整的四类生命周期拆分。</p></details><details><summary>大表如何少扫数据，又不漏掉退出？</summary><p>可维护每日用户最近支付日与首次支付日：今天有支付且上次支付早于 t−30（或从未支付）的人构成进入；截至今天最近支付日恰为 t−30 的人构成退出。上次支付等于 t−30 且今天又支付的人，两窗都在，仍是 Retained。</p><p>每次支付可安排一个“30 天后到期”的候选；到期日核对是否有后续支付，有则取消旧候选。仅在支付事件上跑 LAG 会漏掉 Churned，因为退出当天通常没有事件。</p><p>稳定的数据分区到齐后出数；迟到支付补进历史时，重算受影响的窗口和相邻状态，避免将数据延迟误报为退出。无事件只有在分区完整时才等于零支付。</p></details><p class="great-takeaway">每一天先验收：用户状态唯一，当前与前窗计数都能还原；含 Unknown_history 在内的对账差额为 0。缺历史的人单列，不能从 MAU 净变化中漏掉。</p></section>
+<section class="great-panel great-panel-6" aria-labelledby="case-title-6"><div class="great-panel-top"><span>06 / 07 · 渠道退出多，就该停买量吗</span><label for="great-step-0" aria-label="收起细节">×</label></div><h3 id="case-title-6">从“退出人数多”走到“哪批用户值得复查”</h3><p>看板下钻发现某些网盟渠道的新支付用户多，后续退出也偏高。这给渠道质量复查提供了名单，但退出人数本身会随获客规模增长。</p><div class="great-axis"><div><b>退出名单</b><span>anchor_date = t<br>last_pay_date = t−30</span></div><i>→</i><div><b>回接批次</b><span>首次支付日<br>固定获客渠道</span></div><i>→</i><div><b>同龄比较</b><span>相同成熟时长<br>再次支付 / 退出 / 贡献</span></div></div><p>比较渠道时，用<strong>同一首次支付批次、同一观察时长</strong>，再看退出比例或后续支付贡献。不能用今天 Churned ÷ 今天 New；两边不是同一批人。也不能把新渠道尚未成熟的用户，与老渠道已经观察满 30 天的用户直接比较。</p><details><summary>如何定义一个真的可比的渠道指标？</summary><p>例如，对首次支付日在 d、已经观察到 d+30 的用户，计算“截至 d+30 未发生第二个支付日的人数 ÷ 该首次支付批次人数”。它对齐的是一次性支付后的流失风险；其他支付节奏可以用同一随访长度的复购率、支付频次或净贡献补充。</p><p>渠道使用稳定获客归因；最后一次支付参与的活动另存一列。今天回流不改写原获客渠道，否则把营销触达与获客来源混成一个维度，渠道账会变。</p></details><p class="great-takeaway">Overlap Window 告诉业务先查哪批人；同龄批次与成本、贡献比较，才支持预算调整。</p></section>
+<section class="great-panel great-panel-7" aria-labelledby="case-title-7"><div class="great-panel-top"><span>07 / 07 · 最后交付给业务什么</span><label for="great-step-0" aria-label="收起细节">×</label></div><h3 id="case-title-7">把月末的一个数字，变成每天能追查的流转</h3><p>我将滚动窗口的用户状态接入增长看板，让新增、回流与退出能和 MAU₃₀ 的净变化对账，再从退出用户追到最后支付日、获客渠道与批次。</p><div class="great-table-wrap"><table><thead><tr><th>交付层</th><th>业务可以采取的动作</th></tr></thead><tbody><tr><td>每日总览</td><td>看新增与回流是否被退出抵消；决定优先查进入还是退出。</td></tr><tr><td>异常下钻</td><td>回到具体退出用户，核查最后支付日期与渠道集中度。</td></tr><tr><td>渠道复查</td><td>优先复查新客多、后续退出偏高的网盟批次，再按同龄表现和贡献讨论预算。</td></tr></tbody></table></div><p>项目把“买量很多但增长不动”变成可定位的数据问题，为渠道预算复查和留存优化提供依据。要验证某次削减预算或召回策略的效果，仍应另设比较，不能从流转恒等式直接得到策略增量。</p><p class="great-takeaway">核心成果：用只差一天的窗口，把每日净增长落到可追溯的用户变化；把看板异常交给具体的渠道与留存动作。</p></section>
+</div>
+</div>

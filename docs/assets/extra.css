@@ -982,3 +982,53 @@
   .md-typeset > ol,
   .md-typeset > blockquote { max-width: 68ch; }
 }
+
+/* DID / Growth: boundary diagrams and evidence details, scoped to these cases. */
+.evidence-explorer .great-empty { font-size: .82rem; line-height: 1.7; }
+.evidence-explorer .great-empty > strong { display: block; font-size: 1rem; }
+.evidence-explorer figure { margin: .8rem 0; }
+.evidence-explorer figure img { width: 100%; border-radius: 8px; }
+.evidence-explorer figcaption { color: var(--md-default-fg-color--light); font-size: .65rem; line-height: 1.5; }
+.evidence-explorer table { display: table; }
+.evidence-explorer td { overflow-wrap: normal; word-break: normal; }
+.evidence-explorer .great-connector { font-size: .64rem; }
+.overlap-track { margin: .8rem 0; font-size: .7rem; line-height: 1.5; }
+.overlap-label { margin: .4rem 0 .2rem; font-weight: 700; }
+.window-row { display: grid; grid-template-columns: 1fr 3.5fr 1fr; gap: 3px; }
+.window-row span { padding: .45rem .15rem; text-align: center; border-radius: 4px; }
+.window-common { background: #253e60; color: #d8e6ff; }
+.window-out { background: #683e33; color: #ffe2d4; }
+.window-in { background: #205548; color: #d2fff0; }
+.window-blank { color: #8e9eae; border: 1px dashed #506179; }
+[data-md-color-scheme="default"] .window-common { background: #e2eafa; color: #23436d; }
+[data-md-color-scheme="default"] .window-out { background: #f6dfd0; color: #7d3c1e; }
+[data-md-color-scheme="default"] .window-in { background: #d6efe5; color: #18573f; }
+[data-md-color-scheme="default"] .window-blank { color: #687b94; border-color: #c2ccdb; }
+.evidence-explorer #great-step-1:focus-visible ~ .great-map label[for="great-step-1"] { outline: 3px solid var(--md-accent-fg-color); outline-offset: 3px; }
+.evidence-explorer #great-step-2:focus-visible ~ .great-map label[for="great-step-2"] { outline: 3px solid var(--md-accent-fg-color); outline-offset: 3px; }
+.evidence-explorer #great-step-3:focus-visible ~ .great-map label[for="great-step-3"] { outline: 3px solid var(--md-accent-fg-color); outline-offset: 3px; }
+.evidence-explorer #great-step-4:focus-visible ~ .great-map label[for="great-step-4"] { outline: 3px solid var(--md-accent-fg-color); outline-offset: 3px; }
+.evidence-explorer #great-step-5:focus-visible ~ .great-map label[for="great-step-5"] { outline: 3px solid var(--md-accent-fg-color); outline-offset: 3px; }
+.evidence-explorer #great-step-6:focus-visible ~ .great-map label[for="great-step-6"] { outline: 3px solid var(--md-accent-fg-color); outline-offset: 3px; }
+.evidence-explorer #great-step-7:focus-visible ~ .great-map label[for="great-step-7"] { outline: 3px solid var(--md-accent-fg-color); outline-offset: 3px; }
+@media print {
+  .evidence-explorer { display: block; }
+  .evidence-explorer .great-side { position: static; display: block; max-height: none; overflow: visible; box-shadow: none; }
+  .evidence-explorer .great-panel { display: block; break-inside: avoid; }
+  .evidence-explorer .great-panel-top label { display: none; }
+}
+
+.evidence-explorer .great-panel-top { position: sticky; top: 0; z-index: 1; padding: .35rem 0; background: #0c1825; }
+[data-md-color-scheme="default"] .evidence-explorer .great-panel-top { background: #fff; }
+
+/* DID: compare who enters the cohort under the two sampling rules. */
+.did-cohorts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+.evidence-explorer .did-cohorts figure { margin: .4rem 0; padding: .6rem; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 8px; }
+.did-cohorts figcaption { color: var(--md-default-fg-color); margin-bottom: .6rem; }
+.did-cohort-stage { padding: .45rem; background: var(--md-code-bg-color); border-radius: 5px; font-size: .65rem; }
+.did-members { display: flex; gap: .25rem; margin-top: .35rem; }
+.did-members span { display: grid; place-items: center; min-width: 1.65rem; height: 1.65rem; border: 1px solid currentColor; border-radius: 50%; font-weight: 700; }
+.did-members .did-excluded { border-style: dashed; text-decoration: line-through; opacity: .65; }
+.did-cohort-arrow { padding: .5rem 0; font-size: .61rem; line-height: 1.5; }
+.great-panel .did-cohorts p { font-size: .65rem; margin-bottom: 0; }
+@media (max-width: 450px) { .did-cohorts { grid-template-columns: 1fr; } }
